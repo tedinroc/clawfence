@@ -22,8 +22,8 @@
 | **Hotel Indigo Shenzhen OCT** (IHG) | ~0.3 km; full-service | higher |
 
 Recommendation: book **GLEETOUR** for proximity/quality, or **Cityinn Oct Loft**
-(budget, 242 m, free-cancel rates) for **Dec 3–6**
-(3 nights; checkout Dec 7 if returning that day). The venue is inside the park;
+(budget, 242 m, free-cancel rates) for **Dec 3–7 (4 nights)** — ClawCon ends
+18:00 on Dec 6, so stay the night and fly back Dec 7. The venue is inside the park;
 the exact room/check-in details come from the Luma approval email. Trip.com
 showed rates only after a dynamic room search; **call the hotel** at
 +86-755-61555555 to confirm Dec 3–6 availability, the actual rate, and the
@@ -34,9 +34,17 @@ cancellation window before paying.
 
 ## Flights (assuming Taipei departure)
 
-- **TPE → SZX** direct, ~1h50; China Airlines, EVA Air, China Southern.
-- Dec 3 out, Dec 7 back is the safe pattern (event ends Dec 6 evening).
-- Seen fares: China Southern promo from ~TWD 5,970; China Airlines/EVA ~TWD 11,600–11,900 round trip (economy, before taxes/fees). Book refundable if the 台胞證 is not yet in hand.
+- **TPE → SZX** direct, ~1h50. Published schedule (China Southern / China
+  Airlines / EVA / Shenzhen Airlines):
+  - Dec 3 (Thu): CZ3088 **13:40→15:50**; CI527 **15:25→17:25**;
+    B7187 **16:25→18:25**; ZH9074/B77151 **17:35→19:35**
+  - Dec 7 (Mon) return: CZ3087 **10:30→12:25**; B77152 **14:35→16:25**;
+    CI528 **18:45→20:30**; B7188/ZH3401 **19:45→21:35**
+- Best fit: **Dec 3 afternoon** (CZ3088/CI527) + **Dec 7 morning** CZ3087.
+- Seen fares: China Southern promo from ~**TWD 6,059–6,518**; China Airlines/EVA
+  ~TWD 10,200–11,900 round trip (economy, before taxes/fees). Book refundable
+  if the 台胞證 is not yet in hand.
+- TPE terminal: T2; SZX terminal: T3.
 - Airline pages:
   - <https://flights.china-airlines.com/en-tw/flights-from-taipei-to-shenzhen>
   - <https://flights.evaair.com/en/flights-from-taipei-to-shenzhen>
@@ -53,8 +61,11 @@ cancellation window before paying.
 ## Passport / visa
 
 - **Taiwan passport:** 5-year 台胞證 via a Taiwan agency (~7 working days;
-  express ~4). Backup: one-time 落地簽 at Shekou Cruise Terminal (~30 min,
-  RMB 50–100, 3-month stay; first-time applicants may be free).
+  express ~4; first-time applicants free through 2027-12-31).
+- **Backup at SZX Bao'an airport:** since 2025-11-20 the airport can issue a
+  one-time 台胞證 on arrival (T3, photo + Taiwan ID/passport; ~30 min; fee ¥40,
+  first-time may be free). Airport enquiry **0755-23459289**. Shekou and
+  Huanggang/Luohu also issue one-time cards; Shenzhen has four such ports.
 - **US/other passport:** confirm China visa or 240-hour transit eligibility
   before booking; carry printed approval email, hotel booking, return ticket.
 - Carry the Luma approval email (printed + phone screenshot).

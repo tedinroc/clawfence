@@ -48,7 +48,7 @@ cfg = {
              "entries":{"main":{"name":"main","workspace":os.path.join(demo,"workspace"),"agentDir":os.path.join(state,"agents/main/agent"),"identity":{"name":"main"}}}},
   "models": {"mode":"merge","providers":{"mlx":{"baseUrl":"http://127.0.0.1:18085/v1","api":"openai-completions","apiKey":"x","models":[{"id":os.path.join(os.environ["HOME"],".lmstudio/models/lmstudio-community/Qwen3-4B-MLX-4bit"),"name":"Qwen3 4B local","contextWindow":32768,"maxTokens":8192,"input":["text"],"compat":{"supportsTools":True},"cost":{"input":0,"output":0,"cacheRead":0,"cacheWrite":0},"reasoning":False}]}}},
   "plugins": {"entries":{"clawfence":{"enabled":True,"hooks":{"allowConversationAccess":True,"timeoutMs":600000,"timeouts":{"before_tool_call":600000}},"config":{"mode":"enforce","escalation":"pause","queueDir":queue,"semantic":False,"approvalTtlMs":90000}}},"load":{"paths":[root]}},
-  "tools": {"profile":"full"}
+  "tools": {"profile":"coding"}
 }
 json.dump(cfg, open(os.path.join(state,"openclaw.json"),"w"), indent=2)
 PY

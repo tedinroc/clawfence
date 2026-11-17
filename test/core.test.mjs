@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
-import { deriveIntent } from "../lib/intent.js";
+import { deriveIntent, isContinuationPrompt } from "../lib/intent.js";
 import { extractAction } from "../lib/action.js";
 import { decideAction } from "../lib/decide.js";
 import { createAudit } from "../lib/audit.js";
@@ -17,6 +17,11 @@ test("intent: tidy Downloads grants write but not delete", () => {
   assert.equal(card.allowed.write_paths.includes(path.join(os.homedir(), "Downloads")), true);
   assert.equal(card.allowed.delete_paths.length, 0);
   assert.ok(card.hash.length === 64);
+});
+
+test("intent: continuation prompts are recognized", () => {
+  assert.equal(isContinuationPrompt("Continue the current task from the existing transcript, preserving completed work."), true);
+  assert.equal(isContinuationPrompt("Tidy my Downloads folder."), false);
 });
 
 test("intent: explicit delete and email", () => {

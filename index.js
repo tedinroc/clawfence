@@ -4,7 +4,7 @@ import { definePluginEntry } from "openclaw/plugin-sdk/plugin-entry";
 import { createAudit } from "./lib/audit.js";
 import { createQueue } from "./lib/queue.js";
 import { createIntentStore } from "./lib/intent-store.js";
-import { deriveIntent, intentSummary } from "./lib/intent.js";
+import { deriveIntent, intentSummary, isContinuationPrompt } from "./lib/intent.js";
 import { extractAction, actionSummary } from "./lib/action.js";
 import { decideAction, semanticAssist } from "./lib/decide.js";
 import { sha256, truncate } from "./lib/util.js";
@@ -82,8 +82,7 @@ export default definePluginEntry({
         now: new Date().toISOString(),
       });
       const key = ctx?.sessionKey || ctx?.sessionId || "global";
-      const continuation = /^Continue the current task from the existing transcript/i.test(prompt)
-        || /Do not restart the task or repeat completed actions/i.test(prompt);
+      const continuation = isContinuationPrompt(prompt);
       if (continuation) {
         const existing = intents.get(key) || await intentStore.load(key);
         if (existing) {

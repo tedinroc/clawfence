@@ -25,7 +25,7 @@ mode,queue=sys.argv[1],sys.argv[2]
 p=__import__('os').environ['OPENCLAW_CONFIG_PATH']
 d=json.load(open(p))
 c=d['plugins']['entries']['clawfence']['config']
-c['mode']=mode; c['queueDir']=queue
+c['mode']=mode; c['queueDir']=queue; c['escalation']='queue'
 json.dump(d,open(p,'w'),indent=2)
 PY
   sleep 3

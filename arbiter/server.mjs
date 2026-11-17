@@ -195,7 +195,12 @@ server.listen(args.port, args.host, () => {
   const address = server.address();
   console.log(`[clawfence-arbiter] dir=${dir}`);
   console.log(`[clawfence-arbiter] listening on http://${args.host}:${address.port}`);
-  console.log(`[clawfence-arbiter] ${token ? "token required" : "no token (local demo)"}`);
+  const loopback = args.host === "127.0.0.1" || args.host === "::1" || args.host === "localhost";
+  if (!token && !loopback) {
+    console.log(`[clawfence-arbiter] WARNING: listening on ${args.host} without a token; anyone on this network can approve. Pass --token.`);
+  } else {
+    console.log(`[clawfence-arbiter] ${token ? "token required" : "no token (loopback only)"}`);
+  }
 });
 
 const HTML = `<!doctype html>

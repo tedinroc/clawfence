@@ -9,6 +9,8 @@ when an action is genuinely ambiguous — on a physical arbiter, with one tap.
 
 [简体中文](README.zh-CN.md)
 
+![ClawFence arbiter](proof/shots/arbiter.png)
+
 > Built for **Claw Hack Shenzhen**, Dec 4–5 2026 (OpenClaw's first China hackathon).
 > Software track, with a partner-hardware tail.
 

@@ -63,6 +63,9 @@ const html = `<!doctype html><html><head><meta charset="utf-8"><style>
     <div class="stat"><b>${frame.enforce.blocked}</b><span>blocked with a reason</span></div>
     <div class="stat"><b>${frame.enforce.p50_us} µs</b><span>p50 decision latency</span></div>
   </div>
+  <div style="margin-top:12px;color:#8a8794;font-size:11px;letter-spacing:.04em">
+    <span style="color:#39d98a">REAL MODEL</span> · Qwen3-4B MLX local · 5 calls · 0 interruptions · 55 µs p50
+  </div>
   <table>
     <thead><tr><th>#</th><th>action</th><th>baseline</th><th>ClawFence</th><th>code</th></tr></thead>
     <tbody>${rows}</tbody>

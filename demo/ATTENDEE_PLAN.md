@@ -52,7 +52,8 @@
 - [ ] Travel to Shenzhen; arrive Dec 3 evening.
 
 ### Dec 4 (event Day 1)
-- [ ] 09:00 arrive, front row, Wi-Fi + power.
+- [ ] 09:00 arrive, front row, Wi-Fi + power. Claw Cafe (Tencent-hosted space)
+      opens 13:00 and runs to 22:00; NVIDIA DGX Spark token bar is on site.
 - [ ] 10:00 OpenClaw / M5Stack / Seeed workshops. **Ask for a board** (script
       below); if allocated, take it but do not port until the phone demo works.
 - [ ] 12:00 set up at a table: `run-demo.sh`, phone URL, proof frame.
@@ -68,7 +69,8 @@
 - [ ] 15:00 submit repo + video + demo text.
 - [ ] 16:00 **deadline**.
 - [ ] 16:30 rehearse 3 minutes twice, out loud, timed.
-- [ ] 17:00 demos/awards; be present, be gracious, ask the partner for a photo + intro.
+- [ ] 16:30 demos/prizes in the Claw Cafe space; 17:00–17:30 winners; be present,
+      be gracious, ask the partner for a photo + intro.
 - [ ] 18:30 social.
 
 ### Dec 6

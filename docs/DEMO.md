@@ -14,7 +14,7 @@ OPENCLAW_STATE_DIR=/tmp/cfhome/.ocdemo \
 OPENCLAW_CONFIG_PATH=/tmp/cfhome/.ocdemo/openclaw.json \
 openclaw gateway --allow-unconfigured
 
-# terminal 3 — arbiter (phone/tablet opens this URL)
+# terminal 3 — arbiter (phone/tablet opens this URL; add ?simple=1 for a visitor)
 node arbiter/server.mjs --dir /tmp/clawfence-demo --host 0.0.0.0 --port 8791
 
 # terminal 4 — capture the baseline and the fenced run

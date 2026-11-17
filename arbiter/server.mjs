@@ -255,6 +255,15 @@ const HTML = `<!doctype html>
   .toast { position:fixed; bottom:22px; left:50%; transform:translateX(-50%) translateY(80px); background:#1b1b22; border:1px solid var(--line); padding:10px 16px; border-radius:8px; font-size:12px; opacity:0; transition:.18s; }
   .toast.show { transform:translateX(-50%) translateY(0); opacity:1; }
   footer { text-align:center; color:#55525e; font-size:10px; padding:0 0 22px; }
+  body.simple main{grid-template-columns:1fr;max-width:920px;padding-top:28px}
+  body.simple .stats,body.simple #intent,body.simple #feed,body.simple section:nth-of-type(2),body.simple footer{display:none}
+  body.simple h2{display:none}
+  body.simple .card{padding:26px}
+  body.simple .card .title{font-size:28px}
+  body.simple .card .mono{font-size:16px}
+  body.simple .card .task{font-size:15px}
+  body.simple button{padding:18px 26px;font-size:18px}
+  body.simple .empty{padding:80px 30px;font-size:20px}
   @media (max-width:620px){
     header{padding:12px 14px}
     .status{gap:8px;font-size:10px}
@@ -297,11 +306,12 @@ const HTML = `<!doctype html>
     <div class="feed" id="feed"></div>
   </section>
 </main>
-<footer>approve only what the task actually asked for · every decision is hash-chained</footer>
+<footer>approve only what the task actually asked for · every decision is hash-chained · <a href="?simple=1" style="color:#55525e">stranger mode</a></footer>
 <div class="toast" id="toast"></div>
 <script>
 /*__INITIAL_STATE__*/
 let lastPending = "";
+if (new URLSearchParams(location.search).has("simple")) document.body.classList.add("simple");
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 function toast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),1800); }
 function fmtLeft(iso){ const ms=Math.max(0,new Date(iso).getTime()-Date.now()); const s=Math.floor(ms/1000); return s>60?Math.floor(s/60)+'m '+String(s%60).padStart(2,'0')+'s':s+'s'; }

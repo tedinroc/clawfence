@@ -15,6 +15,8 @@ when an action is genuinely ambiguous — on a physical arbiter, with one tap.
 
 ![Real pause proof](proof/shots/real-pause.png)
 
+![Stranger mode](proof/shots/arbiter-simple.png)
+
 > Built for **Claw Hack Shenzhen**, Dec 4–5 2026 (OpenClaw's first China hackathon).
 > Software track, with a partner-hardware tail.
 
@@ -114,7 +116,8 @@ node arbiter/server.mjs --dir /tmp/clawfence --port 8790
 ```
 
 Open <http://127.0.0.1:8790> and give the agent a task. When an action is
-ambiguous, a card appears; **APPROVE ONCE** or **DENY**. Approving writes a
+ambiguous, a card appears; **APPROVE ONCE** or **DENY**. For a first-time user
+or a Claw Cafe visitor, add `?simple=1` (big card, no audit noise). Approving writes a
 one-action grant, and the agent may retry the exact call once.
 
 CLI:

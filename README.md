@@ -101,7 +101,7 @@ OpenClaw, and the MLX venv), so `scripts/run-demo.sh` works after a reboot;
 
 ```bash
 # 1. Link the plugin (development)
-openclaw plugins install -l /path/to/clawfence --force
+openclaw plugins install -l /path/to/clawfence --force --accept-capabilities
 
 # 2. Allow the conversation hook (non-bundled plugins need this)
 openclaw config set plugins.entries.clawfence.hooks.allowConversationAccess true

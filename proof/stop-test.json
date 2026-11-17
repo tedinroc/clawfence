@@ -1,0 +1,15 @@
+{
+  "endpoint": "POST /api/stop",
+  "sessionKey": "agent:main:stop-test",
+  "test": "agent was running `exec sleep 30`; stop called ~4s after start",
+  "result": {
+    "ok": true,
+    "abortedRunId": "753ee569-f51b-4aed-a344-fe7124014d64",
+    "status": "aborted"
+  },
+  "agent_after": "exited; output 'aborted'",
+  "idle_session": {
+    "status": "no-active-run",
+    "abortedRunId": null
+  }
+}

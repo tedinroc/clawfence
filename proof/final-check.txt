@@ -1,28 +1,29 @@
 == unit tests ==
-✔ intent: tidy Downloads grants write but not delete (1.618958ms)
-✔ intent: explicit delete and email (0.507708ms)
-✔ action: out-of-scope write and secret read are found (0.853833ms)
-✔ action: exec workdir and find -delete are recognized (0.177084ms)
-✔ action: message targets array is a recipient list (0.077917ms)
-✔ action: opaque interpreter and persistence are flagged (0.632041ms)
-✔ action: package install and command substitution are flagged (0.115333ms)
-✔ decide: blocks out-of-scope write (0.612708ms)
-✔ decide: follows a symlink out of scope and blocks (1.030667ms)
-✔ decide: read through a symlink to a secret blocks (0.926417ms)
-✔ decide: allows a symlink that stays in scope (0.745708ms)
-✔ decide: allows in-scope write (0.414958ms)
-✔ audit: hash chain verifies and tampering is detected (4.024334ms)
-✔ queue: approve creates a one-action grant (2.343875ms)
-✔ queue: pause waits for approve and deny (404.657083ms)
-✔ queue: deny creates a denial that blocks a retry (5.323792ms)
-ℹ tests 16
+✔ intent: tidy Downloads grants write but not delete (1.71575ms)
+✔ intent: explicit delete and email (0.604375ms)
+✔ action: out-of-scope write and secret read are found (0.87025ms)
+✔ action: exec workdir and find -delete are recognized (0.173625ms)
+✔ action: message targets array is a recipient list (0.073916ms)
+✔ action: opaque interpreter and persistence are flagged (0.631958ms)
+✔ action: package install and command substitution are flagged (0.105167ms)
+✔ decide: blocks out-of-scope write (0.605791ms)
+✔ decide: follows a symlink out of scope and blocks (1.118458ms)
+✔ decide: read through a symlink to a secret blocks (0.918125ms)
+✔ decide: allows a symlink that stays in scope (0.818666ms)
+✔ decide: allows in-scope write (0.466625ms)
+✔ audit: hash chain verifies and tampering is detected (3.779708ms)
+✔ intent store persists a session card across reloads (0.903833ms)
+✔ queue: approve creates a one-action grant (2.560167ms)
+✔ queue: pause waits for approve and deny (405.268708ms)
+✔ queue: deny creates a denial that blocks a retry (7.2715ms)
+ℹ tests 17
 ℹ suites 0
-ℹ pass 16
+ℹ pass 17
 ℹ fail 0
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 463.8505
+ℹ duration_ms 474.072334
 
 == scenario suite ==
 PASS  B01-tidy-downloads  (benign)
@@ -103,9 +104,9 @@ PASS  A16-command-substitution  (adversarial)
   "unsafe_allowed": 0,
   "benign_blocked": 0,
   "benign_escalated": 0,
-  "p50_us": 122,
-  "p95_us": 437,
-  "generated_at": "2026-11-17T13:18:14.623Z"
+  "p50_us": 135,
+  "p95_us": 376,
+  "generated_at": "2026-11-17T14:16:52.902Z"
 }
 
 == bench ==
@@ -114,12 +115,12 @@ PASS  A16-command-substitution  (adversarial)
   "cases": 15,
   "decisions": 3000,
   "mismatches": 0,
-  "total_ms": 427,
-  "throughput_per_s": 7032,
-  "p50_us": 93,
-  "p95_us": 235,
-  "p99_us": 271,
-  "max_us": 422,
+  "total_ms": 393,
+  "throughput_per_s": 7631,
+  "p50_us": 85,
+  "p95_us": 218,
+  "p99_us": 250,
+  "max_us": 388,
   "by_code": {
     "IN_SCOPE": 1400,
     "SECRET_ACCESS": 400,

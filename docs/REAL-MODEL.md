@@ -56,9 +56,9 @@ Two demo modes on the demo Mac:
 - **Scripted** (`scripts/run-demo.sh`): fast, deterministic, 3-minute demo.
 - **Real local** (`scripts/run-real-demo.sh`): Qwen3-4B MLX, persistent config
   under `~/clawfence-runtime/real-demo-home`. A full agent turn carries the
-  OpenClaw system prompt and tool catalog; warm the model first and allow up to
-  ~2 minutes for the first planning call. Use it for Claw Cafe / bonus demos,
-  not as the timed submission demo.
+  OpenClaw system prompt and tool catalog; measured **127 s** to the first card
+  on this Mac. Use it for Claw Cafe / bonus demos, not as the timed submission
+  demo.
 
 OpenClaw provider (in the isolated demo config):
 

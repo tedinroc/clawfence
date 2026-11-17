@@ -62,6 +62,11 @@ echo ""
 echo "  Gateway:  http://127.0.0.1:19002/"
 if [ -n "$LAN_IP" ]; then
   echo "  Phone:    http://$LAN_IP:8791/?simple=1"
+  if [ -x "$ROOT/scripts/show-qr.sh" ]; then
+    if CLAWFENCE_RUNTIME="$RUNTIME" "$ROOT/scripts/show-qr.sh" "http://$LAN_IP:8791/?simple=1" >/dev/null 2>&1; then
+      echo "  QR:       /tmp/clawfence-qr.png  (open it / scan with the phone)"
+    fi
+  fi
 else
   echo "  Arbiter:  http://127.0.0.1:8791/   (phone: find the Mac's LAN IP manually)"
 fi

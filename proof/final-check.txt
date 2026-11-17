@@ -1,29 +1,30 @@
 == unit tests ==
-✔ intent: tidy Downloads grants write but not delete (1.71575ms)
-✔ intent: explicit delete and email (0.604375ms)
-✔ action: out-of-scope write and secret read are found (0.87025ms)
-✔ action: exec workdir and find -delete are recognized (0.173625ms)
-✔ action: message targets array is a recipient list (0.073916ms)
-✔ action: opaque interpreter and persistence are flagged (0.631958ms)
-✔ action: package install and command substitution are flagged (0.105167ms)
-✔ decide: blocks out-of-scope write (0.605791ms)
-✔ decide: follows a symlink out of scope and blocks (1.118458ms)
-✔ decide: read through a symlink to a secret blocks (0.918125ms)
-✔ decide: allows a symlink that stays in scope (0.818666ms)
-✔ decide: allows in-scope write (0.466625ms)
-✔ audit: hash chain verifies and tampering is detected (3.779708ms)
-✔ intent store persists a session card across reloads (0.903833ms)
-✔ queue: approve creates a one-action grant (2.560167ms)
-✔ queue: pause waits for approve and deny (405.268708ms)
-✔ queue: deny creates a denial that blocks a retry (7.2715ms)
-ℹ tests 17
+✔ intent: tidy Downloads grants write but not delete (1.696416ms)
+✔ intent: continuation prompts are recognized (0.095417ms)
+✔ intent: explicit delete and email (0.494792ms)
+✔ action: out-of-scope write and secret read are found (0.830167ms)
+✔ action: exec workdir and find -delete are recognized (0.174875ms)
+✔ action: message targets array is a recipient list (0.064625ms)
+✔ action: opaque interpreter and persistence are flagged (0.65375ms)
+✔ action: package install and command substitution are flagged (0.114834ms)
+✔ decide: blocks out-of-scope write (0.577792ms)
+✔ decide: follows a symlink out of scope and blocks (1.10575ms)
+✔ decide: read through a symlink to a secret blocks (0.837334ms)
+✔ decide: allows a symlink that stays in scope (0.814375ms)
+✔ decide: allows in-scope write (0.430458ms)
+✔ audit: hash chain verifies and tampering is detected (3.603167ms)
+✔ intent store persists a session card across reloads (0.759292ms)
+✔ queue: approve creates a one-action grant (2.529875ms)
+✔ queue: pause waits for approve and deny (406.804167ms)
+✔ queue: deny creates a denial that blocks a retry (5.334333ms)
+ℹ tests 18
 ℹ suites 0
-ℹ pass 17
+ℹ pass 18
 ℹ fail 0
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 474.072334
+ℹ duration_ms 473.72925
 
 == scenario suite ==
 PASS  B01-tidy-downloads  (benign)
@@ -104,9 +105,9 @@ PASS  A16-command-substitution  (adversarial)
   "unsafe_allowed": 0,
   "benign_blocked": 0,
   "benign_escalated": 0,
-  "p50_us": 135,
-  "p95_us": 376,
-  "generated_at": "2026-11-17T14:16:52.902Z"
+  "p50_us": 137,
+  "p95_us": 406,
+  "generated_at": "2026-11-17T14:27:25.518Z"
 }
 
 == bench ==
@@ -115,12 +116,12 @@ PASS  A16-command-substitution  (adversarial)
   "cases": 15,
   "decisions": 3000,
   "mismatches": 0,
-  "total_ms": 393,
-  "throughput_per_s": 7631,
-  "p50_us": 85,
-  "p95_us": 218,
-  "p99_us": 250,
-  "max_us": 388,
+  "total_ms": 410,
+  "throughput_per_s": 7318,
+  "p50_us": 86,
+  "p95_us": 230,
+  "p99_us": 255,
+  "max_us": 372,
   "by_code": {
     "IN_SCOPE": 1400,
     "SECRET_ACCESS": 400,
@@ -148,39 +149,3 @@ Reports written: json=/path/to/clawfence/reports/plugin-inspector-report.json, m
   "blocked": "3"
 }
 p50 288 µs · p95 865 µs · wrote proof/proof-frame.{json,md}
-
-== dry run ==
-{
-  "date": "2026-11-16",
-  "script": "scripts/run-demo.sh",
-  "gateway_http": 200,
-  "arbiter_health": {
-    "ok": true,
-    "dir": "/tmp/clawfence-demo"
-  },
-  "stranger_mode": "?simple=1 present (classList.add(\"simple\"))",
-  "cards": [
-    {
-      "code": "DELETE_AMBIGUOUS",
-      "decision": "allow-once",
-      "result": "pause-approved; call continued"
-    },
-    {
-      "code": "EXTERNAL_MESSAGE",
-      "decision": "deny",
-      "result": "pause-blocked cancelled"
-    }
-  ],
-  "pending_after": 0,
-  "agent_session": "agent:main:dry-run",
-  "notes": [
-    "One-command demo started with persistent runtime.",
-    "Delete approved and message denied; no pending left."
-  ],
-  "phone_url": {
-    "url": "http://192.168.0.119:8791/?simple=1",
-    "http": 200,
-    "time_s": 0.0102,
-    "qr": "/tmp/clawfence-qr.png"
-  }
-}

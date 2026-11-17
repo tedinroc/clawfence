@@ -2,6 +2,8 @@
 
 **An intent firewall for OpenClaw — fewer interruptions, zero surprises.**
 
+> Hackathon handoff: [`demo/HANDOFF.md`](demo/HANDOFF.md) — status, three user actions, artifact index.
+
 Your agent should not need permission for every step. It also should not be able to
 do something you never asked for. ClawFence derives a machine-checkable **intent
 card** from the task, checks every tool call against it, and only interrupts you

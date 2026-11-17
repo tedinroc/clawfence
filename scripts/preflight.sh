@@ -48,7 +48,7 @@ done
 [ -f "$ROOT/demo/clawfence-demo.mp4" ] && ok "video fallback present" || w "video fallback missing"
 [ -f "$ROOT/demo/clawfence-deck.pdf" ] && ok "deck PDF present" || w "deck PDF missing"
 
-for p in 19002 8791; do
+for p in 19002 8791 18084; do
   if lsof -nP -iTCP:$p -sTCP:LISTEN >/dev/null 2>&1; then w "port $p already in use"; else ok "port $p free"; fi
 done
 

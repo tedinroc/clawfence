@@ -25,6 +25,17 @@ fi
 if [ ! -f "$OPENCLAW_CONFIG_PATH" ]; then
   "$ROOT/scripts/setup-demo.sh"
 fi
+# The scripted model always listens on 18084; repoint the demo provider even if
+# a previous real-model run left it at 18085.
+python3 - <<'PY'
+import json, os
+p = os.environ["OPENCLAW_CONFIG_PATH"]
+d = json.load(open(p))
+for name, prov in d.get("models", {}).get("providers", {}).items():
+    if name.startswith("custom-127-0-0-1"):
+        prov["baseUrl"] = "http://127.0.0.1:18084/v1"
+json.dump(d, open(p, "w"), indent=2)
+PY
 # Live demo default: pause the call and resume it on approval.
 CF_ESCALATION="${CF_ESCALATION:-pause}"
 python3 - "$CF_ESCALATION" <<'PY'

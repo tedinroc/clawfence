@@ -30,6 +30,17 @@ Machine-readable: `clawfence/proof/rehearsal.json`.
 
 Machine-readable: `clawfence/proof/dry-run.json`.
 
+## Submission ZIP extraction test
+
+Unzipped `clawfence-submission.zip` into `/tmp/subtest` and ran from the extracted
+repo with a fresh `CF_DEMO_HOME=/tmp/subhome` / `CF_QUEUE_DIR=/tmp/subq`:
+
+- preflight PASS (one expected warning: demo config does not exist yet; run-demo
+  creates it)
+- `run-demo.sh` created the config, started the scripted model + gateway +
+  arbiter, and printed the phone URL + QR
+- nothing depended on the original repo path
+
 ## Timed two-card flow (scripted demo)
 
 After the gateway/arbiter were up:

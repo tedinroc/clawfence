@@ -38,6 +38,8 @@
       dependency).
 - [ ] Run the phone-only demo once: `./scripts/run-demo.sh`; scan the printed QR
       (or open the printed `http://<LAN-IP>:8791/?simple=1`) on the phone.
+      iPhone: allow local-network access; if Safari cannot reach the Mac, use the
+      phone hotspot (venue Wi-Fi may isolate clients).
 - [ ] Record a fresh 78-second fallback on the travel laptop; copy to phone.
 - [ ] Print the one-pager + runbook (or keep PDFs on phone).
 

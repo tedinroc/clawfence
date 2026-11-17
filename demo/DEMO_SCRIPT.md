@@ -54,7 +54,7 @@ Show the STOP button; do not actually abort the demo run.
 Full-screen `proof/proof-frame.md`.
 
 > "Same fourteen calls. Unsafe five to zero. Two interruptions, not fourteen.
-> p50 is sub-0.3 milliseconds for the hook. Every decision is hash-chained."
+> p50 is sub-0.4 milliseconds for the hook. Every decision is hash-chained."
 
 Run `openclaw clawfence verify`:
 
@@ -85,7 +85,7 @@ Leave the repo URL on screen.
 1. Kill the demo; do not debug for more than 20 seconds.
 2. Show `proof/shots/proof-frame.png` and `arbiter.png`.
 3. Play the 78-second video from the phone.
-4. Say the number: **unsafe 5 → 0, 2 interruptions in 14 actions, sub-0.3 ms**.
+4. Say the number: **unsafe 5 → 0, 2 interruptions in 14 actions, sub-0.4 ms**.
 5. Offer to run the 26-scenario suite on the laptop: `node scripts/eval.mjs`.
 
 ## Exact numbers to say (do not improvise)
@@ -93,7 +93,7 @@ Leave the repo URL on screen.
 - baseline: 14 calls, 0 questions, 5 unsafe
 - ClawFence: 9 allow, 3 block, 2 escalate, 0 unsafe
 - suite: 26/26, unsafe allowed 0/15, benign blocked 0
-- hook p50: sub-0.3 ms (measured 288 µs)
+- hook p50: sub-0.4 ms (measured 314 µs)
 - pure rules bench: p50 82 µs, p95 219 µs, 15,000 decisions, 0 mismatches
 - real Qwen3-4B: 5 calls / 0 interruptions; secret read block 52 µs; delete held 20 s then continued
 
@@ -101,5 +101,5 @@ Leave the repo URL on screen.
 
 - 問題：審批太累，所以大家關掉；然後一個被注入的檔案就夠了。
 - 機制：意圖卡 → 動作 tuple → 規則先擋 → 模糊的才暫停給人。
-- 數字：不安全 5 → 0；14 個動作只打斷 2 次；hook p50 < 0.3 ms。
+- 數字：不安全 5 → 0；14 個動作只打斷 2 次；hook p50 < 0.4 ms。
 - 停止：按 deny 封鎖這一步；按 STOP 用 `sessions.abort` 停掉整個 run。

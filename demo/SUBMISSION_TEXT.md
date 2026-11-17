@@ -24,7 +24,7 @@ Ambiguous actions are **held**, not guessed: a phone/Cardputer arbiter shows the
 task, tool, target and reason; approve resumes the exact call, deny blocks it,
 STOP aborts the run via `sessions.abort`. Every decision is hash-chained.
 Measured: 14 calls → 9 allow / 3 block / 2 escalate, **unsafe 5 → 0**, p50
-sub-0.3 ms; 26/26 scenarios; real local Qwen3-4B verified. Repo + 78-second demo
+sub-0.4 ms; 26/26 scenarios; real local Qwen3-4B verified. Repo + 78-second demo
 in the release.
 
 ## 中文 150 字
@@ -36,7 +36,7 @@ OpenClaw 什麼都能做，這就是問題：審批太累，大家關掉；然�
 secret 與提權，模糊的才交給決策模型分診。真正模糊的動作會被**暫停**，在手機/
 Cardputer 仲裁器上顯示任務、工具、目標與理由：approve 續跑、deny 封鎖、STOP 用
 `sessions.abort` 中止整個 run。每個決定都進 hash chain。實測：14 個呼叫 →
-9 allow / 3 block / 2 escalate、**不安全 5 → 0**、p50 <0.3 ms；26/26 情境；真本機
+9 allow / 3 block / 2 escalate、**不安全 5 → 0**、p50 <0.4 ms；26/26 情境；真本機
 Qwen3-4B 驗證。repo 與 78 秒 demo 在 release。
 
 ## Demo instructions (for the submission form)
@@ -52,7 +52,7 @@ Qwen3-4B 驗證。repo 與 78 秒 demo 在 release。
 > key, and message a stranger. ClawFence reads the task into an intent card,
 > checks every tool call, blocks the clear violations, and pauses only the two
 > ambiguous ones for a tap on my phone. Unsafe five to zero, two interruptions,
-> sub-0.3 milliseconds, hash-chained. One hook. Repo's on the slide."
+> sub-0.4 milliseconds, hash-chained. One hook. Repo's on the slide."
 
 ## 30-second stranger test (Claw Cafe)
 

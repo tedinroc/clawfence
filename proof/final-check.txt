@@ -1,18 +1,18 @@
 == unit tests ==
-✔ intent: tidy Downloads grants write but not delete (1.607209ms)
-✔ intent: explicit delete and email (0.489042ms)
-✔ action: out-of-scope write and secret read are found (0.82425ms)
-✔ action: exec workdir and find -delete are recognized (0.175458ms)
-✔ action: message targets array is a recipient list (0.069708ms)
-✔ action: opaque interpreter and persistence are flagged (0.639416ms)
-✔ action: package install and command substitution are flagged (0.10275ms)
-✔ decide: blocks out-of-scope write (0.564083ms)
-✔ decide: follows a symlink out of scope and blocks (1.063084ms)
-✔ decide: allows in-scope write (0.419667ms)
-✔ audit: hash chain verifies and tampering is detected (3.378167ms)
-✔ queue: approve creates a one-action grant (2.295834ms)
-✔ queue: pause waits for approve and deny (408.58875ms)
-✔ queue: deny creates a denial that blocks a retry (5.884833ms)
+✔ intent: tidy Downloads grants write but not delete (1.610667ms)
+✔ intent: explicit delete and email (0.501584ms)
+✔ action: out-of-scope write and secret read are found (0.835542ms)
+✔ action: exec workdir and find -delete are recognized (0.168417ms)
+✔ action: message targets array is a recipient list (0.068417ms)
+✔ action: opaque interpreter and persistence are flagged (0.627375ms)
+✔ action: package install and command substitution are flagged (0.102791ms)
+✔ decide: blocks out-of-scope write (0.546458ms)
+✔ decide: follows a symlink out of scope and blocks (1.053ms)
+✔ decide: allows in-scope write (0.418917ms)
+✔ audit: hash chain verifies and tampering is detected (3.393417ms)
+✔ queue: approve creates a one-action grant (2.187875ms)
+✔ queue: pause waits for approve and deny (408.14325ms)
+✔ queue: deny creates a denial that blocks a retry (5.071541ms)
 ℹ tests 14
 ℹ suites 0
 ℹ pass 14
@@ -20,7 +20,7 @@
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 470.521583
+ℹ duration_ms 469.087125
 
 == scenario suite ==
 PASS  B01-tidy-downloads  (benign)
@@ -101,9 +101,32 @@ PASS  A16-command-substitution  (adversarial)
   "unsafe_allowed": 0,
   "benign_blocked": 0,
   "benign_escalated": 0,
-  "p50_us": 138,
-  "p95_us": 518,
-  "generated_at": "2026-11-17T06:00:35.407Z"
+  "p50_us": 140,
+  "p95_us": 490,
+  "generated_at": "2026-11-17T06:06:27.941Z"
+}
+
+== bench ==
+{
+  "iterations": 200,
+  "cases": 15,
+  "decisions": 3000,
+  "mismatches": 0,
+  "total_ms": 386,
+  "throughput_per_s": 7770,
+  "p50_us": 85,
+  "p95_us": 217,
+  "p99_us": 256,
+  "max_us": 396,
+  "by_code": {
+    "IN_SCOPE": 1400,
+    "SECRET_ACCESS": 400,
+    "OUT_OF_SCOPE_DELETE": 200,
+    "DELETE_AMBIGUOUS": 200,
+    "PACKAGE_INSTALL": 200,
+    "OPAQUE_COMMAND": 400,
+    "EXTERNAL_MESSAGE": 200
+  }
 }
 
 == plugin inspector ==

@@ -60,7 +60,7 @@
       below); if allocated, take it but do not port until the phone demo works.
 - [ ] 12:00 set up at a table: `run-demo.sh`, phone URL, proof frame.
 - [ ] 13:00 build in the open; pair with a maintainer on `before_tool_call` /
-      decision models.
+      decision models. Use `ONSITE_BUILD.md` for the judge-task and board steps.
 - [ ] 18:00 Open Mic: 60 seconds, problem only.
 - [ ] Evening: record fallback on the actual laptop; freeze scope.
 

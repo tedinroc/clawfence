@@ -57,6 +57,7 @@ code{font-family:Menlo,monospace;font-size:8.5pt;background:#f3f3f3;padding:0 1m
 <li>Real gateway + real tool pipeline: 14 calls, <b>9 allow / 3 block / 2 escalate</b>, p50 <b>~0.1 ms</b>.</li>
 <li>Real Qwen3-4B: benign 5 calls / 0 interruptions; secret read blocked 52 µs; wildcard delete held 20 s then continued.</li>
 <li>Plugin Inspector: <b>PASS</b>, 0 warnings. Unit tests: <b>14/14</b>.</li>
+<li>15,000-decision micro-benchmark: p50 <b>82 µs</b>, p95 <b>219 µs</b>, ~8,000 decisions/s, 0 mismatches.</li>
 <li>Panic stop verified on active and paused runs via <code>sessions.abort</code>.</li>
 </ul>
 

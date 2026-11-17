@@ -7,6 +7,8 @@ do something you never asked for. ClawFence derives a machine-checkable **intent
 card** from the task, checks every tool call against it, and only interrupts you
 when an action is genuinely ambiguous — on a physical arbiter, with one tap.
 
+[简体中文](README.zh-CN.md)
+
 > Built for **Claw Hack Shenzhen**, Dec 4–5 2026 (OpenClaw's first China hackathon).
 > Software track, with a partner-hardware tail.
 

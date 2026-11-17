@@ -17,6 +17,15 @@ fi
 if [ ! -f "$OPENCLAW_CONFIG_PATH" ]; then
   "$ROOT/scripts/setup-demo.sh"
 fi
+# Live demo default: pause the call and resume it on approval.
+CF_ESCALATION="${CF_ESCALATION:-pause}"
+python3 - "$CF_ESCALATION" <<'PY'
+import json, os, sys
+p = os.environ["OPENCLAW_CONFIG_PATH"]
+d = json.load(open(p))
+d["plugins"]["entries"]["clawfence"]["config"]["escalation"] = sys.argv[1]
+json.dump(d, open(p, "w"), indent=2)
+PY
 
 cleanup() { kill ${MODEL_PID:-0} ${GW_PID:-0} ${ARB_PID:-0} 2>/dev/null || true; }
 trap cleanup EXIT INT TERM

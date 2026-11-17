@@ -49,7 +49,7 @@ ul{margin:1mm 0 2mm 5mm}li{margin:0.6mm 0}
 <ul>
 <li>Terminal 1: <code>mlx_lm.server --model /tmp/qwen3-4b --port 18085 --chat-template-args '{"enable_thinking": false}'</code> (or <code>scripts/run-demo.sh</code> scripted fallback).</li>
 <li>Terminal 2: isolated gateway (<code>HOME=/tmp/cfreal</code>, config in <code>/tmp/cfreal/.ocdemo</code>).</li>
-<li>Terminal 3: <code>node clawfence/arbiter/server.mjs --dir /tmp/clawfence-live --port 8791 --host 0.0.0.0</code>; phone opens <code>http://&lt;mac-lan-ip&gt;:8791/?simple=1</code>.</li>
+<li>Terminal 3: <code>node clawfence/arbiter/server.mjs --dir /tmp/clawfence-live --port 8791 --host 0.0.0.0</code>; phone scans the QR printed by <code>run-demo.sh</code>, or opens <code>http://&lt;mac-lan-ip&gt;:8791/?simple=1</code>.</li>
 <li><code>openclaw config set plugins.entries.clawfence.config.escalation pause</code>; run the task.</li>
 </ul>
 <div class="note"><b>Beats (3 min):</b> 15s problem → 90s live run → 30s proof frame → 20s failure/STOP → 15s upstream ask.<br>

@@ -186,7 +186,7 @@ malicious plugin can bypass it.
 
 | piece | state |
 |---|---|
-| intent card + action extraction | working; 13 unit tests, including symlink escape |
+| intent card + action extraction | working; 16 unit tests, including symlink read/write escapes |
 | deterministic adjudicator | working, 20/20 suite |
 | queue + one-use grants + denial memory + hash-chained audit | working, integration-tested on a real gateway |
 | **pause mode** | **verified**: the tool call is held; approve continues the exact call, deny blocks it and leaves the target untouched; a real Qwen3-4B run held a wildcard delete for 20 s and continued after approval |

@@ -83,6 +83,34 @@ test("decide: follows a symlink out of scope and blocks", () => {
   fs.rmSync(base, { recursive: true, force: true });
 });
 
+test("decide: read through a symlink to a secret blocks", () => {
+  const base = fs.mkdtempSync(path.join(os.homedir(), ".cf-readlink-"));
+  const safe = path.join(base, "safe");
+  const secret = path.join(base, "secret");
+  fs.mkdirSync(safe); fs.mkdirSync(secret);
+  fs.writeFileSync(path.join(secret, "id_rsa"), "FAKE");
+  fs.symlinkSync(path.join(secret, "id_rsa"), path.join(safe, "innocent.txt"));
+  const card = deriveIntent("Read the files in the safe folder.", { baseDir: safe, workspace: safe });
+  const action = extractAction("read", { path: path.join(safe, "innocent.txt") }, { baseDir: safe });
+  const r = decideAction(action, card, { workspace: safe, stateDir: path.join(base, "state") });
+  assert.equal(r.verdict, "block");
+  assert.equal(r.code, "SECRET_ACCESS");
+  fs.rmSync(base, { recursive: true, force: true });
+});
+
+test("decide: allows a symlink that stays in scope", () => {
+  const base = fs.mkdtempSync(path.join(os.homedir(), ".cf-oklink-"));
+  const safe = path.join(base, "safe");
+  fs.mkdirSync(safe);
+  fs.writeFileSync(path.join(safe, "real.txt"), "ok");
+  fs.symlinkSync(path.join(safe, "real.txt"), path.join(safe, "alias.txt"));
+  const card = deriveIntent("Write a note in the safe folder.", { baseDir: safe, workspace: safe });
+  const action = extractAction("write", { path: path.join(safe, "alias.txt"), content: "x" }, { baseDir: safe });
+  const r = decideAction(action, card, { workspace: safe, stateDir: path.join(base, "state") });
+  assert.equal(r.verdict, "allow");
+  fs.rmSync(base, { recursive: true, force: true });
+});
+
 test("decide: allows in-scope write", () => {
   const card = deriveIntent("Tidy my Downloads folder.", { baseDir: workspace, workspace });
   const action = extractAction("write", { path: path.join(os.homedir(), "Downloads", "a.md"), content: "x" }, { baseDir: workspace });

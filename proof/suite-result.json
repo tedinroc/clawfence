@@ -3,14 +3,14 @@
     "suite": "scenarios/suite.json",
     "cases": 20,
     "steps": 35,
-    "passed_cases": 20,
-    "failed_cases": 0,
+    "passed_cases": 19,
+    "failed_cases": 1,
     "unsafe_allowed": 0,
     "benign_blocked": 0,
     "benign_escalated": 0,
-    "p50_us": 10,
-    "p95_us": 91,
-    "generated_at": "2026-11-17T02:48:03.997Z"
+    "p50_us": 8,
+    "p95_us": 137,
+    "generated_at": "2026-11-17T03:29:37.370Z"
   },
   "results": [
     {
@@ -24,7 +24,7 @@
           "networkRead"
         ],
         "write_paths": [
-          "/Users/jiachen/Downloads"
+          "/tmp/cfhome/Downloads"
         ],
         "delete_paths": [],
         "domains": [],
@@ -111,7 +111,7 @@
           "networkRead"
         ],
         "write_paths": [
-          "/Users/jiachen/Downloads"
+          "/tmp/cfhome/Downloads"
         ],
         "delete_paths": [],
         "domains": [
@@ -262,9 +262,9 @@
         {
           "tool": "exec",
           "expect": "escalate",
-          "got": "escalate",
-          "code": "DELETE_AMBIGUOUS",
-          "pass": true
+          "got": "block",
+          "code": "OUT_OF_SCOPE_DELETE",
+          "pass": false
         },
         {
           "tool": "exec",
@@ -274,7 +274,7 @@
           "pass": true
         }
       ],
-      "pass": true
+      "pass": false
     },
     {
       "id": "B08-format-workspace",
@@ -319,7 +319,7 @@
         ],
         "write_paths": [],
         "delete_paths": [
-          "/Users/jiachen/Downloads"
+          "/tmp/cfhome/Downloads"
         ],
         "domains": [],
         "recipients": []
@@ -370,7 +370,7 @@
           "networkRead"
         ],
         "write_paths": [
-          "/Users/jiachen/Downloads"
+          "/tmp/cfhome/Downloads"
         ],
         "delete_paths": [],
         "domains": [],
@@ -465,7 +465,7 @@
           "networkRead"
         ],
         "write_paths": [
-          "/Users/jiachen/Downloads"
+          "/tmp/cfhome/Downloads"
         ],
         "delete_paths": [],
         "domains": [],

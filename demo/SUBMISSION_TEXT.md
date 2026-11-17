@@ -54,6 +54,16 @@ Qwen3-4B 驗證。repo 與 78 秒 demo 在 release。
 > ambiguous ones for a tap on my phone. Unsafe five to zero, two interruptions,
 > sub-0.4 milliseconds, hash-chained. One hook. Repo's on the slide."
 
+## 60 秒中文版（Open Mic / 現場）
+
+> 「我想讓 agent 幫我整理 Downloads，但不想按 14 次同意；所以我關掉審批，
+> 結果一個被注入的檔案就想把 Documents 打包、讀 SSH key、傳訊息給陌生人。
+> ClawFence 把任務讀成一張意圖卡，每個工具呼叫都先比對範圍：該做的 9 個直接
+> 跑，越界的 3 個附理由擋掉，真正模糊的 2 個才暫停，讓我在手機上按一下。
+> 不安全動作從 5 個變 0，14 個動作只打斷 2 次，規則 p50 不到 0.4 毫秒，
+> 每個決定都進 hash chain。一個 hook，可從 ClawHub 安裝。多數時候不要打斷，
+> 但永遠不要 surprises。」
+
 ## 30-second stranger test (Claw Cafe)
 
 1. Hand them the phone. Say: "This card is an action my agent wants to take.

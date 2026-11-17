@@ -54,6 +54,15 @@ json.dump(cfg, open(os.path.join(state,"openclaw.json"),"w"), indent=2)
 PY
 fi
 
+# Keep the config portable if the repo moved.
+python3 - "$ROOT" <<'PY'
+import json, os, sys
+p = os.path.join(os.environ["OPENCLAW_CONFIG_PATH"])
+d = json.load(open(p))
+d.setdefault("plugins", {}).setdefault("load", {})["paths"] = [sys.argv[1]]
+json.dump(d, open(p, "w"), indent=2)
+PY
+
 cleanup() { kill ${MLX_PID:-0} ${GW_PID:-0} ${ARB_PID:-0} 2>/dev/null || true; }
 trap cleanup EXIT INT TERM
 

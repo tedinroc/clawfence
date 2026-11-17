@@ -59,3 +59,13 @@ Global variables use 50904 bytes (15%) of dynamic memory.
 ```
 
 Prebuilt image: `firmware/bin/clawfence_arbiter_cardputer.bin`.
+
+## One-command flash
+
+```bash
+./firmware/flash.sh cores3 /dev/cu.usbmodem1234
+./firmware/flash.sh cardputer /dev/cu.usbmodem1234
+```
+
+Set `ARDUINO_CLI=/path/to/arduino-cli` and (if needed)
+`ARDUINO_CONFIG=/path/to/arduino-cli.yaml`. Without a port it compiles only.

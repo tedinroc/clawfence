@@ -116,6 +116,9 @@ node arbiter/server.mjs --dir /tmp/clawfence --port 8790
 ```
 
 `run-demo.sh` prints a **phone URL** and a QR code (`scripts/show-qr.sh`).
+For a real local Qwen3-4B instead of the scripted model, use
+`scripts/run-real-demo.sh` (persistent config; the first full agent turn can take
+up to ~2 minutes, so keep the scripted demo for the timed slot).
 Open <http://127.0.0.1:8790> and give the agent a task. When an action is
 ambiguous, a card appears; **APPROVE ONCE** or **DENY**. For a first-time user
 or a Claw Cafe visitor, add `?simple=1` (big card, no audit noise). Approving writes a

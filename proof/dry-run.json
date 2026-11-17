@@ -24,5 +24,11 @@
   "notes": [
     "One-command demo started with persistent runtime.",
     "Delete approved and message denied; no pending left."
-  ]
+  ],
+  "phone_url": {
+    "url": "http://192.168.0.119:8791/?simple=1",
+    "http": 200,
+    "time_s": 0.0102,
+    "qr": "/tmp/clawfence-qr.png"
+  }
 }

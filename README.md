@@ -230,6 +230,7 @@ malicious plugin can bypass it.
 - Pitch deck: [`demo/clawfence-deck.pptx`](demo/clawfence-deck.pptx) · [`demo/clawfence-deck.pdf`](demo/clawfence-deck.pdf)
 - One-page judge handout: [`demo/clawfence-one-pager.pdf`](demo/clawfence-one-pager.pdf)
 - Printable runbook: [`demo/clawfence-runbook.pdf`](demo/clawfence-runbook.pdf)
+- Calendar: [`demo/clawfence.ics`](demo/clawfence.ics)
 
 ## Validation artifacts
 

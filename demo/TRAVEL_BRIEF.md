@@ -30,7 +30,7 @@ showed rates only after a dynamic room search; **call the hotel** at
 cancellation window before paying.
 
 - Trip.com GLEETOUR (Dec 3–7): <https://tw.trip.com/hotels/detail/?hotelId=127061379&checkIn=2026-12-03&checkOut=2026-12-07&adult=1&crn=1&curr=TWD>
-- Trip.com Cityinn (Dec 3–7): <https://tw.trip.com/hotels/detail/?hotelId=1010407&checkIn=2026-12-03&checkOut=2026-12-07&adult=1&crn=1&curr=TWD>
+- Trip.com Cityinn (search; direct hotel IDs change): <https://tw.trip.com/hotels/list?city=30&keyword=%E5%9F%8E%E5%B8%82%E5%AE%A2%E6%A0%88%E5%88%9B%E6%84%8F%E5%9B%AD%E5%BA%97>
 - Nearby list: <https://www.hotels-in-shenzhen.com/en/near-oct-1660466/>
 
 ## Flights (assuming Taipei departure)
@@ -49,7 +49,7 @@ cancellation window before paying.
 - Airline pages / search:
   - Trip.com TPE–SZX Dec 3–7: <https://tw.trip.com/flights/taipei-to-shenzhen/airfares-tpe-szx/?ddate=2026-12-03&rdate=2026-12-07&curr=TWD>
   - China Airlines: <https://flights.china-airlines.com/en-tw/flights-from-taipei-to-shenzhen>
-  - EVA Air: <https://flights.evaair.com/en/flights-from-taipei-to-shenzhen>
+  - EVA Air: <https://flights.evaair.com/en/flights-from-taipei-to-shenzhen> (may block curl; open in a browser)
   - China Southern: <https://www.csair.com/en/>
 - If coming from the US/elsewhere: SZX via HKG/SZX; check the **240-hour
   visa-free transit** rules and carry an onward ticket. Do not rely on it until

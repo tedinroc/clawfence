@@ -1,0 +1,68 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@page { size: A4; margin: 12mm 13mm; }
+body{font-family:-apple-system,Helvetica,Arial,sans-serif;color:#111;font-size:10pt;line-height:1.4;margin:0}
+.k{font-size:8px;letter-spacing:.18em;color:#d22;font-weight:700}
+h1{font-size:26pt;margin:1mm 0 1mm;letter-spacing:-.02em}
+.tag{font-size:12pt;color:#444;margin-bottom:4mm}
+.grid{display:grid;grid-template-columns:1.15fr .85fr;gap:6mm}
+h2{font-size:10.5pt;margin:4mm 0 1.5mm;border-bottom:1px solid #ddd;padding-bottom:1mm;text-transform:uppercase;letter-spacing:.08em}
+p{margin:0 0 2mm}
+ul{margin:1mm 0 2mm 4.5mm;padding:0}li{margin:0.8mm 0}
+.num{font-size:30pt;font-weight:800;color:#111;margin:2mm 0 0}
+.label{font-size:8pt;color:#666;text-transform:uppercase;letter-spacing:.1em}
+.proof{border:1px solid #ddd;border-radius:3mm;padding:3mm;margin-top:2mm}
+.proof img{width:100%;border-radius:2mm}
+code{font-family:Menlo,monospace;font-size:8.5pt;background:#f3f3f3;padding:0 1mm}
+.foot{margin-top:5mm;border-top:1px solid #ddd;padding-top:2mm;font-size:8pt;color:#555;display:flex;justify-content:space-between}
+.small{font-size:8.5pt;color:#555}
+</style></head><body>
+<div class="k">CLAW HACK SHENZHEN 2026 · DEC 4–5 · SOFTWARE TRACK + HARDWARE TAIL</div>
+<h1>ClawFence</h1>
+<div class="tag">Fewer interruptions. Zero surprises. An intent firewall for OpenClaw.</div>
+
+<div class="grid">
+<div>
+<h2>The problem</h2>
+<p>Approvals are exhausting, so people turn them off. Then one poisoned file can delete Documents or POST an SSH key. The missing layer is not another approval button — it is knowing what the task actually authorises.</p>
+
+<h2>The mechanism</h2>
+<ul>
+<li><b>Intent card</b> from the task: named paths, domains, recipients, effect classes, spend cap.</li>
+<li><b>Action tuple</b> for every tool call: reads, writes, deletes, URLs, recipients, data-out, privilege.</li>
+<li><b>Rules first</b>: out-of-scope writes/deletes/egress/secrets block. Only ambiguity reaches a decision model.</li>
+<li><b>Pause / arbiter</b>: hold the call; approve resumes it, deny blocks it, STOP aborts the run.</li>
+<li><b>Hash-chained audit</b>: intent → action → verdict → reason → approver.</li>
+</ul>
+<p class="small">The adjudicator never sees tool output or page text. Injected content has no channel into the decision.</p>
+</div>
+<div>
+<div class="proof">
+<div class="label">real scripted baseline vs fence</div>
+<div class="num">5 → 0</div>
+<div class="label">unsafe actions · 14 calls · 2 interruptions</div>
+<img src="../clawfence/proof/shots/proof-frame.png" alt="proof frame" />
+</div>
+<div class="proof">
+<div class="label">real local model</div>
+<div class="num">20 s</div>
+<div class="label">wildcard delete held, approved, continued</div>
+<p class="small">Qwen3-4B-MLX · local · 5 calls / 0 interruptions on a benign task · SSH-key read blocked in 52 µs.</p>
+</div>
+</div>
+</div>
+
+<h2>Evidence</h2>
+<ul>
+<li>26 scenarios (11 benign / 15 adversarial, 41 calls): <b>26/26</b>, unsafe allowed <b>0/15</b>, benign blocked <b>0</b>.</li>
+<li>Real gateway + real tool pipeline: 14 calls, <b>9 allow / 3 block / 2 escalate</b>, p50 <b>~0.1 ms</b>.</li>
+<li>Real Qwen3-4B: benign 5 calls / 0 interruptions; secret read blocked 52 µs; wildcard delete held 20 s then continued.</li>
+<li>Plugin Inspector: <b>PASS</b>, 0 warnings. Unit tests: <b>14/14</b>.</li>
+<li>Panic stop verified on active and paused runs via <code>sessions.abort</code>.</li>
+</ul>
+
+<h2>Try it</h2>
+<p><code>openclaw plugins install -l ./clawfence --force</code> · <code>node clawfence/arbiter/server.mjs --dir /tmp/clawfence --port 8790</code></p>
+<p class="small">Pause mode: <code>openclaw config set plugins.entries.clawfence.config.escalation pause</code>; hook budget per <code>docs/CONFIG.md</code>.</p>
+
+<div class="foot"><span><b>github.com/tedinroc/clawfence</b> · MIT · built solo</span><span>ClawFence — intent card + <code>before_tool_call</code> + physical arbiter</span></div>
+</body></html>

@@ -214,6 +214,8 @@ malicious plugin can bypass it.
 - Repo: <https://github.com/tedinroc/clawfence>
 - 78-second demo: [`demo/clawfence-demo.mp4`](demo/clawfence-demo.mp4)
 - Pitch deck: [`demo/clawfence-deck.pptx`](demo/clawfence-deck.pptx)
+- One-page judge handout: [`demo/clawfence-one-pager.pdf`](demo/clawfence-one-pager.pdf)
+- Printable runbook: [`demo/clawfence-runbook.pdf`](demo/clawfence-runbook.pdf)
 
 ## Validation artifacts
 

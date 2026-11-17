@@ -247,7 +247,38 @@ export default definePluginEntry({
         return { block: true, blockReason: `ClawFence blocked [${result.code}]: ${result.reason}` };
       }
 
-      // Escalation.
+      // Escalation. A standing/one-use grant for this exact action wins first.
+      {
+        const actionHash = sha256({ toolName: event.toolName, params: event.params });
+        const grant = await queue.consumeGrant({ session_key: key, tool: event.toolName, action_hash: actionHash });
+        if (grant) {
+          await audit.append({ type: "grant-used", session_key: key, tool: event.toolName, grant_id: grant.id, action_hash: grant.action_hash, reason: result.reason }).catch(() => {});
+          return;
+        }
+      }
+
+      if ((cfg.escalation || "queue") === "pause") {
+        const pending = await queue.createPending({
+          sessionKey: key,
+          toolName: event.toolName,
+          params: event.params,
+          action,
+          intent,
+          verdict: result,
+          ttlMs: Number(cfg.approvalTtlMs) || 120000,
+          title: boundedTitle(`ClawFence: ${truncate(action.display || event.toolName, 50)}`),
+          description: boundedDescription(`${result.reason}\nTask: ${intent?.goal || "(no task intent)"}`),
+        });
+        await audit.append({ ...record, verdict: "escalate", escalation: "pause", request_id: pending.id }).catch(() => {});
+        const resolution = await queue.waitForResolution(pending.id, Number(cfg.approvalTtlMs) || 120000, ctx?.abortSignal);
+        if (resolution.status === "approved") {
+          await audit.append({ type: "pause-approved", session_key: key, tool: event.toolName, request_id: pending.id, decision: resolution.decision, action_hash: record.action_hash }).catch(() => {});
+          return;
+        }
+        await audit.append({ type: "pause-blocked", session_key: key, tool: event.toolName, request_id: pending.id, status: resolution.status, action_hash: record.action_hash }).catch(() => {});
+        return { block: true, blockReason: `ClawFence [${resolution.status.toUpperCase()}]: ${result.reason}. The action was not executed.` };
+      }
+
       if ((cfg.escalation || "queue") === "native") {
         await audit.append({ ...record, verdict: "escalate", escalation: "native" }).catch(() => {});
         return {

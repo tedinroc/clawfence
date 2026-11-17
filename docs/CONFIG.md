@@ -6,7 +6,7 @@ All keys live under `plugins.entries.clawfence.config` in `openclaw.json`.
 | key | type | default | description |
 |---|---|---|---|
 | `mode` | `"observe" \| "enforce"` | `enforce` | Observe logs the verdict and lets the call run (use for a baseline). Enforce blocks/escalates. |
-| `escalation` | `"queue" \| "native" \| "off"` | `queue` | Queue: write a pending request and block; the arbiter grants a retry. Native: return OpenClaw `requireApproval`; this needs an approval-capable surface (Control UI or a connected approval client) — a headless CLI run fails closed as "approval unavailable". Off: block ambiguous actions without a human route. |
+| `escalation` | `"queue" \| "pause" \| "native" \| "off"` | `queue` | Queue: write a pending request and block; the arbiter grants a retry. **Pause: hold the tool call open until the arbiter decides; approve and the original call continues, deny/timeout blocks it.** Native: return OpenClaw `requireApproval`; needs an approval-capable surface (Control UI or a connected approval client) — a headless CLI run fails closed as "approval unavailable". Off: block ambiguous actions without a human route. |
 | `semantic` | boolean | `false` | Call the configured decision model (`api.runtime.decisions.evaluate`) for residual escalations. If unavailable, the deterministic verdict stands. |
 | `approvalTtlMs` | integer | `120000` | Lifetime of a pending approval. Capped by the host for native approvals. |
 | `grantTtlMs` | integer | `600000` | Default lifetime of an `allow-always` grant. A one-time approval is short-lived (5 minutes) and bound to the action hash. |

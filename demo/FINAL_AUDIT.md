@@ -14,7 +14,7 @@
 | Attendance | Luma status | **approved**; attending Dec 4–5; no board → phone-first |
 | Travel brief | hotel/flight/visa research | `TRAVEL_BRIEF.md` (no bookings made) |
 | Application | required fields drafted | Q1/Q2/Q9; user-specific `[city]` and Chinese handle remain |
-| Test suite | 17 unit / 26 scenarios | 17/17, 26/26, 0/15 unsafe, 0/11 benign blocked |
+| Test suite | 18 unit / 26 scenarios | 18/18, 26/26, 0/15 unsafe, 0/11 benign blocked |
 | Plugin Inspector | package | **PASS, 0 warnings** |
 | Fresh-profile install | clone → `plugins install -l --accept-capabilities` | **PASS**, `clawfence status` works |
 | Benchmark | 15,000 decisions | p50 82 µs, p95 219 µs, 0 mismatches |

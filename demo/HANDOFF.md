@@ -38,6 +38,7 @@ Then: **Nov 21–24** run `preflight.sh` + phone QR demo on the travel laptop;
 | file | purpose |
 |---|---|
 | `TRAVEL_BRIEF.md` | flights, hotels, visa, booking links, packing |
+| `CHECKPOINTS.md` | Nov 20 / Nov 25 / Dec 1 / Dec 3 / Dec 4–5 gates |
 | `ATTENDEE_PLAN.md` | dated to-do list + contingencies |
 | `RUNBOOK.md` / `clawfence-runbook.pdf` | on-site A4 runbook |
 | `DEMO_SCRIPT.md` | word-for-word 3-minute demo |

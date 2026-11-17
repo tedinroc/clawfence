@@ -7,6 +7,7 @@ device identity, no gateway pairing.
 ```
 GET  /api/device/pending       compact list for a small screen
 POST /api/decide               resolve one request
+POST /api/stop                 abort the whole session run (panic stop)
 GET  /api/health               liveness
 GET  /api/state                full state for the browser UI
 ```
@@ -80,6 +81,28 @@ Response:
 
 `409` means the request was already resolved or expired. A device should treat
 `409` as "refresh and move on", not as an error to retry.
+
+## Panic stop
+
+```bash
+curl -s -X POST http://<arbiter>:8790/api/stop \
+  -H 'content-type: application/json' \
+  -d '{"sessionKey":"agent:main:main"}'
+```
+
+```json
+{ "ok": true, "sessionKey": "agent:main:main", "result": { "ok": true, "abortedRunId": "…", "status": "aborted" } }
+```
+
+This calls OpenClaw's `sessions.abort` with `clearQueued: true`. It stops the
+agent run, not just the pending action. The daemon needs the `openclaw` CLI on
+`PATH` (or `--openclaw-bin`) and the same `OPENCLAW_STATE_DIR` /
+`OPENCLAW_CONFIG_PATH` as the Gateway. An idle session returns
+`status: "no-active-run"`.
+
+The browser UI shows **STOP** in the header for the latest session and **STOP RUN**
+on each pending card. This is the "make it stop in time" button: deny the action,
+or kill the run.
 
 ## Device loop (reference)
 

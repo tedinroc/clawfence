@@ -13,17 +13,19 @@ import fsp from "node:fs/promises";
 import http from "node:http";
 import os from "node:os";
 import path from "node:path";
+import { execFile } from "node:child_process";
 import { createQueue } from "../lib/queue.js";
 import { createAudit } from "../lib/audit.js";
 
 function parseArgs(argv) {
-  const out = { dir: "", port: 8787, host: "127.0.0.1", token: "" };
+  const out = { dir: "", port: 8787, host: "127.0.0.1", token: "", openclawBin: "" };
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
     if (a === "--dir") out.dir = argv[++i];
     else if (a === "--port") out.port = Number(argv[++i]);
     else if (a === "--host") out.host = argv[++i];
     else if (a === "--token") out.token = argv[++i];
+    else if (a === "--openclaw-bin") out.openclawBin = argv[++i];
   }
   return out;
 }
@@ -34,6 +36,7 @@ const dir = path.resolve(args.dir || process.env.CLAWFENCE_QUEUE_DIR || path.joi
 const queue = createQueue(dir);
 const audit = createAudit(path.join(dir, "audit.jsonl"));
 const token = args.token || process.env.CLAWFENCE_ARBITER_TOKEN || "";
+const openclawBin = args.openclawBin || process.env.OPENCLAW_BIN || "openclaw";
 
 function json(res, status, body) {
   const text = JSON.stringify(body, null, 2);
@@ -81,11 +84,13 @@ async function state() {
   const pendingSessions = new Set(pending.map((p) => p.session_key).filter(Boolean));
   const intentEntries = entries.filter((e) => e.type === "intent" && !String(e.session_key || "").includes("internal-session"));
   const lastIntent = (pendingSessions.size > 0 ? intentEntries.filter((e) => pendingSessions.has(e.session_key)).slice(-1)[0] : null) || intentEntries.slice(-1)[0] || null;
+  const latestSession = (intentEntries.slice(-1)[0] || entries.filter((e) => e.session_key).slice(-1)[0] || {}).session_key || null;
   return {
     ok: true,
     now: new Date().toISOString(),
     dir,
     intent: lastIntent ? { goal: lastIntent.goal, effects: lastIntent.effects, allowed: lastIntent.allowed, summary: lastIntent.summary, hash: lastIntent.intent_hash } : null,
+    latest_session: latestSession,
     pending,
     grants: Object.values(grants),
     audit: entries.filter((e) => ["tool-decision", "arbiter-decision", "approval-resolution", "grant-used", "approval"].includes(e.type)).map((e) => ({
@@ -117,6 +122,24 @@ const server = http.createServer(async (req, res) => {
     if (!authorized(req, url)) return json(res, 401, { ok: false, error: "unauthorized" });
 
     if (url.pathname === "/api/state" && req.method === "GET") return json(res, 200, await state());
+
+    if (url.pathname === "/api/stop" && req.method === "POST") {
+      const body = await readBody(req);
+      const sessionKey = String(body.sessionKey || body.session_key || "");
+      if (!sessionKey) return json(res, 400, { ok: false, error: "sessionKey required" });
+      const params = JSON.stringify({ key: sessionKey, clearQueued: true });
+      return await new Promise((resolve) => {
+        execFile(openclawBin, ["gateway", "call", "sessions.abort", "--params", params, "--json"], { timeout: 20000, env: process.env }, (err, stdout, stderr) => {
+          if (err) {
+            resolve(json(res, 502, { ok: false, error: err.message, stderr: String(stderr || "").slice(0, 500) }));
+            return;
+          }
+          let parsed = null;
+          try { parsed = JSON.parse(stdout); } catch { /* keep text */ }
+          resolve(json(res, 200, { ok: true, sessionKey, result: parsed ?? String(stdout).slice(0, 2000) }));
+        });
+      });
+    }
 
     if (url.pathname === "/api/decide" && req.method === "POST") {
       const body = await readBody(req);
@@ -151,6 +174,7 @@ const server = http.createServer(async (req, res) => {
       const pending = await queue.listPending();
       return json(res, 200, { ok: true, count: pending.length, pending: pending.map((p) => ({
         id: p.id,
+        session_key: p.session_key,
         tool: p.tool,
         code: p.code,
         reason: p.reason,
@@ -207,6 +231,7 @@ const HTML = `<!doctype html>
   button { font-family:var(--mono); font-size:12px; font-weight:600; letter-spacing:.06em; padding:10px 16px; border-radius:7px; border:1px solid var(--line); background:#1b1b22; color:var(--fg); cursor:pointer; }
   button.approve { background:rgba(57,217,138,.13); border-color:rgba(57,217,138,.5); color:var(--green); }
   button.deny { background:rgba(255,77,94,.12); border-color:rgba(255,77,94,.5); color:var(--red); }
+  button.stop { background:rgba(255,176,32,.12); border-color:rgba(255,176,32,.5); color:var(--amber); font-size:11px; padding:9px 12px; }
   button:hover { filter:brightness(1.2); }
   .expires { margin-left:auto; font-size:11px; color:var(--dim); }
   .empty { border:1px dashed var(--line); border-radius:10px; padding:42px 18px; text-align:center; color:var(--dim); }
@@ -248,7 +273,7 @@ const HTML = `<!doctype html>
 <body>
 <header>
   <div class="brand">CLAW<span>FENCE</span> // INTENT ARBITER</div>
-  <div class="status"><span><i class="dot"></i><span id="chain">chain ok</span></span><span id="clock">--:--:--</span></div>
+  <div class="status"><span><i class="dot"></i><span id="chain">chain ok</span></span><button class="stop" id="stopbtn" onclick="stopRun(window.__LATEST_SESSION)" style="display:none;padding:5px 9px;font-size:10px">STOP</button><span id="clock">--:--:--</span></div>
 </header>
 <main>
   <section>
@@ -276,6 +301,8 @@ const esc = (s) => String(s ?? "").replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&l
 function toast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),1800); }
 function fmtLeft(iso){ const ms=Math.max(0,new Date(iso).getTime()-Date.now()); const s=Math.floor(ms/1000); return s>60?Math.floor(s/60)+'m '+String(s%60).padStart(2,'0')+'s':s+'s'; }
 function render(s){
+  window.__LATEST_SESSION = s.latest_session || null;
+  const sb=document.getElementById('stopbtn'); if(sb) sb.style.display = window.__LATEST_SESSION ? 'inline-block' : 'none';
   const iEl=document.getElementById('intent');
   if(s.intent){
     const a=s.intent.allowed||{};
@@ -303,6 +330,7 @@ function render(s){
        +'<div class="mono">'+esc(p.reason)+'\\n'+(p.action&&p.action.write_paths&&p.action.write_paths.length?'write: '+esc(p.action.write_paths.join(', '))+'\\n':'')+(p.action&&p.action.urls&&p.action.urls.length?'url: '+esc(p.action.urls.join(', '))+'\\n':'')+(p.action&&p.action.recipients&&p.action.recipients.length?'to: '+esc(p.action.recipients.join(', ')):'')+'</div>'
        +'<div class="row"><button class="approve" onclick="decide(\\''+p.id+'\\',\\'allow-once\\')">APPROVE ONCE</button>'
        +'<button class="deny" onclick="decide(\\''+p.id+'\\',\\'deny\\')">DENY</button>'
+       +'<button class="stop" onclick="stopRun(\\''+esc(p.session_key||'')+'\\')">STOP RUN</button>'
        +'<span class="expires" data-exp="'+esc(p.expires_at)+'">'+fmtLeft(p.expires_at)+'</span></div></div>';
     }).join('');
   }
@@ -317,6 +345,14 @@ function render(s){
 async function refresh(){
   try{ const r=await fetch('/api/state'); const s=await r.json(); render(s); }
   catch(e){ document.getElementById('chain').textContent='offline'; }
+}
+async function stopRun(sessionKey){
+  if(!sessionKey){ toast('No session key on this request'); return; }
+  if(!confirm('Abort the whole agent run for this session?')) return;
+  const r=await fetch('/api/stop',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({sessionKey})});
+  const j=await r.json();
+  toast(j.ok?'Run aborted':'Stop failed: '+(j.error||'unknown'));
+  refresh();
 }
 async function decide(id,decision){
   const r=await fetch('/api/decide',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({id,decision,approver:'arbiter-ui'})});

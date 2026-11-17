@@ -189,6 +189,7 @@ malicious plugin can bypass it.
 | queue + one-use grants + denial memory + hash-chained audit | working, integration-tested on a real gateway |
 | arbiter web UI + device API | working; screenshot in `proof/shots/` |
 | native `requireApproval` mode | implemented; verified fail-closed on a non-interactive CLI run (no approval surface). The interactive UI path is for on-site. |
+| panic stop | **verified**: `POST /api/stop` aborted an active `sleep 30` run (`abortedRunId`, status `aborted`); idle session returns `no-active-run` |
 | decision-model path | implemented (`api.runtime.decisions.evaluate`), optional; no local provider in the released host yet |
 | real local model | **verified** with Qwen3-4B MLX: 5 calls, 0 interruptions, p50 55 µs ([details](docs/REAL-MODEL.md)) |
 | M5Stack CoreS3 firmware | **compile-verified** for `esp32:esp32:m5stack_cores3` (37% flash, 15% RAM); prebuilt image in `firmware/bin/` |

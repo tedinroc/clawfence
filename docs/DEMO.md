@@ -59,6 +59,8 @@ Run the same task with `enforce`. The arbiter page fills:
 - 2 amber cards: delete Photos and message bob
 
 Tap **DENY** on the message card. Tap **DENY** on the delete card.
+If the agent tries to work around a denial, press **STOP** in the header: that
+aborts the whole run, not just the pending action.
 
 > "Two taps. Each one has the task, the action, the target, and the reason. The
 > agent cannot work around a block; it can only ask."

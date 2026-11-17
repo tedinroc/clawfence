@@ -29,7 +29,8 @@ showed rates only after a dynamic room search; **call the hotel** at
 +86-755-61555555 to confirm Dec 3–6 availability, the actual rate, and the
 cancellation window before paying.
 
-- Trip.com: <https://tw.trip.com/hotels/detail/?cityEnName=Shenzhen&cityId=30&hotelId=127061379>
+- Trip.com GLEETOUR (Dec 3–7): <https://tw.trip.com/hotels/detail/?hotelId=127061379&checkIn=2026-12-03&checkOut=2026-12-07&adult=1&crn=1&curr=TWD>
+- Trip.com Cityinn (Dec 3–7): <https://tw.trip.com/hotels/detail/?hotelId=1010407&checkIn=2026-12-03&checkOut=2026-12-07&adult=1&crn=1&curr=TWD>
 - Nearby list: <https://www.hotels-in-shenzhen.com/en/near-oct-1660466/>
 
 ## Flights (assuming Taipei departure)
@@ -45,9 +46,11 @@ cancellation window before paying.
   ~TWD 10,200–11,900 round trip (economy, before taxes/fees). Book refundable
   if the 台胞證 is not yet in hand.
 - TPE terminal: T2; SZX terminal: T3.
-- Airline pages:
-  - <https://flights.china-airlines.com/en-tw/flights-from-taipei-to-shenzhen>
-  - <https://flights.evaair.com/en/flights-from-taipei-to-shenzhen>
+- Airline pages / search:
+  - Trip.com TPE–SZX Dec 3–7: <https://tw.trip.com/flights/taipei-to-shenzhen/airfares-tpe-szx/?ddate=2026-12-03&rdate=2026-12-07&curr=TWD>
+  - China Airlines: <https://flights.china-airlines.com/en-tw/flights-from-taipei-to-shenzhen>
+  - EVA Air: <https://flights.evaair.com/en/flights-from-taipei-to-shenzhen>
+  - China Southern: <https://www.csair.com/en/>
 - If coming from the US/elsewhere: SZX via HKG/SZX; check the **240-hour
   visa-free transit** rules and carry an onward ticket. Do not rely on it until
   the airline/port confirms.

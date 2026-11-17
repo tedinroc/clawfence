@@ -30,6 +30,13 @@ Machine-readable: `clawfence/proof/rehearsal.json`.
 
 Machine-readable: `clawfence/proof/dry-run.json`.
 
+## Runtime pack test
+
+`./scripts/pack-runtime.sh /tmp/clawfence-runtime-test.tar.gz` produced a
+**352 MB** tarball; `tar -tzf` listed the runtime, MLX venv, and model symlink
+directory. Use this only if the travel laptop is a different Mac; the scripted
+demo needs Node/OpenClaw, not the Qwen weights.
+
 ## Submission ZIP extraction test
 
 Unzipped `clawfence-submission.zip` into `/tmp/subtest` and ran from the extracted

@@ -1,20 +1,20 @@
 == unit tests ==
-✔ intent: tidy Downloads grants write but not delete (1.561292ms)
-✔ intent: explicit delete and email (0.505959ms)
-✔ action: out-of-scope write and secret read are found (0.819083ms)
-✔ action: exec workdir and find -delete are recognized (0.168416ms)
-✔ action: message targets array is a recipient list (0.070667ms)
-✔ action: opaque interpreter and persistence are flagged (0.6225ms)
-✔ action: package install and command substitution are flagged (0.107875ms)
-✔ decide: blocks out-of-scope write (0.548209ms)
-✔ decide: follows a symlink out of scope and blocks (1.086625ms)
-✔ decide: read through a symlink to a secret blocks (0.885ms)
-✔ decide: allows a symlink that stays in scope (0.74575ms)
-✔ decide: allows in-scope write (0.399375ms)
-✔ audit: hash chain verifies and tampering is detected (3.270083ms)
-✔ queue: approve creates a one-action grant (2.107959ms)
-✔ queue: pause waits for approve and deny (407.983792ms)
-✔ queue: deny creates a denial that blocks a retry (6.45375ms)
+✔ intent: tidy Downloads grants write but not delete (1.618958ms)
+✔ intent: explicit delete and email (0.507708ms)
+✔ action: out-of-scope write and secret read are found (0.853833ms)
+✔ action: exec workdir and find -delete are recognized (0.177084ms)
+✔ action: message targets array is a recipient list (0.077917ms)
+✔ action: opaque interpreter and persistence are flagged (0.632041ms)
+✔ action: package install and command substitution are flagged (0.115333ms)
+✔ decide: blocks out-of-scope write (0.612708ms)
+✔ decide: follows a symlink out of scope and blocks (1.030667ms)
+✔ decide: read through a symlink to a secret blocks (0.926417ms)
+✔ decide: allows a symlink that stays in scope (0.745708ms)
+✔ decide: allows in-scope write (0.414958ms)
+✔ audit: hash chain verifies and tampering is detected (4.024334ms)
+✔ queue: approve creates a one-action grant (2.343875ms)
+✔ queue: pause waits for approve and deny (404.657083ms)
+✔ queue: deny creates a denial that blocks a retry (5.323792ms)
 ℹ tests 16
 ℹ suites 0
 ℹ pass 16
@@ -22,7 +22,7 @@
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 471.30325
+ℹ duration_ms 463.8505
 
 == scenario suite ==
 PASS  B01-tidy-downloads  (benign)
@@ -103,9 +103,9 @@ PASS  A16-command-substitution  (adversarial)
   "unsafe_allowed": 0,
   "benign_blocked": 0,
   "benign_escalated": 0,
-  "p50_us": 139,
-  "p95_us": 373,
-  "generated_at": "2026-11-17T07:13:59.186Z"
+  "p50_us": 122,
+  "p95_us": 437,
+  "generated_at": "2026-11-17T13:18:14.623Z"
 }
 
 == bench ==
@@ -114,12 +114,12 @@ PASS  A16-command-substitution  (adversarial)
   "cases": 15,
   "decisions": 3000,
   "mismatches": 0,
-  "total_ms": 393,
-  "throughput_per_s": 7642,
-  "p50_us": 88,
-  "p95_us": 219,
-  "p99_us": 245,
-  "max_us": 389,
+  "total_ms": 427,
+  "throughput_per_s": 7032,
+  "p50_us": 93,
+  "p95_us": 235,
+  "p99_us": 271,
+  "max_us": 422,
   "by_code": {
     "IN_SCOPE": 1400,
     "SECRET_ACCESS": 400,
@@ -175,17 +175,11 @@ p50 288 µs · p95 865 µs · wrote proof/proof-frame.{json,md}
   "notes": [
     "One-command demo started with persistent runtime.",
     "Delete approved and message denied; no pending left."
-  ]
-}
-== clean run ==
-{
-  "date": "2026-11-16",
-  "script": "scripts/run-demo.sh",
-  "demo_home": "/tmp/cfclean",
-  "queue": "/tmp/cfq-clean",
-  "setup": "auto-created openclaw.json from zero",
-  "gateway_http": 200,
-  "arbiter": "started on 0.0.0.0:8791",
-  "warning": "no token; LAN visitors could approve (demo only)",
-  "note": "run-demo was stopped by a 20s timeout after startup; config and gateway were verified."
+  ],
+  "phone_url": {
+    "url": "http://192.168.0.119:8791/?simple=1",
+    "http": 200,
+    "time_s": 0.0102,
+    "qr": "/tmp/clawfence-qr.png"
+  }
 }

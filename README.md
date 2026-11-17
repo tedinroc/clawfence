@@ -13,6 +13,8 @@ when an action is genuinely ambiguous — on a physical arbiter, with one tap.
 
 ![Real local model proof](proof/shots/real-model-card.png)
 
+![Real pause proof](proof/shots/real-pause.png)
+
 > Built for **Claw Hack Shenzhen**, Dec 4–5 2026 (OpenClaw's first China hackathon).
 > Software track, with a partner-hardware tail.
 
@@ -210,7 +212,7 @@ malicious plugin can bypass it.
 ## Links
 
 - Repo: <https://github.com/tedinroc/clawfence>
-- 73-second demo: [`demo/clawfence-demo.mp4`](demo/clawfence-demo.mp4)
+- 78-second demo: [`demo/clawfence-demo.mp4`](demo/clawfence-demo.mp4)
 - Pitch deck: [`demo/clawfence-deck.pptx`](demo/clawfence-deck.pptx)
 
 ## Validation artifacts
@@ -218,7 +220,7 @@ malicious plugin can bypass it.
 - `reports/plugin-inspector-report.md` — OpenClaw Plugin Inspector: **PASS**, 0 warnings.
 - `proof/proof-frame.md` — the before/after table.
 - `proof/shots/arbiter.png` — the arbiter UI with two pending cards.
-- `submission/clawfence-demo.mp4` (outside this repo) — 73-second narrated demo.
+- `submission/clawfence-demo.mp4` (outside this repo) — 78-second narrated demo.
 - `submission/clawfence-deck.pptx` (outside this repo) — 10-slide pitch.
 
 ## License

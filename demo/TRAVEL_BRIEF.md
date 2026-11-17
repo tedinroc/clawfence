@@ -13,11 +13,16 @@
 
 | hotel | distance / note | rough price |
 |---|---|---|
-| **GLEETOUR HOTEL SHENZHEN OCT-LOFT** (深圳华侨城创意文化园嘉途酒店) | inside OCT-LOFT B1, <100 m; opened 2025; 147 rooms; 9.3 rating; gym/laundry; check-in 14:00 / out 12:00; no deposit; 24/7 desk; +86-755-61555555 | ~TWD 2,600+/night (Dec dynamic; confirm by phone) |
-| **Cityinn Oct Loft** (城市客栈创意园店) | ~0.1 km; simpler/budget; 7.9 rating | lower |
+| **GLEETOUR HOTEL SHENZHEN OCT-LOFT** (深圳华侨城创意文化园嘉途酒店) | inside OCT-LOFT B1, <100 m; opened 2025; 147 rooms; 9.3 rating; gym/laundry; check-in 14:00 / out 12:00; no deposit; 24/7 desk; **+86-755-61555555** | ~TWD 1,162–5,057 (Trip.com range; Dec dynamic) |
+| **Cityinn Oct Loft** (城市客栈创意园店) | E-2 Building, Shantou St East, OCT; **242 m** to the park; 4.4/5; check-in 14:00 / out 12:00; any nationality; no pets; **+86-755-2693-2828** | often **HKD 226–436** (~TWD 900–1,800); free-cancel rates common |
+| **XW Hotel 璽程設計飯店（創意園店）** | 0.4 km; design hotel; 9.3 rating | TWD 1,162–7,510 |
+| **松岩飯店（僑城東地鐵站店）** | 0.22 km; 9.1 rating; value | TWD 674–4,109 |
+| **YHA 僑城旅友國際青年旅舍** | 0.18 km; 9.2 rating; hostel | TWD 967–5,325 |
+| **城東酒店（僑城東地鐵站店）** | 0.4 km; 32 rooms; budget; 4.1/5; reports of noise | HKD 275+ with free cancellation |
 | **Hotel Indigo Shenzhen OCT** (IHG) | ~0.3 km; full-service | higher |
 
-Recommendation: book **GLEETOUR** (or Cityinn as budget fallback) for **Dec 3–6**
+Recommendation: book **GLEETOUR** for proximity/quality, or **Cityinn Oct Loft**
+(budget, 242 m, free-cancel rates) for **Dec 3–6**
 (3 nights; checkout Dec 7 if returning that day). The venue is inside the park;
 the exact room/check-in details come from the Luma approval email. Trip.com
 showed rates only after a dynamic room search; **call the hotel** at

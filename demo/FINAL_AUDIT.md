@@ -14,6 +14,7 @@
 | Application | required fields drafted | Q1/Q2/Q9; user-specific `[city]` and Chinese handle remain |
 | Test suite | 16 unit / 26 scenarios | 16/16, 26/26, 0/15 unsafe, 0/11 benign blocked |
 | Plugin Inspector | package | **PASS, 0 warnings** |
+| Fresh-profile install | clone → `plugins install -l --accept-capabilities` | **PASS**, `clawfence status` works |
 | Benchmark | 15,000 decisions | p50 82 µs, p95 219 µs, 0 mismatches |
 | Dress rehearsal | real Qwen3-4B | gateway 2.93 s, card 6.42 s, approve→done 2.14 s, secret block 1.55 s |
 

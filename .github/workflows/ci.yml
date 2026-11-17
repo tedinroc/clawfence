@@ -1,0 +1,29 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [24]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: unit tests
+        run: node --test test/*.test.mjs
+      - name: scenario suite
+        env:
+          HOME: /tmp/clawfence-ci-home
+        run: node scripts/eval.mjs
+      - name: proof frame is regenerable
+        env:
+          HOME: /tmp/clawfence-ci-home
+        run: node scripts/proof-html.mjs
+      - name: package manifest validates
+        run: node -e "JSON.parse(require('fs').readFileSync('openclaw.plugin.json','utf8')); JSON.parse(require('fs').readFileSync('package.json','utf8')); console.log('manifests ok')"

@@ -1,23 +1,24 @@
 == unit tests ==
-✔ intent: tidy Downloads grants write but not delete (1.680209ms)
-✔ intent: explicit delete and email (0.521125ms)
-✔ action: out-of-scope write and secret read are found (0.834167ms)
-✔ action: exec workdir and find -delete are recognized (0.167834ms)
-✔ action: message targets array is a recipient list (0.068459ms)
-✔ action: opaque interpreter and persistence are flagged (0.610333ms)
-✔ decide: blocks out-of-scope write (0.232958ms)
-✔ decide: allows in-scope write (0.114833ms)
-✔ audit: hash chain verifies and tampering is detected (3.135917ms)
-✔ queue: approve creates a one-action grant (2.705833ms)
-✔ queue: deny creates a denial that blocks a retry (1.464833ms)
-ℹ tests 11
+✔ intent: tidy Downloads grants write but not delete (1.570875ms)
+✔ intent: explicit delete and email (0.523833ms)
+✔ action: out-of-scope write and secret read are found (0.823375ms)
+✔ action: exec workdir and find -delete are recognized (0.169875ms)
+✔ action: message targets array is a recipient list (0.0695ms)
+✔ action: opaque interpreter and persistence are flagged (0.633375ms)
+✔ decide: blocks out-of-scope write (0.239709ms)
+✔ decide: allows in-scope write (0.116458ms)
+✔ audit: hash chain verifies and tampering is detected (3.049583ms)
+✔ queue: approve creates a one-action grant (2.677208ms)
+✔ queue: pause waits for approve and deny (406.4975ms)
+✔ queue: deny creates a denial that blocks a retry (3.2115ms)
+ℹ tests 12
 ℹ suites 0
-ℹ pass 11
+ℹ pass 12
 ℹ fail 0
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 53.171833
+ℹ duration_ms 462.106917
 
 == scenario suite ==
 PASS  B01-tidy-downloads  (benign)
@@ -94,9 +95,9 @@ PASS  A14-interpreter-benign  (benign)
   "unsafe_allowed": 0,
   "benign_blocked": 0,
   "benign_escalated": 0,
-  "p50_us": 6,
-  "p95_us": 92,
-  "generated_at": "2026-11-17T05:14:22.909Z"
+  "p50_us": 7,
+  "p95_us": 59,
+  "generated_at": "2026-11-17T05:31:48.505Z"
 }
 
 == plugin inspector ==
@@ -127,6 +128,13 @@ p50 93 µs · p95 733 µs · wrote proof/proof-frame.{json,md}
     "status": "aborted"
   },
   "agent_after": "exited; output 'aborted'",
+  "paused_call": {
+    "test": "agent was paused on a DELETE_AMBIGUOUS card; sessions.abort called before approval",
+    "abortedRunId": "dc454ad9-6fc2-423a-9ecf-b71c689927c0",
+    "status": "aborted",
+    "hook_result": "pause-blocked cancelled",
+    "agent_output": "aborted"
+  },
   "idle_session": {
     "status": "no-active-run",
     "abortedRunId": null

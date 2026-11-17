@@ -8,6 +8,7 @@ import { extractAction } from "../lib/action.js";
 import { decideAction } from "../lib/decide.js";
 import { createAudit } from "../lib/audit.js";
 import { createQueue } from "../lib/queue.js";
+import { createIntentStore } from "../lib/intent-store.js";
 
 const workspace = "/tmp/clawfence-test-workspace";
 
@@ -133,6 +134,17 @@ test("audit: hash chain verifies and tampering is detected", async () => {
   fs.writeFileSync(p, lines.join("\n") + "\n");
   const bad = await audit.verify();
   assert.equal(bad.ok, false);
+});
+
+test("intent store persists a session card across reloads", async () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "cf-intent-"));
+  const store = createIntentStore(dir);
+  const card = deriveIntent("Tidy my Downloads folder.", { baseDir: workspace, workspace });
+  await store.save("agent:main:s1", card);
+  const loaded = await store.load("agent:main:s1");
+  assert.equal(loaded.hash, card.hash);
+  assert.equal(await store.load("agent:main:other"), null);
+  fs.rmSync(dir, { recursive: true, force: true });
 });
 
 test("queue: approve creates a one-action grant", async () => {

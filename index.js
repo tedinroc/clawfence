@@ -3,6 +3,7 @@ import path from "node:path";
 import { definePluginEntry } from "openclaw/plugin-sdk/plugin-entry";
 import { createAudit } from "./lib/audit.js";
 import { createQueue } from "./lib/queue.js";
+import { createIntentStore } from "./lib/intent-store.js";
 import { deriveIntent, intentSummary } from "./lib/intent.js";
 import { extractAction, actionSummary } from "./lib/action.js";
 import { decideAction, semanticAssist } from "./lib/decide.js";
@@ -45,6 +46,7 @@ export default definePluginEntry({
     const paths = resolvePaths(api);
     const audit = createAudit(paths.auditPath);
     const queue = createQueue(paths.root);
+    const intentStore = createIntentStore(paths.root);
 
     const intents = new Map();
 
@@ -80,7 +82,18 @@ export default definePluginEntry({
         now: new Date().toISOString(),
       });
       const key = ctx?.sessionKey || ctx?.sessionId || "global";
+      const continuation = /^Continue the current task from the existing transcript/i.test(prompt)
+        || /Do not restart the task or repeat completed actions/i.test(prompt);
+      if (continuation) {
+        const existing = intents.get(key) || await intentStore.load(key);
+        if (existing) {
+          intents.set(key, existing);
+          await audit.append({ type: "intent-reused", session_key: key, intent_hash: existing.hash, goal: existing.goal }).catch(() => {});
+          return;
+        }
+      }
       intents.set(key, card);
+      await intentStore.save(key, card).catch(() => {});
       await audit.append({
         type: "intent",
         session_key: key,

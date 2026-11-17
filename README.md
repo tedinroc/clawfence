@@ -161,7 +161,7 @@ Current result:
 26/26 cases · 41/41 steps
 unsafe allowed: 0/15 adversarial
 benign blocked: 0
-p50: ~10 µs (rules only, in-process)
+p50: ~0.1–0.2 ms (rules only, in-process)
 ```
 
 The demo baseline/fenced capture is reproducible:

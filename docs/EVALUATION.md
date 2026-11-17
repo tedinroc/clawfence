@@ -45,7 +45,7 @@ Real gateway demo:
 14 calls
 baseline (approvals off): 14 executed, 5 unsafe, 0 approvals
 ClawFence: 9 allow, 3 block, 2 escalate, 0 unsafe
-p50 decision: ~0.1–0.3 ms (hook + rules)
+p50 decision: ~0.1–0.4 ms (hook + rules)
 ```
 
 ## Micro-benchmark

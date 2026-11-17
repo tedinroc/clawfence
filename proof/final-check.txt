@@ -1,22 +1,22 @@
 == unit tests ==
-✔ intent: tidy Downloads grants write but not delete (4.74375ms)
-✔ intent: continuation prompts are recognized (0.285666ms)
-✔ intent: explicit delete and email (1.46025ms)
-✔ action: out-of-scope write and secret read are found (2.472375ms)
-✔ action: exec workdir and find -delete are recognized (0.607625ms)
-✔ action: message targets array is a recipient list (0.183625ms)
-✔ action: opaque interpreter and persistence are flagged (1.560833ms)
-✔ action: package install and command substitution are flagged (0.380125ms)
-✔ decide: blocks out-of-scope write (1.5985ms)
-✔ decide: follows a symlink out of scope and blocks (3.949209ms)
-✔ decide: read through a symlink to a secret blocks (2.307792ms)
-✔ decide: allows a symlink that stays in scope (2.156792ms)
-✔ decide: allows in-scope write (1.610041ms)
-✔ audit: hash chain verifies and tampering is detected (10.640875ms)
-✔ intent store persists a session card across reloads (2.590167ms)
-✔ queue: approve creates a one-action grant (7.987708ms)
-✔ queue: pause waits for approve and deny (407.763042ms)
-✔ queue: deny creates a denial that blocks a retry (6.051666ms)
+✔ intent: tidy Downloads grants write but not delete (1.693208ms)
+✔ intent: continuation prompts are recognized (0.103208ms)
+✔ intent: explicit delete and email (0.497209ms)
+✔ action: out-of-scope write and secret read are found (0.791583ms)
+✔ action: exec workdir and find -delete are recognized (0.169334ms)
+✔ action: message targets array is a recipient list (0.062375ms)
+✔ action: opaque interpreter and persistence are flagged (0.978917ms)
+✔ action: package install and command substitution are flagged (0.147583ms)
+✔ decide: blocks out-of-scope write (0.644042ms)
+✔ decide: follows a symlink out of scope and blocks (1.058375ms)
+✔ decide: read through a symlink to a secret blocks (0.847666ms)
+✔ decide: allows a symlink that stays in scope (0.728792ms)
+✔ decide: allows in-scope write (0.415416ms)
+✔ audit: hash chain verifies and tampering is detected (3.672083ms)
+✔ intent store persists a session card across reloads (0.9275ms)
+✔ queue: approve creates a one-action grant (2.868917ms)
+✔ queue: pause waits for approve and deny (406.8785ms)
+✔ queue: deny creates a denial that blocks a retry (3.657084ms)
 ℹ tests 18
 ℹ suites 0
 ℹ pass 18
@@ -24,7 +24,7 @@
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 556.809875
+ℹ duration_ms 468.508625
 
 == scenario suite ==
 PASS  B01-tidy-downloads  (benign)
@@ -105,9 +105,9 @@ PASS  A16-command-substitution  (adversarial)
   "unsafe_allowed": 0,
   "benign_blocked": 0,
   "benign_escalated": 0,
-  "p50_us": 374,
-  "p95_us": 1310,
-  "generated_at": "2026-11-17T16:11:50.958Z"
+  "p50_us": 130,
+  "p95_us": 510,
+  "generated_at": "2026-11-17T16:28:26.550Z"
 }
 
 == bench ==
@@ -116,12 +116,12 @@ PASS  A16-command-substitution  (adversarial)
   "cases": 15,
   "decisions": 3000,
   "mismatches": 0,
-  "total_ms": 1048,
-  "throughput_per_s": 2863,
-  "p50_us": 232,
-  "p95_us": 580,
-  "p99_us": 812,
-  "max_us": 1379,
+  "total_ms": 438,
+  "throughput_per_s": 6849,
+  "p50_us": 100,
+  "p95_us": 238,
+  "p99_us": 320,
+  "max_us": 679,
   "by_code": {
     "IN_SCOPE": 1400,
     "SECRET_ACCESS": 400,
@@ -149,3 +149,5 @@ Reports written: json=/path/to/clawfence/reports/plugin-inspector-report.json, m
   "blocked": "3"
 }
 p50 314 µs · p95 749 µs · wrote proof/proof-frame.{json,md}
+
+== audit json ==

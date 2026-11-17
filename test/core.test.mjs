@@ -32,6 +32,19 @@ test("action: out-of-scope write and secret read are found", () => {
   assert.ok(b.writePaths.includes(path.join(os.homedir(), ".zshrc")));
 });
 
+test("action: exec workdir and find -delete are recognized", () => {
+  const a = extractAction("exec", { command: "rm ./tmp.log", workdir: "/tmp/cf-wd" }, { baseDir: workspace });
+  assert.ok(a.deletePaths.includes("/tmp/cf-wd/tmp.log"));
+  const b = extractAction("exec", { command: "find . -name '*.tmp' -delete" }, { baseDir: workspace });
+  assert.ok(b.effects.includes("delete"));
+  assert.equal(b.deletePaths.length, 0); // no explicit target: escalation, not silent allow
+});
+
+test("action: message targets array is a recipient list", () => {
+  const a = extractAction("message", { action: "send", targets: ["bob@example.com", "carol@example.com"], message: "hi" }, { baseDir: workspace });
+  assert.deepEqual(a.recipients.sort(), ["bob@example.com", "carol@example.com"]);
+});
+
 test("decide: blocks out-of-scope write", () => {
   const card = deriveIntent("Tidy my Downloads folder.", { baseDir: workspace, workspace });
   const action = extractAction("write", { path: path.join(os.homedir(), ".zshrc"), content: "x" }, { baseDir: workspace });

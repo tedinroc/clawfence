@@ -1,0 +1,9 @@
+{
+  "first_card_s": 2.24,
+  "approve_s": 2.25,
+  "second_card_s": 2.46,
+  "deny_s": 2.46,
+  "agent_end_s": 2.75,
+  "first_code": "DELETE_AMBIGUOUS",
+  "second_code": "EXTERNAL_MESSAGE"
+}

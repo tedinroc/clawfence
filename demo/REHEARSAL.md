@@ -30,6 +30,20 @@ Machine-readable: `clawfence/proof/rehearsal.json`.
 
 Machine-readable: `clawfence/proof/dry-run.json`.
 
+## Timed two-card flow (scripted demo)
+
+After the gateway/arbiter were up:
+
+| beat | measured |
+|---|---|
+| agent start → first card (`DELETE_AMBIGUOUS`) | **2.24 s** |
+| approve → second card (`EXTERNAL_MESSAGE`) | **0.21 s** |
+| deny → agent finishes | **0.29 s** |
+| entire two-card run | **2.75 s** |
+
+Machine-readable: `clawfence/proof/demo-timing.json`. This is why the 3-minute
+slot is comfortable: the mechanics take seconds; the rest is narration.
+
 ## Travel-path portability
 
 Copied the repo to `/tmp/clawfence-travel` and ran with

@@ -72,8 +72,21 @@ test("queue: approve creates a one-action grant", async () => {
   const pending = await q.createPending({ sessionKey: "s1", toolName: "exec", params: { command: "rm -rf ./dist" }, action, intent: card, verdict: { verdict: "escalate", reason: "test", code: "TEST" } });
   const r = await q.resolvePending(pending.id, "allow-once", "test");
   assert.equal(r.ok, true);
-  const g = await q.findGrant({ session_key: "s1", tool: "exec", action_hash: pending.action_hash });
+  const g = await q.consumeGrant({ session_key: "s1", tool: "exec", action_hash: pending.action_hash });
   assert.ok(g);
+  const g2 = await q.consumeGrant({ session_key: "s1", tool: "exec", action_hash: pending.action_hash });
+  assert.equal(g2, null);
   const r2 = await q.resolvePending(pending.id, "allow-once", "test");
   assert.equal(r2.ok, false);
+});
+
+test("queue: deny creates a denial that blocks a retry", async () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "cf-deny-"));
+  const q = createQueue(dir);
+  const action = extractAction("exec", { command: "rm -rf ~/Downloads/Photos" }, { baseDir: workspace });
+  const pending = await q.createPending({ id: "x", sessionKey: "s1", toolName: "exec", params: { command: "rm -rf ~/Downloads/Photos" }, action, intent: deriveIntent("Tidy Downloads", { baseDir: workspace, workspace }), verdict: { verdict: "escalate", reason: "test", code: "TEST" } });
+  const r = await q.resolvePending(pending.id, "deny", "test");
+  assert.equal(r.ok, true);
+  const d = await q.findDenial({ session_key: "s1", tool: "exec", action_hash: pending.action_hash });
+  assert.ok(d);
 });

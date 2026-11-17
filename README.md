@@ -177,9 +177,9 @@ malicious plugin can bypass it.
 |---|---|
 | intent card + action extraction | working, unit-tested |
 | deterministic adjudicator | working, 20/20 suite |
-| queue + grants + hash-chained audit | working, integration-tested on a real gateway |
+| queue + one-use grants + denial memory + hash-chained audit | working, integration-tested on a real gateway |
 | arbiter web UI + device API | working; screenshot in `proof/shots/` |
-| native `requireApproval` mode | implemented, not yet exercised in the UI |
+| native `requireApproval` mode | implemented; verified fail-closed on a non-interactive CLI run (no approval surface). The interactive UI path is for on-site. |
 | decision-model path | implemented (`api.runtime.decisions.evaluate`), optional; no local provider in the released host yet |
 | M5Stack Cardputer/CoreS3 firmware | next: port the arbiter to a partner board |
 | ClawHub publish | package-ready; `clawhub package publish --dry-run` next |

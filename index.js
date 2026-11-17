@@ -179,7 +179,8 @@ export default definePluginEntry({
 
       // A previously approved retry of the exact same action is allowed once.
       if (result.verdict !== "allow") {
-        const grant = await queue.findGrant({ session_key: key, tool: event.toolName, action_hash: sha256({ toolName: event.toolName, params: event.params }) });
+        const actionHash = sha256({ toolName: event.toolName, params: event.params });
+        const grant = await queue.consumeGrant({ session_key: key, tool: event.toolName, action_hash: actionHash });
         if (grant) {
           await audit.append({
             type: "grant-used",
@@ -190,6 +191,18 @@ export default definePluginEntry({
             reason: result.reason,
           }).catch(() => {});
           return;
+        }
+        const denial = await queue.findDenial({ session_key: key, tool: event.toolName, action_hash: actionHash });
+        if (denial) {
+          await audit.append({
+            type: "deny-used",
+            session_key: key,
+            tool: event.toolName,
+            denial_id: denial.id,
+            action_hash: denial.action_hash,
+            reason: result.reason,
+          }).catch(() => {});
+          return { block: true, blockReason: `ClawFence [DENIED_BEFORE]: the operator denied this exact action recently (${denial.id}). Do not retry it in this task.` };
         }
       }
 

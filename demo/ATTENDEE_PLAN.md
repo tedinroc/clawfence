@@ -21,8 +21,12 @@
 - [ ] Confirm the approval email contains the venue/check-in details; screenshot it.
 - [ ] Register ClawCon (`5qn54uk7`) if not already.
 - [ ] Book refundable flight + hotel near OCT-LOFT, Nanshan (Dec 3–6).
+      Recommended hotel: **GLEETOUR HOTEL SHENZHEN OCT-LOFT** (inside the park,
+      <100 m); budget fallback: **Cityinn Oct Loft**. Details:
+      `TRAVEL_BRIEF.md`.
 - [ ] Taiwan passport: start/confirm 5-year 台胞證 (or 落地簽 backup at Shekou).
       Other passports: confirm China visa / 240-hour transit eligibility.
+- [ ] Flights: TPE→SZX Dec 3, back Dec 7 (direct, refundable). See `TRAVEL_BRIEF.md`.
 
 ### Nov 21–24
 - [ ] Decide which laptop to bring. If **this Mac**: runtime is preinstalled at

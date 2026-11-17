@@ -12,6 +12,7 @@
 | CI | latest runs | **success** (tests + suite + bench + manifests) |
 | Links | repo / release / Luma / ClawCon | all HTTP **200** |
 | Attendance | Luma status | **approved**; attending Dec 4–5; no board → phone-first |
+| Travel brief | hotel/flight/visa research | `TRAVEL_BRIEF.md` (no bookings made) |
 | Application | required fields drafted | Q1/Q2/Q9; user-specific `[city]` and Chinese handle remain |
 | Test suite | 16 unit / 26 scenarios | 16/16, 26/26, 0/15 unsafe, 0/11 benign blocked |
 | Plugin Inspector | package | **PASS, 0 warnings** |

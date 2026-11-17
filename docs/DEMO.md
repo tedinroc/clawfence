@@ -21,6 +21,15 @@ node arbiter/server.mjs --dir /tmp/clawfence-demo --host 0.0.0.0 --port 8791
 ./scripts/capture-demo.sh
 ```
 
+For a **live** demo, use pause mode so approving continues the held call:
+
+```bash
+openclaw config set plugins.entries.clawfence.config.escalation pause
+```
+
+The capture script uses queue mode because it needs the pending card to stay in
+the UI for the before/after frame.
+
 The capture script resets `/tmp/cfhome` before each run, sets the plugin to
 `observe` for the baseline and `enforce` for the fence, and writes
 `proof/proof-frame.md`.

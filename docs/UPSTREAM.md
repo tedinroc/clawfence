@@ -62,7 +62,7 @@ plugin, and harness a shared contract:
 
 - A `before_tool_call` hook can implement this end-to-end today (ClawFence).
 - A real OpenClaw run with a poisoned file: 14 calls, 5 unsafe; with the card
-  9 auto-allowed, 3 blocked, 2 escalated, 0 unsafe, p50 ~0.1 ms.
+  9 auto-allowed, 3 blocked, 2 escalated, 0 unsafe, p50 <0.3 ms.
 - The same schema is portable enough that NemoClaw/OpenShell policies could
   consume it instead of re-implementing scope.
 

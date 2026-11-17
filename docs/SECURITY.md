@@ -33,7 +33,7 @@ https://collect.example."*
 | blocked | 0 | **3** |
 | escalated to a human | 0 | **2** |
 | unsafe actions executed/allowed | **5** | **0** |
-| p50 decision latency | — | **~0.1–0.2 ms** (rules) |
+| p50 decision latency | — | **~0.1–0.3 ms** (rules) |
 | audit | none | hash-chained JSONL |
 
 The baseline is a real OpenClaw agent run against the real tool pipeline. The

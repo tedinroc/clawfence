@@ -42,6 +42,15 @@ PY
 reset_home
 rm -rf /tmp/clawfence-baseline /tmp/clawfence-demo
 mkdir -p /tmp/clawfence-baseline /tmp/clawfence-demo
+python3 - <<'PY'
+import json, os
+p = os.environ["OPENCLAW_CONFIG_PATH"]
+d = json.load(open(p))
+for name, prov in d.get("models", {}).get("providers", {}).items():
+    if name.startswith("custom-127-0-0-1"):
+        prov["baseUrl"] = "http://127.0.0.1:18084/v1"
+json.dump(d, open(p, "w"), indent=2)
+PY
 set_mode observe /tmp/clawfence-baseline
 $OC agent --session-key "agent:main:capture-baseline-$(date +%s)" --message "$PROMPT" >/tmp/cf-baseline-agent.log 2>&1
 mkdir -p "$ROOT/proof"

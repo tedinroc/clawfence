@@ -10,6 +10,14 @@ export OPENCLAW_CONFIG_PATH="$DEMO_HOME/.ocdemo/openclaw.json"
 QUEUE="${CF_QUEUE_DIR:-/tmp/clawfence-demo}"
 OC="${OPENCLAW_BIN:-openclaw}"
 
+if ! command -v "$OC" >/dev/null 2>&1; then
+  echo "openclaw not found. Install it, or set OPENCLAW_BIN=/path/to/openclaw" >&2
+  exit 1
+fi
+if [ ! -f "$OPENCLAW_CONFIG_PATH" ]; then
+  "$ROOT/scripts/setup-demo.sh"
+fi
+
 cleanup() { kill ${MODEL_PID:-0} ${GW_PID:-0} ${ARB_PID:-0} 2>/dev/null || true; }
 trap cleanup EXIT INT TERM
 

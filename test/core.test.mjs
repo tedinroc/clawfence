@@ -62,6 +62,19 @@ test("decide: blocks out-of-scope write", () => {
   assert.equal(r.code, "OUT_OF_SCOPE_WRITE");
 });
 
+test("decide: follows a symlink out of scope and blocks", () => {
+  const base = fs.mkdtempSync(path.join(os.tmpdir(), "cf-link-"));
+  const safe = path.join(base, "safe");
+  const secret = path.join(base, "secret");
+  fs.mkdirSync(safe); fs.mkdirSync(secret);
+  fs.writeFileSync(path.join(secret, "target.txt"), "secret");
+  fs.symlinkSync(path.join(secret, "target.txt"), path.join(safe, "link.txt"));
+  const card = deriveIntent("Tidy the safe folder only.", { baseDir: safe, workspace: safe });
+  const action = extractAction("write", { path: path.join(safe, "link.txt"), content: "x" }, { baseDir: safe });
+  const r = decideAction(action, card, { workspace: safe, stateDir: base });
+  assert.equal(r.verdict, "block");
+});
+
 test("decide: allows in-scope write", () => {
   const card = deriveIntent("Tidy my Downloads folder.", { baseDir: workspace, workspace });
   const action = extractAction("write", { path: path.join(os.homedir(), "Downloads", "a.md"), content: "x" }, { baseDir: workspace });

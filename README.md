@@ -184,7 +184,7 @@ malicious plugin can bypass it.
 
 | piece | state |
 |---|---|
-| intent card + action extraction | working, unit-tested |
+| intent card + action extraction | working; 13 unit tests, including symlink escape |
 | deterministic adjudicator | working, 20/20 suite |
 | queue + one-use grants + denial memory + hash-chained audit | working, integration-tested on a real gateway |
 | **pause mode** | **verified**: the tool call is held; approve continues the exact call, deny blocks it and leaves the target untouched |

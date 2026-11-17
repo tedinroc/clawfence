@@ -33,8 +33,8 @@
       `~/clawfence-runtime`; run `./clawfence/scripts/preflight.sh`.
       If another Mac: install Node 24 + OpenClaw before travel (no venue Wi-Fi
       dependency).
-- [ ] Run the phone-only demo once: `./scripts/run-demo.sh`; open the printed
-      `http://<LAN-IP>:8791/?simple=1` on the phone.
+- [ ] Run the phone-only demo once: `./scripts/run-demo.sh`; scan the printed QR
+      (or open the printed `http://<LAN-IP>:8791/?simple=1`) on the phone.
 - [ ] Record a fresh 78-second fallback on the travel laptop; copy to phone.
 - [ ] Print the one-pager + runbook (or keep PDFs on phone).
 
@@ -107,7 +107,7 @@ cd clawfence
 | no board allocated | phone arbiter; say "software track with a phone as the physical surface" |
 | venue Wi-Fi blocks GitHub/npm | pre-installed runtime; scripted model; no downloads on site |
 | laptop model won't start | play the 78-second video from the phone; show proof frame |
-| phone can't reach laptop | laptop hotspot; or use the laptop browser at 127.0.0.1 and mirror to phone later |
+| phone can't reach laptop (venue AP isolation) | **use the phone's personal hotspot**: Mac joins the hotspot, phone stays on it; `run-demo.sh` prints the hotspot LAN IP. Avoid venue Wi-Fi for the device link. |
 | demo run fails | freeze, show `proof/shots/proof-frame.png` + `arbiter.png`, say the numbers |
 | approval delayed/venue issue | contact the Luma host with the approval email |
 

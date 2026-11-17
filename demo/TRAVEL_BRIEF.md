@@ -57,6 +57,9 @@ the exact room/check-in details come from the Luma approval email.
   **RMB cash** (¥500–1,000) for taxis/incidentals.
 - eSIM or HK-roaming SIM often routes around mainland blocks; test it before
   relying on GitHub/npm at the venue. Assume **no downloads on site**.
+- **Venue Wi-Fi may isolate clients** (phone cannot reach laptop). Use the
+  phone's personal hotspot for the Mac→phone arbiter link; the phone stays on
+  the hotspot, and `run-demo.sh` prints the hotspot LAN IP.
 - China power: 220 V, Type A/C/I. Laptop/phone chargers are usually 100–240 V;
   bring a **Type A/C adapter** and a power strip.
 - Weather early December: roughly 15–22 °C; layers + light rain jacket.

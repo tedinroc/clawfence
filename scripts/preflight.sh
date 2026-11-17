@@ -37,6 +37,19 @@ PY
 DEMO_HOME="${CF_DEMO_HOME:-/tmp/cfhome}"
 DEMO_CONFIG="$DEMO_HOME/.ocdemo/openclaw.json"
 [ -f "$DEMO_CONFIG" ] && ok "demo config: $DEMO_CONFIG" || w "demo config missing (run scripts/setup-demo.sh)"
+if [ -f "$DEMO_CONFIG" ]; then
+  CFG_PLUGIN_PATH="$(python3 - "$DEMO_CONFIG" <<'PY'
+import json,sys
+d=json.load(open(sys.argv[1]))
+print(((d.get("plugins") or {}).get("load") or {}).get("paths",[""])[0])
+PY
+)"
+  if [ -n "$CFG_PLUGIN_PATH" ] && [ ! -d "$CFG_PLUGIN_PATH" ]; then
+    w "config plugin path missing: $CFG_PLUGIN_PATH"
+  elif [ -n "$CFG_PLUGIN_PATH" ] && [ "$CFG_PLUGIN_PATH" != "$ROOT" ]; then
+    w "config plugin path is $CFG_PLUGIN_PATH (run-demo will repoint to $ROOT)"
+  fi
+fi
 
 MODEL="$HOME/.lmstudio/models/lmstudio-community/Qwen3-4B-MLX-4bit"
 [ -d "$MODEL" ] && ok "Qwen3-4B model present" || w "Qwen3 model missing (scripted demo still works)"

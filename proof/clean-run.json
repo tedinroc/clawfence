@@ -1,0 +1,11 @@
+{
+  "date": "2026-11-16",
+  "script": "scripts/run-demo.sh",
+  "demo_home": "/tmp/cfclean",
+  "queue": "/tmp/cfq-clean",
+  "setup": "auto-created openclaw.json from zero",
+  "gateway_http": 200,
+  "arbiter": "started on 0.0.0.0:8791",
+  "warning": "no token; LAN visitors could approve (demo only)",
+  "note": "run-demo was stopped by a 20s timeout after startup; config and gateway were verified."
+}

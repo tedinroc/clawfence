@@ -1,0 +1,146 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@page { size: 13.333in 7.5in; margin: 0; }
+* { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { margin:0; background:#0b0b0e; color:#e8e6e3; font-family:-apple-system,Helvetica,Arial,sans-serif; }
+.slide { width:1280px; height:720px; padding:44px 56px; page-break-after:always; position:relative; overflow:hidden; background:#0b0b0e; }
+.slide:last-child { page-break-after:auto; }
+.kicker { font-size:10px; letter-spacing:.18em; color:#ff4d5e; font-weight:700; text-transform:uppercase; }
+h1 { font-size:54px; margin:10px 0 6px; letter-spacing:-.02em; line-height:1.02; }
+h2 { font-size:30px; margin:6px 0 4px; letter-spacing:-.01em; line-height:1.1; }
+.sub { color:#8a8794; font-size:15px; line-height:1.45; }
+.mono { font-family:Menlo,monospace; }
+.panel { border:1px solid #26262e; background:#141419; border-radius:14px; padding:18px 20px; }
+.dim { color:#8a8794; }
+.green { color:#39d98a; } .amber { color:#ffb020; } .red { color:#ff4d5e; }
+.imgfull { position:absolute; inset:0; width:1280px; height:720px; object-fit:cover; }
+.footer { position:absolute; left:56px; right:56px; bottom:22px; display:flex; justify-content:space-between; color:#55525e; font-size:9px; letter-spacing:.08em; }
+.row { display:flex; gap:16px; }
+.col { flex:1; }
+.big { font-size:56px; font-weight:800; line-height:1; }
+.label { font-size:9px; letter-spacing:.13em; color:#8a8794; text-transform:uppercase; }
+li { margin:7px 0; font-size:15px; line-height:1.4; }
+</style></head><body>
+
+<!-- 1 -->
+<section class="slide">
+  <div class="kicker">Claw Hack Shenzhen · Dec 4–5, 2026</div>
+  <h1 style="font-size:86px;margin-top:28px">CLAWFENCE</h1>
+  <div style="font-size:34px;margin:6px 0 18px">Fewer interruptions. Zero surprises.</div>
+  <div class="sub" style="font-size:18px;max-width:1000px">An intent firewall for OpenClaw.<br>Every tool call is checked against the task's scope before it runs.</div>
+  <div class="panel" style="margin-top:44px;border-color:#3a1e24;max-width:1140px">
+    <div class="green mono" style="font-size:15px;font-weight:700">5 unsafe actions → 0 &nbsp;·&nbsp; 2 human interruptions in 14 actions &nbsp;·&nbsp; sub-0.3 ms p50 &nbsp;·&nbsp; hash-chained audit</div>
+  </div>
+  <div class="dim" style="margin-top:18px;font-size:11px">solo builder · software track · physical arbiter · MIT</div>
+</section>
+
+<!-- 2 -->
+<section class="slide">
+  <div class="kicker">01 · The problem</div>
+  <h2>Approvals are exhausting.<br>So people turn them off.</h2>
+  <div class="sub">And then one poisoned file is enough.</div>
+  <div class="row" style="margin-top:36px">
+    <div class="panel col"><div class="big red">0</div><div class="label">questions asked in the baseline</div></div>
+    <div class="panel col"><div class="big amber">5</div><div class="label">unsafe actions executed: secrets, egress, delete, messages, out-of-scope writes</div></div>
+    <div class="panel col" style="border-color:#3a1e24"><div class="label red">The cope</div><div style="font-size:26px;margin-top:12px">Auto mode exists because per-call approval is a full-time job.</div></div>
+  </div>
+  <div class="amber" style="margin-top:28px;font-size:17px;font-weight:600">The missing layer is not another approval button. It is knowing what the task actually authorises.</div>
+</section>
+
+<!-- 3 -->
+<section class="slide">
+  <div class="kicker">02 · Insight</div>
+  <h2>Intent is the contract nobody writes down.</h2>
+  <div class="sub">So ClawFence derives it, then enforces it.</div>
+  <div class="row" style="margin-top:34px">
+    <div class="panel col"><div class="green" style="font-size:30px;font-weight:800">1</div><div class="label green">Intent card</div><div class="dim" style="margin-top:10px;font-size:13px">Named paths, domains, recipients, effect classes, spend cap. Unclear authority stays out.</div></div>
+    <div class="panel col"><div class="amber" style="font-size:30px;font-weight:800">2</div><div class="label amber">Action tuple</div><div class="dim" style="margin-top:10px;font-size:13px">Exec, patch, files, URLs, messages, MCP tools. Effects and reversibility are explicit.</div></div>
+    <div class="panel col"><div class="red" style="font-size:30px;font-weight:800">3</div><div class="label red">Adjudication</div><div class="dim" style="margin-top:10px;font-size:13px">Rules first: outside scope blocks; ambiguous escalates. The decision model is optional, never the hard block.</div></div>
+  </div>
+  <div style="margin-top:28px;font-size:16px;line-height:1.4">The adjudicator sees only the tuple and the card — never tool output, page text, or model reasoning.<br><span class="dim">Injected content has no channel into the decision.</span></div>
+</section>
+
+<!-- 4 -->
+<section class="slide" style="padding:0">
+  <img class="imgfull" src="../clawfence/proof/shots/architecture.png">
+</section>
+
+<!-- 5 -->
+<section class="slide" style="padding:0">
+  <img class="imgfull" src="../clawfence/proof/shots/proof-frame.png">
+</section>
+
+<!-- 6 -->
+<section class="slide">
+  <div class="kicker">03 · The human moment</div>
+  <h2 style="max-width:900px">Two taps. Not another chat tab.</h2>
+  <div class="sub">The arbiter shows the task, the tool, the target, and the reason.</div>
+  <div class="row" style="margin-top:24px;align-items:flex-start">
+    <img src="../clawfence/proof/shots/arbiter.png" style="width:900px;border-radius:12px;border:1px solid #26262e">
+    <div class="panel" style="width:250px;border-color:#3a1e24">
+      <div class="label red">Physical</div>
+      <div class="dim" style="font-size:13px;line-height:1.5;margin-top:10px">Phone today. Cardputer next.<br><br>Approve resumes the paused call; deny blocks it and leaves the target untouched.<br><br><span class="amber">STOP aborts the whole run.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 -->
+<section class="slide">
+  <div class="kicker">04 · Evidence</div>
+  <h2>A filter you can measure.</h2>
+  <div class="sub">26 scenarios. 11 benign, 15 adversarial. 41 calls.</div>
+  <div class="row" style="margin-top:26px">
+    <div class="panel col"><div class="big green">26/26</div><div class="label">cases pass</div></div>
+    <div class="panel col"><div class="big green">0/15</div><div class="label">unsafe allowed</div></div>
+    <div class="panel col"><div class="big green">0</div><div class="label">benign blocked</div></div>
+    <div class="panel col"><div class="big amber">&lt;0.3 ms</div><div class="label">p50 (hook)</div></div>
+  </div>
+  <div class="panel" style="margin-top:22px">
+    <div class="mono dim" style="font-size:11px">$ openclaw clawfence verify</div>
+    <div class="mono green" style="font-size:16px;font-weight:700;margin-top:6px">{"ok": true, "entries": 31, "errors": []}</div>
+    <div class="dim" style="font-size:12px;margin-top:6px">Every decision is hash-chained: intent → action → verdict → reason → approver.</div>
+    <div class="green" style="font-size:11px;margin-top:8px;font-weight:600">Real Qwen3-4B: SSH-key read blocked 52 µs; wildcard delete held 20 s, approved, continued.</div>
+  </div>
+  <div class="dim" style="font-size:10px;margin-top:10px">15,000-decision micro-benchmark: p50 82 µs, p95 219 µs, ~8,000 decisions/s, 0 mismatches.</div>
+</section>
+
+<!-- 8 -->
+<section class="slide">
+  <div class="kicker">05 · Fit</div>
+  <h2>One hook. Roadmap-native. Installable.</h2>
+  <div class="sub">A capability, not a competing platform.</div>
+  <div class="row" style="margin-top:30px">
+    <div class="panel col"><div class="label red">One hook</div><div class="dim" style="margin-top:8px">before_tool_call. No forked runtime, no new model, no new service.</div></div>
+    <div class="panel col"><div class="label red">Decision models</div><div class="dim" style="margin-top:8px">api.runtime.decisions.evaluate for residual ambiguity; rules own the hard blocks.</div></div>
+  </div>
+  <div class="row" style="margin-top:16px">
+    <div class="panel col"><div class="label red">ClawHub</div><div class="dim" style="margin-top:8px">openclaw plugins install clawfence; intent.card + policy are portable artifacts.</div></div>
+    <div class="panel col"><div class="label red">Composes</div><div class="dim" style="margin-top:8px">NemoClaw / OpenShell policies can require a ClawFence intent card instead of re-implementing scope.</div></div>
+  </div>
+  <div class="amber" style="margin-top:24px;font-size:16px;font-weight:600">Ship it as a plugin today; propose it as a core capability tomorrow.</div>
+</section>
+
+<!-- 9 -->
+<section class="slide">
+  <div class="kicker">06 · Next</div>
+  <h2>What we build on site.</h2>
+  <div class="sub">The core is rehearsed; the last mile is the partner board.</div>
+  <div style="margin-top:30px;font-size:16px;line-height:2">
+    <div><span class="red mono" style="font-size:11px">FRI 10:00</span> &nbsp; Workshops. Get the M5Stack board, confirm the SDK path.</div>
+    <div><span class="red mono" style="font-size:11px">FRI PM</span> &nbsp; Port the arbiter to Cardputer/CoreS3: Wi-Fi poll, two buttons, status LED.</div>
+    <div><span class="red mono" style="font-size:11px">SAT AM</span> &nbsp; Integrate one judge-chosen task; freeze at 13:00.</div>
+    <div><span class="red mono" style="font-size:11px">SAT 16:00</span> &nbsp; Submit: repo, 90-second video, live 3-minute demo, hash-chain receipt.</div>
+  </div>
+  <div class="panel" style="margin-top:26px;border-color:#3a1e24"><div class="amber" style="font-size:12px">Hardware ask: one M5Stack Cardputer-Adv (preferred) or CoreS3. Fallback: phone arbiter, unchanged demo.</div></div>
+</section>
+
+<!-- 10 -->
+<section class="slide">
+  <div class="kicker">Claw Hack Shenzhen 2026</div>
+  <h1 style="font-size:54px;margin-top:40px">Fewer interruptions.<br>Zero surprises.</h1>
+  <div class="sub" style="font-size:18px;margin-top:16px">ClawFence — an intent firewall for OpenClaw, with a physical arbiter.</div>
+  <div class="green mono" style="font-size:16px;font-weight:700;margin-top:40px">github.com/tedinroc/clawfence</div>
+  <div class="dim mono" style="font-size:13px;margin-top:12px">openclaw plugins install clawfence</div>
+  <div class="dim" style="font-size:11px;margin-top:42px">MIT · built solo · intent card + before_tool_call + hash-chained audit</div>
+</section>
+
+</body></html>

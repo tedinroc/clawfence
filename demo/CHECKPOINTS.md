@@ -3,10 +3,9 @@
 Today: **2026-11-17**. Claw Hack: **Dec 4–5**. ClawCon: **Dec 6**.
 
 ## Nov 20 (3 days) — visa gate
-- [ ] 5-year 台胞證 submitted / in hand?
-- [ ] If not: switch to **one-time 台胞證 at SZX T3** (photo + Taiwan ID/passport;
-      ~30 min; ¥40; phone 0755-23459289). Do not wait until Dec 3.
-- [ ] Book refundable flights + hotel if not already; prices rise from here.
+- [x] Valid 5-year 台胞證 in hand (2026-11-17).
+- [x] Flights + hotel booked (2026-11-17): Dec 3–7, 4 nights.
+- [ ] Keep the approval email + booking confirmations offline.
 
 ## Nov 21–24 — travel-laptop gate
 - [ ] Copy repo to the travel laptop (or confirm this Mac).

@@ -1,18 +1,17 @@
 # ClawFence — handoff (read this first)
 
 **Status (2026-11-17):** Luma hackathon **approved**; ClawCon **registered**;
-attending Shenzhen Dec 4–5. No M5Stack board owned → **phone-first demo**.
+flights + hotel **booked** (Dec 3–7); **valid 5-year 台胞證** in hand; attending
+Shenzhen Dec 4–5. No M5Stack board owned → **phone-first demo**.
 **Goal:** win Claw Hack Shenzhen. Everything below is built, tested, and packaged.
 
 ## The only three things left for you
 
-1. **Book refundable travel** — TPE→SZX Dec 3 (CZ3088 13:40→15:50 or CI527
-   15:25→17:25), return Dec 7 (CZ3087 10:30→12:25); hotel **GLEETOUR** or
-   **Cityinn**, Dec 3–7 (4 nights). Links and phones in `TRAVEL_BRIEF.md`.
-2. **Visa** — confirm the 5-year 台胞證 by Nov 20. Backup: one-time card at
-   **SZX Bao'an T3**, phone **0755-23459289** (photo + Taiwan ID/passport).
-3. **Ask the host** — copy `ORGANIZER_QUESTIONS.md` to Luma/WeChat `queenie_52`:
+1. **Ask the host** — copy `ORGANIZER_QUESTIONS.md` to Luma/WeChat `queenie_52`:
    judging rubric, board allocation, submission format, Claw Cafe pass.
+2. **Travel-laptop prep (Nov 21–24)** — run `preflight.sh`, `run-demo.sh`, scan
+   the phone QR, record a fresh fallback on that laptop.
+3. **Show up Dec 4–5** — follow `ATTENDEE_PLAN.md` / `RUNBOOK.md`; phone-first.
 
 Then: **Nov 21–24** run `preflight.sh` + phone QR demo on the travel laptop;
 **Dec 4–5** follow `RUNBOOK.md` / `ATTENDEE_PLAN.md`.

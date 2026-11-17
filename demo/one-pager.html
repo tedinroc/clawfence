@@ -58,7 +58,7 @@ code{font-family:Menlo,monospace;font-size:8.5pt;background:#f3f3f3;padding:0 1m
 <li>26 scenarios (11 benign / 15 adversarial, 41 calls): <b>26/26</b>, unsafe allowed <b>0/15</b>, benign blocked <b>0</b>.</li>
 <li>Real gateway + real tool pipeline: 14 calls, <b>9 allow / 3 block / 2 escalate</b>, p50 <b><0.3 ms</b>.</li>
 <li>Real Qwen3-4B: benign 5 calls / 0 interruptions; secret read blocked 52 µs; wildcard delete held 20 s then continued.</li>
-<li>Plugin Inspector: <b>PASS</b>, 0 warnings. Unit tests: <b>16/16</b>.</li>
+<li>Plugin Inspector: <b>PASS</b>, 0 warnings. Unit tests: <b>17/17</b>.</li>
 <li>15,000-decision micro-benchmark: p50 <b>82 µs</b>, p95 <b>219 µs</b>, ~8,000 decisions/s, 0 mismatches.</li>
 <li>Panic stop verified on active and paused runs via <code>sessions.abort</code>.</li>
 <li>Dress rehearsal on local Qwen3-4B: pause card <b>6.4 s</b>, approve→done <b>2.1 s</b>, secret block <b>1.55 s</b>.</li>

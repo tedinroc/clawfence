@@ -11,7 +11,7 @@
 | Firmware | CoreS3 + Cardputer | both `.bin` ~1.1 MB, compile-verified |
 | CI | latest runs | **success** (tests + suite + bench + manifests) |
 | Links | repo / release / Luma / ClawCon | all HTTP **200** |
-| Attendance | Luma status | **approved**; attending Dec 4–5; no board → phone-first |
+| Attendance | Luma status | **approved**; attending Dec 4–5; flights/hotel **booked**; valid 5-year 台胞證; no board → phone-first |
 | Travel brief | hotel/flight/visa research | `TRAVEL_BRIEF.md` (no bookings made) |
 | Application | required fields drafted | Q1/Q2/Q9; user-specific `[city]` and Chinese handle remain |
 | Test suite | 18 unit / 26 scenarios | 18/18, 26/26, 0/15 unsafe, 0/11 benign blocked |

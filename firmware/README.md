@@ -32,3 +32,17 @@ to an afternoon and lets a phone use the same daemon.
 - Bind the daemon to loopback unless the device is on a trusted LAN.
 - On a LAN, set `--token` and put the token in the sketch.
 - The device can only approve or deny; it cannot read the audit log or run tools.
+
+## Build proof
+
+Compiled on 2026-11-16 with arduino-cli 1.5.2-rc.1, ESP32 core 3.3.12,
+M5Unified 0.2.29, ArduinoJson 7.4.3:
+
+```
+Sketch uses 1183187 bytes (37%) of program storage space. Maximum is 3145728 bytes.
+Global variables use 50276 bytes (15%) of dynamic memory, leaving 277404 bytes for local variables.
+```
+
+The compiled application image is at `firmware/bin/clawfence_arbiter_cores3.bin`
+(1.1 MB). It is **compile-verified, not hardware-verified**; flash with
+`arduino-cli upload -p <port> --fqbn esp32:esp32:m5stack_cores3`.

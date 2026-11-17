@@ -184,7 +184,7 @@ malicious plugin can bypass it.
 | native `requireApproval` mode | implemented; verified fail-closed on a non-interactive CLI run (no approval surface). The interactive UI path is for on-site. |
 | decision-model path | implemented (`api.runtime.decisions.evaluate`), optional; no local provider in the released host yet |
 | real local model | **verified** with Qwen3-4B MLX: 5 calls, 0 interruptions, p50 55 µs ([details](docs/REAL-MODEL.md)) |
-| M5Stack Cardputer/CoreS3 firmware | next: port the arbiter to a partner board |
+| M5Stack CoreS3 firmware | **compile-verified** for `esp32:esp32:m5stack_cores3` (37% flash, 15% RAM); prebuilt image in `firmware/bin/` |
 | ClawHub publish | package-ready; `clawhub package publish --dry-run` next |
 
 ---

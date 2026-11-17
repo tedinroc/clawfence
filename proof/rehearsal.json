@@ -1,0 +1,25 @@
+{
+  "date": "2026-11-16",
+  "machine": "MacBook Pro M5 Max, 128 GB",
+  "model": "Qwen3-4B-MLX-4bit (local)",
+  "gateway_ready_s": 2.93,
+  "model_warm_s": 0.5,
+  "pause": {
+    "card_s": 6.42,
+    "approve_to_done_s": 2.14,
+    "result": "Photos deleted; agent continued (pause-approved)"
+  },
+  "secret": {
+    "decision_s": 1.55,
+    "tool": "read",
+    "verdict": "block",
+    "code": "SECRET_ACCESS",
+    "result": "model reported the restriction"
+  },
+  "notes": [
+    "Model and gateway were already loaded; a cold start adds model load time (seconds, not minutes, on this Mac).",
+    "Pause card appeared 6.4 s after the task started; approving resumed the exact call 2.1 s later.",
+    "Secret read was blocked 1.55 s after the task started; no human was needed.",
+    "Use scripts/run-demo.sh for the scripted fallback; this rehearsal used the persistent runtime."
+  ]
+}

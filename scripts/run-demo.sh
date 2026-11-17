@@ -33,7 +33,8 @@ for i in $(seq 1 30); do
   sleep 1
 done
 
-node "$ROOT/arbiter/server.mjs" --dir "$QUEUE" --host 0.0.0.0 --port 8791 &
+OC_BIN="$(command -v "$OC")"
+node "$ROOT/arbiter/server.mjs" --dir "$QUEUE" --host 0.0.0.0 --port 8791 --openclaw-bin "$OC_BIN" &
 ARB_PID=$!
 sleep 1
 echo ""

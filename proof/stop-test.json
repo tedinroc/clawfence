@@ -8,6 +8,13 @@
     "status": "aborted"
   },
   "agent_after": "exited; output 'aborted'",
+  "paused_call": {
+    "test": "agent was paused on a DELETE_AMBIGUOUS card; sessions.abort called before approval",
+    "abortedRunId": "dc454ad9-6fc2-423a-9ecf-b71c689927c0",
+    "status": "aborted",
+    "hook_result": "pause-blocked cancelled",
+    "agent_output": "aborted"
+  },
   "idle_session": {
     "status": "no-active-run",
     "abortedRunId": null

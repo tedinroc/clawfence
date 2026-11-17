@@ -53,7 +53,7 @@ PY
 cleanup() { kill ${MODEL_PID:-0} ${GW_PID:-0} ${ARB_PID:-0} 2>/dev/null || true; }
 trap cleanup EXIT INT TERM
 
-node "$ROOT/scripts/scripted-demo-agent.mjs" --port 18084 &
+node "$ROOT/scripts/scripted-demo-agent.mjs" --port 18084 --scenario "${CF_SCENARIO:-$ROOT/scenarios/demo.json}" &
 MODEL_PID=$!
 sleep 1
 

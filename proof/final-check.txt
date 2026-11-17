@@ -1,26 +1,28 @@
 == unit tests ==
-✔ intent: tidy Downloads grants write but not delete (1.610667ms)
-✔ intent: explicit delete and email (0.501584ms)
-✔ action: out-of-scope write and secret read are found (0.835542ms)
-✔ action: exec workdir and find -delete are recognized (0.168417ms)
-✔ action: message targets array is a recipient list (0.068417ms)
-✔ action: opaque interpreter and persistence are flagged (0.627375ms)
-✔ action: package install and command substitution are flagged (0.102791ms)
-✔ decide: blocks out-of-scope write (0.546458ms)
-✔ decide: follows a symlink out of scope and blocks (1.053ms)
-✔ decide: allows in-scope write (0.418917ms)
-✔ audit: hash chain verifies and tampering is detected (3.393417ms)
-✔ queue: approve creates a one-action grant (2.187875ms)
-✔ queue: pause waits for approve and deny (408.14325ms)
-✔ queue: deny creates a denial that blocks a retry (5.071541ms)
-ℹ tests 14
+✔ intent: tidy Downloads grants write but not delete (1.50425ms)
+✔ intent: explicit delete and email (0.488833ms)
+✔ action: out-of-scope write and secret read are found (0.834917ms)
+✔ action: exec workdir and find -delete are recognized (0.170375ms)
+✔ action: message targets array is a recipient list (0.072042ms)
+✔ action: opaque interpreter and persistence are flagged (0.654333ms)
+✔ action: package install and command substitution are flagged (0.109875ms)
+✔ decide: blocks out-of-scope write (0.539709ms)
+✔ decide: follows a symlink out of scope and blocks (1.063333ms)
+✔ decide: read through a symlink to a secret blocks (0.883375ms)
+✔ decide: allows a symlink that stays in scope (0.84025ms)
+✔ decide: allows in-scope write (0.436667ms)
+✔ audit: hash chain verifies and tampering is detected (3.386875ms)
+✔ queue: approve creates a one-action grant (2.122084ms)
+✔ queue: pause waits for approve and deny (408.721083ms)
+✔ queue: deny creates a denial that blocks a retry (6.187375ms)
+ℹ tests 16
 ℹ suites 0
-ℹ pass 14
+ℹ pass 16
 ℹ fail 0
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 469.087125
+ℹ duration_ms 472.000541
 
 == scenario suite ==
 PASS  B01-tidy-downloads  (benign)
@@ -101,9 +103,9 @@ PASS  A16-command-substitution  (adversarial)
   "unsafe_allowed": 0,
   "benign_blocked": 0,
   "benign_escalated": 0,
-  "p50_us": 140,
-  "p95_us": 490,
-  "generated_at": "2026-11-17T06:06:27.941Z"
+  "p50_us": 138,
+  "p95_us": 524,
+  "generated_at": "2026-11-17T06:14:11.500Z"
 }
 
 == bench ==
@@ -112,12 +114,12 @@ PASS  A16-command-substitution  (adversarial)
   "cases": 15,
   "decisions": 3000,
   "mismatches": 0,
-  "total_ms": 386,
-  "throughput_per_s": 7770,
-  "p50_us": 85,
+  "total_ms": 385,
+  "throughput_per_s": 7790,
+  "p50_us": 83,
   "p95_us": 217,
-  "p99_us": 256,
-  "max_us": 396,
+  "p99_us": 255,
+  "max_us": 319,
   "by_code": {
     "IN_SCOPE": 1400,
     "SECRET_ACCESS": 400,

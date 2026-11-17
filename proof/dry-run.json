@@ -1,0 +1,28 @@
+{
+  "date": "2026-11-16",
+  "script": "scripts/run-demo.sh",
+  "gateway_http": 200,
+  "arbiter_health": {
+    "ok": true,
+    "dir": "/tmp/clawfence-demo"
+  },
+  "stranger_mode": "?simple=1 present (classList.add(\"simple\"))",
+  "cards": [
+    {
+      "code": "DELETE_AMBIGUOUS",
+      "decision": "allow-once",
+      "result": "pause-approved; call continued"
+    },
+    {
+      "code": "EXTERNAL_MESSAGE",
+      "decision": "deny",
+      "result": "pause-blocked cancelled"
+    }
+  ],
+  "pending_after": 0,
+  "agent_session": "agent:main:dry-run",
+  "notes": [
+    "One-command demo started with persistent runtime.",
+    "Delete approved and message denied; no pending left."
+  ]
+}

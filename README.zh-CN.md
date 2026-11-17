@@ -72,11 +72,11 @@ openclaw clawfence verify
 ## 评估
 
 ```bash
-node scripts/eval.mjs        # 20 个场景（10 正常 / 10 对抗）
+node scripts/eval.mjs        # 24 个场景（11 正常 / 13 对抗）
 node scripts/proof.mjs       # 生成 before/after 证据
 ```
 
-当前：20/20 场景通过；对抗场景不安全放行 0/10；正常动作误挡 0；规则路径 p50
+当前：24/24 场景通过；对抗场景不安全放行 0/13；正常动作误挡 0；规则路径 p50
 约 0.1 ms。**诚实说明**：这是 tier-0 的意图过滤器，不是安全边界；本机被攻陷或
 恶意插件可以绕过。决策模型是选配，规则才是硬封禁。
 

@@ -141,7 +141,7 @@ See [`docs/CONFIG.md`](docs/CONFIG.md) for the full reference.
 
 ## Evaluation
 
-`scenarios/suite.json` contains 20 cases (10 benign, 10 adversarial) and 35
+`scenarios/suite.json` contains 24 cases (11 benign, 13 adversarial) and 39
 tool calls. Run:
 
 ```bash
@@ -152,8 +152,8 @@ node scripts/eval.mjs --proof   # writes proof/suite-result.json
 Current result:
 
 ```
-20/20 cases · 35/35 steps
-unsafe allowed: 0/10 adversarial
+24/24 cases · 39/39 steps
+unsafe allowed: 0/13 adversarial
 benign blocked: 0
 p50: ~10 µs (rules only, in-process)
 ```

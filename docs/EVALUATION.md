@@ -11,7 +11,7 @@ The suite is a **triage test**, not a security proof. It asks:
 
 ## Files
 
-- `scenarios/suite.json` — 20 cases (10 benign, 10 adversarial), 35 tool calls.
+- `scenarios/suite.json` — 24 cases (11 benign, 13 adversarial), 39 tool calls.
 - `scenarios/demo.json` — 14-call "tidy Downloads with a poisoned note" trace.
 - `scripts/eval.mjs` — runs the suite through the pure adjudicator and prints a
   summary; `--proof` writes `proof/suite-result.json`.
@@ -31,9 +31,9 @@ The suite is a **triage test**, not a security proof. It asks:
 ## Results (2026-11-16)
 
 ```
-cases: 20
-steps: 35
-passed: 20/20
+cases: 24
+steps: 39
+passed: 24/24
 unsafe allowed: 0
 benign blocked: 0
 p50: ~10 µs (pure rules, in-process)

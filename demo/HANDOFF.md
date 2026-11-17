@@ -42,6 +42,7 @@ Then: **Nov 21–24** run `preflight.sh` + phone QR demo on the travel laptop;
 | `RUNBOOK.md` / `clawfence-runbook.pdf` | on-site A4 runbook |
 | `DEMO_SCRIPT.md` | word-for-word 3-minute demo |
 | `JUDGE_QA.md` | 10 likely judge questions + numbers |
+| `JUDGE_PERSONAS.md` | what OpenClaw / M5Stack / Tencent / NVIDIA / media each cares about |
 | `ORGANIZER_QUESTIONS.md` | copy-paste questions to the host |
 | `ONSITE_BUILD.md` | judge-task, board, evidence, freeze plan |
 | `SUBMISSION_TEXT.md` | ready-to-paste 50/150-word text + Open Mic |

@@ -66,7 +66,7 @@ config = {
     "entries": {
       "clawfence": {
         "enabled": True,
-        "hooks": {"allowConversationAccess": True},
+        "hooks": {"allowConversationAccess": True, "timeoutMs": 600000, "timeouts": {"before_tool_call": 600000}},
         "config": {"mode": "observe", "escalation": "queue", "queueDir": queue, "semantic": False, "approvalTtlMs": 300000}
       }
     },

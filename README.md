@@ -187,7 +187,7 @@ malicious plugin can bypass it.
 | intent card + action extraction | working; 13 unit tests, including symlink escape |
 | deterministic adjudicator | working, 20/20 suite |
 | queue + one-use grants + denial memory + hash-chained audit | working, integration-tested on a real gateway |
-| **pause mode** | **verified**: the tool call is held; approve continues the exact call, deny blocks it and leaves the target untouched |
+| **pause mode** | **verified**: the tool call is held; approve continues the exact call, deny blocks it and leaves the target untouched; a real Qwen3-4B run held a wildcard delete for 20 s and continued after approval |
 | arbiter web UI + device API | working; screenshot in `proof/shots/` |
 | native `requireApproval` mode | implemented; verified fail-closed on a non-interactive CLI run (no approval surface). The interactive UI path is for on-site. |
 | panic stop | **verified**: `POST /api/stop` aborted an active `sleep 30` run (`abortedRunId`, status `aborted`); idle session returns `no-active-run` |

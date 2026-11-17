@@ -23,7 +23,11 @@ Operator-only hook settings:
     "entries": {
       "clawfence": {
         "enabled": true,
-        "hooks": { "allowConversationAccess": true },
+        "hooks": {
+          "allowConversationAccess": true,
+          "timeoutMs": 600000,
+          "timeouts": { "before_tool_call": 600000 }
+        },
         "config": { "mode": "enforce", "escalation": "queue" }
       }
     }
@@ -31,7 +35,10 @@ Operator-only hook settings:
 }
 ```
 
-`hooks.allowConversationAccess` is required for a non-bundled plugin to receive
+`hooks.timeouts.before_tool_call` must be raised for **pause** mode; the host's
+default 15-second hook budget is too short for a human decision. `timeoutMs`
+covers all hooks; the per-hook value overrides it. `hooks.allowConversationAccess`
+is required for a non-bundled plugin to receive
 `before_agent_run`, which is where the intent card comes from. Without it the
 plugin still protects mutating actions (it has no intent, so it escalates them),
 but it cannot derive the task scope.

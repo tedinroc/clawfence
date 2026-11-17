@@ -15,6 +15,8 @@ const SAFE_READONLY_TOOLS = new Set([
   "sessions_list", "sessions_history", "sessions_search", "sessions_status",
   "session_status", "agents_list", "skills_list", "plugins_list", "models_list",
   "memory_search", "memory_get", "skills_read",
+  "tool_search", "tool_describe", "sessions_yield", "heartbeat_respond",
+  "skills_list", "tools_list",
 ]);
 
 function resolvePaths(api) {

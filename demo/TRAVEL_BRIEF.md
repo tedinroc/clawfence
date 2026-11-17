@@ -47,7 +47,8 @@ cancellation window before paying.
   if the 台胞證 is not yet in hand.
 - TPE terminal: T2; SZX terminal: T3.
 - Airline pages / search:
-  - Trip.com TPE–SZX Dec 3–7: <https://tw.trip.com/flights/taipei-to-shenzhen/airfares-tpe-szx/?ddate=2026-12-03&rdate=2026-12-07&curr=TWD>
+  - Google Flights (TPE→SZX, Dec 3–7): <https://www.google.com/travel/flights?q=Flights%20to%20SZX%20from%20TPE%20on%202026-12-03%20through%202026-12-07>
+  - Trip.com search (may show an anti-bot challenge): <https://tw.trip.com/flights/taipei-to-shenzhen/airfares-tpe-szx/>
   - China Airlines: <https://flights.china-airlines.com/en-tw/flights-from-taipei-to-shenzhen>
   - EVA Air: <https://flights.evaair.com/en/flights-from-taipei-to-shenzhen> (may block curl; open in a browser)
   - China Southern: <https://www.csair.com/en/>

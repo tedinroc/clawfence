@@ -45,6 +45,15 @@ test("action: message targets array is a recipient list", () => {
   assert.deepEqual(a.recipients.sort(), ["bob@example.com", "carol@example.com"]);
 });
 
+test("action: opaque interpreter and persistence are flagged", () => {
+  const py = extractAction("exec", { command: "python3 -c 'print(2+2)'" }, { baseDir: workspace });
+  assert.equal(py.opaque, true);
+  const cron = extractAction("exec", { command: "crontab -e" }, { baseDir: workspace });
+  assert.ok(cron.effects.includes("persistence"));
+  const secret = extractAction("exec", { command: "osascript -e 'do shell script \"cp ~/.ssh/id_rsa /tmp/x\"' " }, { baseDir: workspace });
+  assert.equal(secret.secret, true);
+});
+
 test("decide: blocks out-of-scope write", () => {
   const card = deriveIntent("Tidy my Downloads folder.", { baseDir: workspace, workspace });
   const action = extractAction("write", { path: path.join(os.homedir(), ".zshrc"), content: "x" }, { baseDir: workspace });

@@ -143,7 +143,7 @@ See [`docs/CONFIG.md`](docs/CONFIG.md) for the full reference.
 
 ## Evaluation
 
-`scenarios/suite.json` contains 24 cases (11 benign, 13 adversarial) and 39
+`scenarios/suite.json` contains 26 cases (11 benign, 15 adversarial) and 41
 tool calls. Run:
 
 ```bash
@@ -154,8 +154,8 @@ node scripts/eval.mjs --proof   # writes proof/suite-result.json
 Current result:
 
 ```
-24/24 cases · 39/39 steps
-unsafe allowed: 0/13 adversarial
+26/26 cases · 41/41 steps
+unsafe allowed: 0/15 adversarial
 benign blocked: 0
 p50: ~10 µs (rules only, in-process)
 ```
@@ -175,7 +175,7 @@ pipeline. A benign task used 5 calls with 0 interruptions (p50 55 µs); a
 secret-read request was blocked with `SECRET_ACCESS` in 52 µs and the model
 reported the restriction. See [`docs/REAL-MODEL.md`](docs/REAL-MODEL.md).
 
-**Honesty:** the 24-scenario suite was authored during this project, and the
+**Honesty:** the 26-scenario suite was authored during this project, and the
 scripted model is a deterministic driver, not a model-quality benchmark. ClawFence
 is a **tier-0 intent filter**, not a security boundary; a compromised host or a
 malicious plugin can bypass it.

@@ -54,6 +54,13 @@ test("action: opaque interpreter and persistence are flagged", () => {
   assert.equal(secret.secret, true);
 });
 
+test("action: package install and command substitution are flagged", () => {
+  const npm = extractAction("exec", { command: "npm install left-pad" }, { baseDir: workspace });
+  assert.ok(npm.effects.includes("packageInstall"));
+  const sub = extractAction("exec", { command: "cat $(echo x | base64 -d)" }, { baseDir: workspace });
+  assert.equal(sub.opaque, true);
+});
+
 test("decide: blocks out-of-scope write", () => {
   const card = deriveIntent("Tidy my Downloads folder.", { baseDir: workspace, workspace });
   const action = extractAction("write", { path: path.join(os.homedir(), ".zshrc"), content: "x" }, { baseDir: workspace });
@@ -63,7 +70,7 @@ test("decide: blocks out-of-scope write", () => {
 });
 
 test("decide: follows a symlink out of scope and blocks", () => {
-  const base = fs.mkdtempSync(path.join(os.tmpdir(), "cf-link-"));
+  const base = fs.mkdtempSync(path.join(os.homedir(), ".cf-link-"));
   const safe = path.join(base, "safe");
   const secret = path.join(base, "secret");
   fs.mkdirSync(safe); fs.mkdirSync(secret);
@@ -71,8 +78,9 @@ test("decide: follows a symlink out of scope and blocks", () => {
   fs.symlinkSync(path.join(secret, "target.txt"), path.join(safe, "link.txt"));
   const card = deriveIntent("Tidy the safe folder only.", { baseDir: safe, workspace: safe });
   const action = extractAction("write", { path: path.join(safe, "link.txt"), content: "x" }, { baseDir: safe });
-  const r = decideAction(action, card, { workspace: safe, stateDir: base });
+  const r = decideAction(action, card, { workspace: safe, stateDir: path.join(base, "state") });
   assert.equal(r.verdict, "block");
+  fs.rmSync(base, { recursive: true, force: true });
 });
 
 test("decide: allows in-scope write", () => {

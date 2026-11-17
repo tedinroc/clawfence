@@ -1,0 +1,71 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@page { size: A4; margin: 14mm 14mm; }
+body{font-family:-apple-system,Helvetica,Arial,sans-serif;color:#111;font-size:10.5pt;line-height:1.35;margin:0}
+h1{font-size:20pt;margin:0 0 2mm}h2{font-size:12pt;margin:6mm 0 2mm;border-bottom:1px solid #ddd;padding-bottom:1mm}
+.meta{color:#555;font-size:9pt;margin-bottom:5mm}
+table{width:100%;border-collapse:collapse;font-size:9.5pt;margin:2mm 0}
+th,td{border:1px solid #ddd;padding:1.2mm 2mm;text-align:left;vertical-align:top}
+th{background:#f4f4f4}
+code{font-family:Menlo,monospace;font-size:9pt;background:#f3f3f3;padding:0 1mm}
+ul{margin:1mm 0 2mm 5mm}li{margin:0.6mm 0}
+.q{font-weight:600}
+.note{border-left:3px solid #d33;padding:2mm 3mm;background:#fafafa;margin:3mm 0;font-size:9.5pt}
+</style></head><body>
+<h1>ClawFence — on-site runbook</h1>
+<div class="meta">Claw Hack Shenzhen · Dec 4–5, 2026 · muShenzhen / OCT-LOFT, Nanshan · submission Sat 16:00 · winners 17:00–17:30</div>
+
+<h2>Before you leave</h2>
+<ul>
+<li>Laptop + phone charged; power bank, USB-C cable, phone stand.</li>
+<li><code>git clone https://github.com/tedinroc/clawfence</code></li>
+<li>Node 24.22.1+ and OpenClaw 2026.11.4+ installed.</li>
+<li><code>openclaw plugins install -l ./clawfence --force</code>; demo run once.</li>
+<li>Video <code>clawfence-demo.mp4</code> on laptop and phone; deck on laptop.</li>
+<li>Firmware bins <code>firmware/bin/*.bin</code>; arduino-cli + ESP32 core if flashing.</li>
+<li>Luma approval email screenshot.</li>
+</ul>
+
+<h2>Friday</h2>
+<table><tr><th>Time</th><th>Action</th></tr>
+<tr><td>09:00</td><td>Arrive, front row, Wi-Fi + power.</td></tr>
+<tr><td>10:00</td><td>OpenClaw / M5Stack / Seeed workshops; ask for the board; confirm SDK.</td></tr>
+<tr><td>12:00</td><td>Claim table near power; <code>./clawfence/scripts/setup-demo.sh</code>.</td></tr>
+<tr><td>13:00</td><td>Build in the open; flash a board if allocated; join arbiter Wi-Fi.</td></tr>
+<tr><td>15:00</td><td>Pair with a maintainer on <code>before_tool_call</code> / decision models.</td></tr>
+<tr><td>18:00</td><td>Open Mic: 60 seconds, the problem only.</td></tr>
+<tr><td>evening</td><td>Record the 90-second fallback on the actual laptop; freeze scope.</td></tr></table>
+
+<h2>Saturday</h2>
+<table><tr><th>Time</th><th>Action</th></tr>
+<tr><td>10:00</td><td>Final integration only; no new ideas.</td></tr>
+<tr><td>13:00</td><td><b>Feature freeze.</b></td></tr>
+<tr><td>14:00</td><td>Record the 90-second fallback; test on phone.</td></tr>
+<tr><td>15:00</td><td>Submit repo + video + demo text.</td></tr>
+<tr><td>16:00</td><td><b>Submission deadline.</b></td></tr>
+<tr><td>17:00</td><td>Demos / awards. Be present; ask the partner for a photo + intro.</td></tr></table>
+
+<h2>Live demo (pause mode)</h2>
+<ul>
+<li>Terminal 1: <code>mlx_lm.server --model /tmp/qwen3-4b --port 18085 --chat-template-args '{"enable_thinking": false}'</code> (or <code>scripts/run-demo.sh</code> scripted fallback).</li>
+<li>Terminal 2: isolated gateway (<code>HOME=/tmp/cfreal</code>, config in <code>/tmp/cfreal/.ocdemo</code>).</li>
+<li>Terminal 3: <code>node clawfence/arbiter/server.mjs --dir /tmp/clawfence-live --port 8791 --host 0.0.0.0</code>; phone opens <code>http://&lt;mac-lan-ip&gt;:8791</code>.</li>
+<li><code>openclaw config set plugins.entries.clawfence.config.escalation pause</code>; run the task.</li>
+</ul>
+<div class="note"><b>Beats (3 min):</b> 15s problem → 90s live run → 30s proof frame → 20s failure/STOP → 15s upstream ask.<br>
+If the real model is unavailable, say: “the model is scripted for reproducibility; the gateway, hooks, tools, and audit are real.”</div>
+
+<h2>Judge questions</h2>
+<ul>
+<li class="q">Isn't this auto mode? — Auto reviews individual exec calls; ClawFence carries task scope across files, egress, messages, MCP.</li>
+<li class="q">LLM judging LLM? — The adjudicator sees only the action tuple + intent card, never tool output or page text.</li>
+<li class="q">Can I fake a grant? — Yes if you can write the queue dir; local-operator trust. Grants are hash-bound and expire.</li>
+<li class="q">Model unavailable? — Rules still block out-of-scope writes, deletes, egress, secrets, privilege.</li>
+<li class="q">Stop a running agent? — STOP calls <code>sessions.abort</code>; verified on active and paused runs.</li>
+</ul>
+
+<h2>If something breaks</h2>
+<div class="note">Kill the demo; show <code>proof/shots/proof-frame.png</code> + <code>arbiter.png</code>; play the 78-second video from the phone; say the number: <b>unsafe 5 → 0, 2 interruptions in 14 actions, p50 ~0.1 ms</b>. Do not debug live for more than 20 seconds.</div>
+
+<h2>Submission text</h2>
+<p>ClawFence — an intent firewall for OpenClaw. Derives a task-scoped intent card, checks every tool call, blocks out-of-scope actions, pauses only the ambiguous ones for a phone/Cardputer arbiter, and records every decision in a hash-chained audit. Real run: unsafe 5 → 0, 2 taps in 14 actions, p50 ~0.1 ms; real Qwen3-4B local run: 5 calls / 0 interruptions, secret read blocked in 52 µs, wildcard delete held 20 s then continued. Repo: github.com/tedinroc/clawfence</p>
+</body></html>

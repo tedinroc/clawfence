@@ -57,9 +57,14 @@ OC_BIN="$(command -v "$OC")"
 node "$ROOT/arbiter/server.mjs" --dir "$QUEUE" --host 0.0.0.0 --port 8791 --openclaw-bin "$OC_BIN" &
 ARB_PID=$!
 sleep 1
+LAN_IP="$(ipconfig getifaddr en0 2>/dev/null || ipconfig getifaddr en1 2>/dev/null || true)"
 echo ""
 echo "  Gateway:  http://127.0.0.1:19002/"
-echo "  Arbiter:  http://127.0.0.1:8791/   (phone: use the Mac's LAN IP)"
+if [ -n "$LAN_IP" ]; then
+  echo "  Phone:    http://$LAN_IP:8791/?simple=1"
+else
+  echo "  Arbiter:  http://127.0.0.1:8791/   (phone: find the Mac's LAN IP manually)"
+fi
 echo ""
 echo "Run the baseline and fence capture in another terminal:"
 echo "  $ROOT/scripts/capture-demo.sh"

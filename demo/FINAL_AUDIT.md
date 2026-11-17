@@ -1,4 +1,4 @@
-# Final artifact audit (2026-11-16 22:55 PT)
+# Final artifact audit (2026-11-16 22:55 PT; re-audited 2026-11-17 09:17 PT)
 
 | artifact | check | result |
 |---|---|---|
@@ -30,3 +30,11 @@
 5. Physical attendance at muShenzhen, Dec 4–5.
 
 Everything else is built, tested, packaged, and linked.
+
+## Round-50 re-audit (2026-11-17T17:17Z)
+
+- repo clean, CI **success**
+- release assets: 5 (deck PDF/PPTX, video, one-pager, runbook)
+- PDF pages: deck 10, one-pager 1, runbook 2
+- video: 78.2 s
+- Luma: Claw Hack 54 spots left; ClawCon 816; no judge/prize details published

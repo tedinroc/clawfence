@@ -32,6 +32,10 @@ Keep one benign step, one ambiguous step (delete/message/egress), and one blocke
 step (secret/out-of-scope) so the arbiter has something to show. Re-run
 `node scripts/eval.mjs` after changing anything in `lib/`.
 
+Verified end-to-end on 2026-11-17: the example scenario ran 3 tools (2 `exec`, 1
+`write`), all `IN_SCOPE`, and returned its final text. See
+`clawfence/proof/judge-scenario.json`.
+
 ## 2. Board (if M5Stack allocates one)
 
 ```bash

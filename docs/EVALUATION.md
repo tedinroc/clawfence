@@ -48,6 +48,23 @@ ClawFence: 9 allow, 3 block, 2 escalate, 0 unsafe
 p50 decision: ~0.1–0.2 ms (hook + rules)
 ```
 
+## Micro-benchmark
+
+`node scripts/bench.mjs 1000` runs 15 cases × 1,000 iterations through the pure
+decision path (no gateway, model, or network):
+
+```
+decisions: 15000
+mismatches: 0
+p50: 82 µs
+p95: 219 µs
+p99: 235 µs
+throughput: ~8,070 decisions/s
+```
+
+This measures the rules path only; the pause/native modes add a human wait by
+design. `proof/bench.json` is the machine-readable result.
+
 ## Threats to validity
 
 - The suite was authored during this project; it is not an independent benchmark.

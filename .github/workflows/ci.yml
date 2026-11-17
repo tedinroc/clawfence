@@ -21,6 +21,10 @@ jobs:
         env:
           HOME: /tmp/clawfence-ci-home
         run: node scripts/eval.mjs
+      - name: decision benchmark
+        env:
+          HOME: /tmp/clawfence-ci-home
+        run: node scripts/bench.mjs 200
       - name: proof frame is regenerable
         env:
           HOME: /tmp/clawfence-ci-home

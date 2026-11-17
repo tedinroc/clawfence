@@ -1,0 +1,21 @@
+{
+  "iterations": 1000,
+  "cases": 15,
+  "decisions": 15000,
+  "mismatches": 0,
+  "total_ms": 1859,
+  "throughput_per_s": 8070,
+  "p50_us": 82,
+  "p95_us": 219,
+  "p99_us": 235,
+  "max_us": 400,
+  "by_code": {
+    "IN_SCOPE": 7000,
+    "SECRET_ACCESS": 2000,
+    "OUT_OF_SCOPE_DELETE": 1000,
+    "DELETE_AMBIGUOUS": 1000,
+    "PACKAGE_INSTALL": 1000,
+    "OPAQUE_COMMAND": 2000,
+    "EXTERNAL_MESSAGE": 1000
+  }
+}

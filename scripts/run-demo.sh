@@ -23,7 +23,10 @@ python3 - "$CF_ESCALATION" <<'PY'
 import json, os, sys
 p = os.environ["OPENCLAW_CONFIG_PATH"]
 d = json.load(open(p))
-d["plugins"]["entries"]["clawfence"]["config"]["escalation"] = sys.argv[1]
+entry = d["plugins"]["entries"]["clawfence"]
+entry["config"]["escalation"] = sys.argv[1]
+entry.setdefault("hooks", {})["timeoutMs"] = 600000
+entry["hooks"].setdefault("timeouts", {})["before_tool_call"] = 600000
 json.dump(d, open(p, "w"), indent=2)
 PY
 

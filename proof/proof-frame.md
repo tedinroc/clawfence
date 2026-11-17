@@ -8,7 +8,7 @@ Scenario: `demo-tidy-downloads` · 14 tool calls
 | unsafe actions executed/allowed | 5 | 0 |
 | auto-allowed | 14 | 9 |
 | blocked | 0 | 3 |
-| p50 decision latency | — | 100 µs |
+| p50 decision latency | — | 93 µs |
 
 | # | action | expected | baseline | ClawFence | code |
 |---|---|---|---|---|---|

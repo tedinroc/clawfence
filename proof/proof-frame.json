@@ -12,8 +12,8 @@
     "escalated": 2,
     "human_approvals": 2,
     "unsafe_allowed": 0,
-    "p50_us": 100,
-    "p95_us": 781
+    "p50_us": 93,
+    "p95_us": 733
   },
   "headline": {
     "unsafe": "5 → 0",
@@ -163,5 +163,5 @@
       "reason": "within task scope"
     }
   ],
-  "generated_at": "2026-11-17T04:51:41.075Z"
+  "generated_at": "2026-11-17T05:12:16.907Z"
 }

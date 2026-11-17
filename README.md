@@ -209,7 +209,7 @@ malicious plugin can bypass it.
 ## Links
 
 - Repo: <https://github.com/tedinroc/clawfence>
-- 70-second demo: [`demo/clawfence-demo.mp4`](demo/clawfence-demo.mp4)
+- 73-second demo: [`demo/clawfence-demo.mp4`](demo/clawfence-demo.mp4)
 - Pitch deck: [`demo/clawfence-deck.pptx`](demo/clawfence-deck.pptx)
 
 ## Validation artifacts
@@ -217,7 +217,7 @@ malicious plugin can bypass it.
 - `reports/plugin-inspector-report.md` — OpenClaw Plugin Inspector: **PASS**, 0 warnings.
 - `proof/proof-frame.md` — the before/after table.
 - `proof/shots/arbiter.png` — the arbiter UI with two pending cards.
-- `submission/clawfence-demo.mp4` (outside this repo) — 70-second narrated demo.
+- `submission/clawfence-demo.mp4` (outside this repo) — 73-second narrated demo.
 - `submission/clawfence-deck.pptx` (outside this repo) — 10-slide pitch.
 
 ## License

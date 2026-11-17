@@ -3,11 +3,19 @@
 # Run in a terminal; Ctrl-C stops all three.
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+USER_HOME="${HOME}"
 DEMO_HOME="${CF_DEMO_HOME:-/tmp/cfhome}"
 export HOME="$DEMO_HOME"
 export OPENCLAW_STATE_DIR="$DEMO_HOME/.ocdemo"
 export OPENCLAW_CONFIG_PATH="$DEMO_HOME/.ocdemo/openclaw.json"
 QUEUE="${CF_QUEUE_DIR:-/tmp/clawfence-demo}"
+RUNTIME="${CLAWFENCE_RUNTIME:-$USER_HOME/clawfence-runtime}"
+if [ -x "$RUNTIME/node/bin/node" ]; then
+  export PATH="$RUNTIME/node/bin:$PATH"
+fi
+if [ -z "${OPENCLAW_BIN:-}" ] && [ -x "$RUNTIME/ocapp/node_modules/.bin/openclaw" ]; then
+  OPENCLAW_BIN="$RUNTIME/ocapp/node_modules/.bin/openclaw"
+fi
 OC="${OPENCLAW_BIN:-openclaw}"
 
 if ! command -v "$OC" >/dev/null 2>&1; then

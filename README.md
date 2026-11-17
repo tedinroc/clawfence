@@ -93,6 +93,10 @@ into the adjudicator.
 
 Requirements: OpenClaw `2026.11.4+`, Node `24.22.1+` or `26.12.1+`.
 
+The demo Mac has a persistent runtime at `~/clawfence-runtime/` (Node 24,
+OpenClaw, and the MLX venv), so `scripts/run-demo.sh` works after a reboot;
+`/tmp` installs do not.
+
 ```bash
 # 1. Link the plugin (development)
 openclaw plugins install -l /path/to/clawfence --force

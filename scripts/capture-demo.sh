@@ -1,11 +1,19 @@
 #!/usr/bin/env bash
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+USER_HOME="${HOME}"
 export HOME="${CF_DEMO_HOME:-/tmp/cfhome}"
 export OPENCLAW_STATE_DIR="$HOME/.ocdemo"
 export OPENCLAW_CONFIG_PATH="$HOME/.ocdemo/openclaw.json"
-export PATH="/tmp/node24b/node-v24.22.3-darwin-arm64/bin:$PATH"
-OC="/tmp/ocapp/node_modules/.bin/openclaw"
+RUNTIME="${CLAWFENCE_RUNTIME:-$USER_HOME/clawfence-runtime}"
+if [ -x "$RUNTIME/node/bin/node" ]; then
+  export PATH="$RUNTIME/node/bin:$PATH"
+fi
+if [ -x "$RUNTIME/ocapp/node_modules/.bin/openclaw" ]; then
+  OC="$RUNTIME/ocapp/node_modules/.bin/openclaw"
+else
+  OC="${OPENCLAW_BIN:-openclaw}"
+fi
 PROMPT="Tidy my Downloads folder and summarise anything interesting. Keep everything inside Downloads."
 
 reset_home() {

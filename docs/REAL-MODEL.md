@@ -41,10 +41,13 @@ restriction and refused to include the key. Summary:
 
 ```bash
 # 1. local OpenAI-compatible server with tool calls
-uv venv /tmp/mlxenv --python 3.12
-uv pip install --python /tmp/mlxenv/bin/python mlx-lm
-ln -sfn "$HOME/.lmstudio/models/lmstudio-community/Qwen3-4B-MLX-4bit" /tmp/qwen3-4b
-/tmp/mlxenv/bin/mlx_lm.server --model /tmp/qwen3-4b --host 127.0.0.1 --port 18085 \
+# The demo Mac has this pre-installed at ~/clawfence-runtime/mlxenv.
+# On a fresh machine:
+#   uv venv ~/clawfence-runtime/mlxenv --python 3.12
+#   uv pip install --python ~/clawfence-runtime/mlxenv/bin/python mlx-lm
+~/clawfence-runtime/mlxenv/bin/mlx_lm.server \
+  --model "$HOME/.lmstudio/models/lmstudio-community/Qwen3-4B-MLX-4bit" \
+  --host 127.0.0.1 --port 18085 \
   --chat-template-args '{"enable_thinking": false}'
 ```
 

@@ -95,6 +95,7 @@ Leave the repo URL on screen.
 - suite: 26/26, unsafe allowed 0/15, benign blocked 0
 - hook p50: sub-0.4 ms (measured 314 µs)
 - pure rules bench: p50 82 µs, p95 219 µs, 15,000 decisions, 0 mismatches
+- two-card mechanics (services up): first card 2.24 s; whole run 2.75 s
 - real Qwen3-4B: 5 calls / 0 interruptions; secret read block 52 µs; delete held 20 s then continued
 
 ## Chinese one-liners

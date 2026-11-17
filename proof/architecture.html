@@ -1,0 +1,39 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+body{margin:0;background:#0b0b0e;color:#e8e6e3;font-family:'SF Mono',ui-monospace,Menlo,monospace;}
+.wrap{padding:40px 56px;}
+.brand{font-size:13px;letter-spacing:.18em;font-weight:700;margin-bottom:10px}.brand span{color:#ff4d5e}
+h1{font-size:30px;margin:0 0 6px}.sub{color:#8a8794;font-size:13px;margin-bottom:30px}
+.grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+.box{border:1px solid #26262e;background:#141419;border-radius:12px;padding:16px 18px;min-height:132px}
+.box h3{margin:0 0 8px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#e8e6e3}
+.box p{margin:0;color:#8a8794;font-size:11px;line-height:1.6}
+.box .tag{display:inline-block;font-size:9px;color:#ffb020;border:1px solid #ffb02055;border-radius:4px;padding:2px 6px;margin-bottom:8px}
+.box.green .tag{color:#39d98a;border-color:#39d98a55}.box.red .tag{color:#ff4d5e;border-color:#ff4d5e55}
+.flow{margin:18px 0;display:grid;grid-template-columns:1fr 40px 1fr 40px 1fr 40px 1fr;align-items:center;gap:0}
+.step{border:1px solid #26262e;background:#141419;border-radius:10px;padding:14px;text-align:center;font-size:12px}
+.arrow{color:#55525e;text-align:center;font-size:18px}
+.row{margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.note{border-left:3px solid #ff4d5e;padding:8px 12px;color:#8a8794;font-size:11px;line-height:1.6}
+.footer{margin-top:22px;color:#55525e;font-size:10px}
+</style></head><body><div class="wrap">
+<div class="brand">CLAW<span>FENCE</span> // ONE HOOK, ONE CONTRACT</div>
+<h1>Scope before action, not after damage.</h1>
+<div class="sub">Every tool call is checked against the task's intent card before it runs.</div>
+<div class="flow">
+  <div class="step">user task</div><div class="arrow">→</div>
+  <div class="step">intent card<br><span style="color:#8a8794;font-size:10px">paths · domains · effects</span></div><div class="arrow">→</div>
+  <div class="step">before_tool_call<br><span style="color:#8a8794;font-size:10px">action tuple</span></div><div class="arrow">→</div>
+  <div class="step">allow / block / escalate</div>
+</div>
+<div class="grid">
+  <div class="box"><span class="tag">1 · INTENT</span><h3>Task contract</h3><p>Derived from the user's message, conservatively: named paths, domains, recipients, effect classes. Unclear authority stays out.</p></div>
+  <div class="box"><span class="tag">2 · ACTION</span><h3>Typed tuple</h3><p>exec command, patch paths, file writes, URLs, message targets, MCP args. Effects and reversibility are explicit.</p></div>
+  <div class="box green"><span class="tag">3 · DECISION</span><h3>Rules first</h3><p>Out-of-scope writes/deletes, unapproved egress, secrets, privilege: blocked with a code and a reason. Optional decision model only for ambiguity.</p></div>
+</div>
+<div class="row">
+  <div class="box red"><span class="tag">4 · HUMAN</span><h3>Physical arbiter</h3><p>A phone, tablet or Cardputer gets the action card: task, tool, target, reason. One tap approves or denies. A deny is recorded; an approve is a one-action grant bound to the hash.</p></div>
+  <div class="box"><span class="tag">5 · EVIDENCE</span><h3>Hash-chained audit</h3><p>intent hash → action hash → verdict → reason → approver. <code>clawfence verify</code> recomputes the chain. This is the receipt for an autonomous run.</p></div>
+</div>
+<div class="note" style="margin-top:18px">The adjudicator never sees tool output or page text. Injected content has no channel into the decision.</div>
+<div class="footer">OpenClaw 2026.11.4 · plugin before_tool_call · api.runtime.decisions.evaluate · ClawHub-installable</div>
+</div></body></html>

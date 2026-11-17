@@ -1,0 +1,77 @@
+{
+  "id": "clawfence",
+  "name": "ClawFence",
+  "description": "Intent firewall: every tool call is checked against the task's scope. Expected actions run; out-of-scope actions are blocked; only ambiguous actions reach a human, on a physical arbiter.",
+  "version": "0.1.0",
+  "categories": ["security"],
+  "activation": {
+    "onStartup": true,
+    "onCommands": ["clawfence"],
+    "onConfigPaths": ["plugins.entries.clawfence.config"]
+  },
+  "commandAliases": [
+    { "name": "clawfence", "cliCommand": "clawfence" }
+  ],
+  "cliCommands": [
+    {
+      "name": "clawfence",
+      "description": "Inspect and control the ClawFence intent firewall",
+      "hasSubcommands": true
+    }
+  ],
+  "contracts": {},
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "mode": {
+        "type": "string",
+        "enum": ["observe", "enforce"],
+        "default": "enforce",
+        "description": "observe logs verdicts only; enforce blocks and escalates."
+      },
+      "workspaceOnlyReads": {
+        "type": "boolean",
+        "default": false,
+        "description": "When true, reads outside the task scope are escalated instead of allowed."
+      },
+      "semantic": {
+        "type": "boolean",
+        "default": false,
+        "description": "Use the configured decision model for ambiguous actions when available."
+      },
+      "escalation": {
+        "type": "string",
+        "enum": ["queue", "native", "off"],
+        "default": "queue",
+        "description": "queue: block + physical/web arbiter grant; native: OpenClaw approval card; off: block only."
+      },
+      "approvalTtlMs": {
+        "type": "integer",
+        "default": 120000
+      },
+      "grantTtlMs": {
+        "type": "integer",
+        "default": 600000
+      },
+      "queueDir": {
+        "type": "string",
+        "default": "",
+        "description": "Directory for pending requests and grants. Empty uses <stateDir>/clawfence."
+      },
+      "auditPath": {
+        "type": "string",
+        "default": "",
+        "description": "JSONL audit path. Empty uses <stateDir>/clawfence/audit.jsonl."
+      },
+      "maxReadPathScan": {
+        "type": "integer",
+        "default": 4096
+      }
+    }
+  },
+  "uiHints": {
+    "mode": { "label": "Mode", "help": "Observe only or enforce." },
+    "escalation": { "label": "Escalation", "help": "How ambiguous actions reach a human." }
+  }
+}

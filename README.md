@@ -193,6 +193,12 @@ malicious plugin can bypass it.
 - **Physical tail:** the arbiter is a phone/desk device, not another chat tab.
 - **Tier-0 honesty:** it says what it is not, which is what security judges ask first.
 
+## Links
+
+- Repo: <https://github.com/tedinroc/clawfence>
+- 68-second demo: [`demo/clawfence-demo.mp4`](demo/clawfence-demo.mp4)
+- Pitch deck: [`demo/clawfence-deck.pptx`](demo/clawfence-deck.pptx)
+
 ## Validation artifacts
 
 - `reports/plugin-inspector-report.md` — OpenClaw Plugin Inspector: **PASS**, 0 warnings.

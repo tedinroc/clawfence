@@ -13,7 +13,9 @@ ul{margin:1mm 0 2mm 4.5mm;padding:0}li{margin:0.8mm 0}
 .proof{border:1px solid #ddd;border-radius:3mm;padding:3mm;margin-top:2mm}
 .proof img{width:100%;border-radius:2mm}
 code{font-family:Menlo,monospace;font-size:8.5pt;background:#f3f3f3;padding:0 1mm}
-.foot{margin-top:5mm;border-top:1px solid #ddd;padding-top:2mm;font-size:8pt;color:#555;display:flex;justify-content:space-between}
+.foot{margin-top:5mm;border-top:1px solid #ddd;padding-top:2mm;font-size:8pt;color:#555;display:flex;justify-content:space-between;padding-right:26mm}
+.qr{position:absolute;right:13mm;bottom:10mm;text-align:center;font-size:7pt;color:#555}
+.qr img{width:20mm;height:20mm;display:block;margin:0 auto 1mm}
 .small{font-size:8.5pt;color:#555}
 </style></head><body>
 <div class="k">CLAW HACK SHENZHEN 2026 · DEC 4–5 · SOFTWARE TRACK + HARDWARE TAIL</div>
@@ -66,5 +68,6 @@ code{font-family:Menlo,monospace;font-size:8.5pt;background:#f3f3f3;padding:0 1m
 <p><code>openclaw plugins install -l ./clawfence --force</code> · <code>node clawfence/arbiter/server.mjs --dir /tmp/clawfence --port 8790</code></p>
 <p class="small">Pause mode: <code>openclaw config set plugins.entries.clawfence.config.escalation pause</code>; hook budget per <code>docs/CONFIG.md</code>.</p>
 
-<div class="foot"><span><b>github.com/tedinroc/clawfence</b> · MIT · built solo</span><span>ClawFence — intent card + <code>before_tool_call</code> + physical arbiter</span></div>
+<div class="foot"><span><b>github.com/tedinroc/clawfence</b> · MIT · built solo · intent card + <code>before_tool_call</code> + physical arbiter</span></div>
+<div class="qr"><img src="release-qr.png" alt="release QR">repo / release</div>
 </body></html>

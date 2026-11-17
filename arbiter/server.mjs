@@ -281,6 +281,14 @@ const HTML = `<!doctype html>
     button{padding:9px 12px;font-size:11px}
     .feed .entry{grid-template-columns:48px 58px 1fr}
     .entry .m{font-size:10px}
+    /* simple mode must stay readable at 390px */
+    body.simple main{padding:12px 12px 24px}
+    body.simple .card{padding:14px}
+    body.simple .card .title{font-size:20px;line-height:1.15}
+    body.simple .card .mono,body.simple .card .task{font-size:12.5px}
+    body.simple .row{flex-wrap:wrap;gap:8px;margin-top:12px}
+    body.simple button{flex:1 1 30%;padding:12px 10px;font-size:13px;white-space:normal}
+    body.simple .status span:first-child{display:none}
   }
 </style>
 </head>

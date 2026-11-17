@@ -17,6 +17,8 @@ when an action is genuinely ambiguous — on a physical arbiter, with one tap.
 
 ![Stranger mode](proof/shots/arbiter-simple.png)
 
+![Phone view, 390px](proof/shots/arbiter-phone.png)
+
 > Built for **Claw Hack Shenzhen**, Dec 4–5 2026 (OpenClaw's first China hackathon).
 > Software track, with a partner-hardware tail.
 

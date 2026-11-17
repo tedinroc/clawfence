@@ -86,6 +86,27 @@ cancellation window before paying.
   bring a **Type A/C adapter** and a power strip.
 - Weather early December: roughly 15–22 °C; layers + light rain jacket.
 
+## If the travel laptop is a different Mac
+
+The demo runtime (Node 24 + OpenClaw + MLX) is not installed system-wide. Copy
+it before travel:
+
+```bash
+./scripts/pack-runtime.sh --check
+./scripts/pack-runtime.sh /Volumes/USB/clawfence-runtime.tar.gz
+```
+
+On the travel Mac:
+
+```bash
+tar -xzf clawfence-runtime.tar.gz -C "$HOME"
+export PATH="$HOME/clawfence-runtime/node/bin:$PATH"
+cd /path/to/clawfence && ./scripts/preflight.sh
+```
+
+Scripted demo needs only Node/OpenClaw; the Qwen model is optional (real model
+demo). Do **not** rely on venue Wi‑Fi for a 600 MB install.
+
 ## Packing list
 
 - Laptop + charger; phone + charger; **phone stand**; USB-C cables; power bank.

@@ -1,0 +1,73 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//ClawFence//Hackathon//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Claw Hack Shenzhen 2026
+X-WR-TIMEZONE:Asia/Shanghai
+BEGIN:VTIMEZONE
+TZID:Asia/Shanghai
+BEGIN:STANDARD
+DTSTART:19700101T000000
+TZOFFSETFROM:+0800
+TZOFFSETTO:+0800
+TZNAME:CST
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:clawhack-day1@clawfence.local
+DTSTAMP:20261117T160000Z
+DTSTART;TZID=Asia/Shanghai:20261204T100000
+DTEND;TZID=Asia/Shanghai:20261204T220000
+SUMMARY:Claw Hack Day 1 — workshops + Claw Cafe
+LOCATION:muShenzhen · OCT-LOFT, Nanshan, Shenzhen
+DESCRIPTION:10:00 OpenClaw/M5Stack/Seeed workshops; 13:00 Claw Cafe (Tencent) opens; 18:00 Open Mic.
+BEGIN:VALARM
+TRIGGER:-PT12H
+ACTION:DISPLAY
+DESCRIPTION:Claw Hack Day 1 tomorrow
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:clawhack-submit@clawfence.local
+DTSTAMP:20261117T160000Z
+DTSTART;TZID=Asia/Shanghai:20261205T130000
+DTEND;TZID=Asia/Shanghai:20261205T163000
+SUMMARY:ClawFence — feature freeze, record fallback, submit
+LOCATION:muShenzhen · OCT-LOFT, Nanshan, Shenzhen
+DESCRIPTION:13:00 freeze; 14:00 record 90s fallback; 15:00 submit repo + video + demo text; 16:00 deadline.
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Freeze + submit in 2 hours
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:clawhack-winners@clawfence.local
+DTSTAMP:20261117T160000Z
+DTSTART;TZID=Asia/Shanghai:20261205T170000
+DTEND;TZID=Asia/Shanghai:20261205T173000
+SUMMARY:Claw Hack winners announced
+LOCATION:muShenzhen · OCT-LOFT, Nanshan, Shenzhen
+DESCRIPTION:Winners 17:00–17:30; social 17:30–18:30.
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Winners in 30 minutes
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:clawcon@clawfence.local
+DTSTAMP:20261117T160000Z
+DTSTART;TZID=Asia/Shanghai:20261206T123000
+DTEND;TZID=Asia/Shanghai:20261206T180000
+SUMMARY:ClawCon Shenzhen — demo day
+LOCATION:muShenzhen · OCT-LOFT, Nanshan, Shenzhen
+DESCRIPTION:Main stage / industry stage / marketplace + clinic. Bring laptop and one-pager.
+BEGIN:VALARM
+TRIGGER:-PT12H
+ACTION:DISPLAY
+DESCRIPTION:ClawCon tomorrow
+END:VALARM
+END:VEVENT
+END:VCALENDAR

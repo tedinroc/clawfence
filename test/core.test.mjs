@@ -102,6 +102,21 @@ test("queue: approve creates a one-action grant", async () => {
   assert.equal(r2.ok, false);
 });
 
+test("queue: pause waits for approve and deny", async () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "cf-pause-"));
+  const q = createQueue(dir);
+  const a1 = await q.createPending({ sessionKey: "s", toolName: "exec", params: { command: "rm -rf ~/Downloads/Photos" }, action: extractAction("exec", { command: "rm -rf ~/Downloads/Photos" }, { baseDir: workspace }), intent: deriveIntent("Clean Downloads", { baseDir: workspace, workspace }), verdict: { verdict: "escalate", reason: "test", code: "TEST" }, ttlMs: 5000 });
+  const approve = q.resolvePending(a1.id, "allow-once", "test");
+  const waited = await q.waitForResolution(a1.id, 5000);
+  await approve;
+  assert.equal(waited.status, "approved");
+  const a2 = await q.createPending({ sessionKey: "s", toolName: "exec", params: { command: "rm -rf ~/Downloads/Photos" }, action: extractAction("exec", { command: "rm -rf ~/Downloads/Photos" }, { baseDir: workspace }), intent: deriveIntent("Clean Downloads", { baseDir: workspace, workspace }), verdict: { verdict: "escalate", reason: "test", code: "TEST" }, ttlMs: 5000 });
+  const deny = q.resolvePending(a2.id, "deny", "test");
+  const waited2 = await q.waitForResolution(a2.id, 5000);
+  await deny;
+  assert.equal(waited2.status, "denied");
+});
+
 test("queue: deny creates a denial that blocks a retry", async () => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), "cf-deny-"));
   const q = createQueue(dir);

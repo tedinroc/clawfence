@@ -13,13 +13,16 @@
 
 | hotel | distance / note | rough price |
 |---|---|---|
-| **GLEETOUR HOTEL SHENZHEN OCT-LOFT** (深圳华侨城创意文化园嘉途酒店) | inside OCT-LOFT B1, <100 m to the park; opened 2025; 9.3 rating; gym/laundry | ~TWD 2,600+/night (check Dec dates) |
+| **GLEETOUR HOTEL SHENZHEN OCT-LOFT** (深圳华侨城创意文化园嘉途酒店) | inside OCT-LOFT B1, <100 m; opened 2025; 147 rooms; 9.3 rating; gym/laundry; check-in 14:00 / out 12:00; no deposit; 24/7 desk; +86-755-61555555 | ~TWD 2,600+/night (Dec dynamic; confirm by phone) |
 | **Cityinn Oct Loft** (城市客栈创意园店) | ~0.1 km; simpler/budget; 7.9 rating | lower |
 | **Hotel Indigo Shenzhen OCT** (IHG) | ~0.3 km; full-service | higher |
 
 Recommendation: book **GLEETOUR** (or Cityinn as budget fallback) for **Dec 3–6**
 (3 nights; checkout Dec 7 if returning that day). The venue is inside the park;
-the exact room/check-in details come from the Luma approval email.
+the exact room/check-in details come from the Luma approval email. Trip.com
+showed rates only after a dynamic room search; **call the hotel** at
++86-755-61555555 to confirm Dec 3–6 availability, the actual rate, and the
+cancellation window before paying.
 
 - Trip.com: <https://tw.trip.com/hotels/detail/?cityEnName=Shenzhen&cityId=30&hotelId=127061379>
 - Nearby list: <https://www.hotels-in-shenzhen.com/en/near-oct-1660466/>

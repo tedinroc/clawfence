@@ -11,6 +11,8 @@ when an action is genuinely ambiguous — on a physical arbiter, with one tap.
 
 ![ClawFence arbiter](proof/shots/arbiter.png)
 
+![Real local model proof](proof/shots/real-model-card.png)
+
 > Built for **Claw Hack Shenzhen**, Dec 4–5 2026 (OpenClaw's first China hackathon).
 > Software track, with a partner-hardware tail.
 
@@ -165,6 +167,11 @@ node scripts/proof.mjs
 ```
 
 `proof/proof-frame.md` is the generated before/after frame.
+
+**Real model:** Qwen3-4B-MLX ran locally with the real gateway and tool
+pipeline. A benign task used 5 calls with 0 interruptions (p50 55 µs); a
+secret-read request was blocked with `SECRET_ACCESS` in 52 µs and the model
+reported the restriction. See [`docs/REAL-MODEL.md`](docs/REAL-MODEL.md).
 
 **Honesty:** the 20-scenario suite was authored during this project, and the
 scripted model is a deterministic driver, not a model-quality benchmark. ClawFence

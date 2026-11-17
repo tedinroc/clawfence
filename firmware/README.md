@@ -46,3 +46,16 @@ Global variables use 50276 bytes (15%) of dynamic memory, leaving 277404 bytes f
 The compiled application image is at `firmware/bin/clawfence_arbiter_cores3.bin`
 (1.1 MB). It is **compile-verified, not hardware-verified**; flash with
 `arduino-cli upload -p <port> --fqbn esp32:esp32:m5stack_cores3`.
+
+## Cardputer-Adv
+
+`arduino/clawfence_arbiter_cardputer/` — same HTTP/JSON half, keyboard mapping
+(Y/Enter approve, N/Del deny), Cardputer display. Compiled with arduino-cli,
+ESP32 core 3.3.12, M5Cardputer 1.1.1, ArduinoJson 7.4.3:
+
+```
+Sketch uses 1180563 bytes (90%) of program storage space.
+Global variables use 50904 bytes (15%) of dynamic memory.
+```
+
+Prebuilt image: `firmware/bin/clawfence_arbiter_cardputer.bin`.

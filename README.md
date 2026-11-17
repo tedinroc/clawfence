@@ -173,7 +173,7 @@ pipeline. A benign task used 5 calls with 0 interruptions (p50 55 µs); a
 secret-read request was blocked with `SECRET_ACCESS` in 52 µs and the model
 reported the restriction. See [`docs/REAL-MODEL.md`](docs/REAL-MODEL.md).
 
-**Honesty:** the 20-scenario suite was authored during this project, and the
+**Honesty:** the 24-scenario suite was authored during this project, and the
 scripted model is a deterministic driver, not a model-quality benchmark. ClawFence
 is a **tier-0 intent filter**, not a security boundary; a compromised host or a
 malicious plugin can bypass it.

@@ -150,4 +150,3 @@ Reports written: json=/path/to/clawfence/reports/plugin-inspector-report.json, m
 }
 p50 314 µs · p95 749 µs · wrote proof/proof-frame.{json,md}
 
-== audit json ==

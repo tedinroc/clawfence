@@ -387,8 +387,9 @@ export default definePluginEntry({
         console.log(JSON.stringify(r, null, 2));
       });
 
-      cmd.command("audit").description("Print the audit trail").option("--limit <n>", "entries", "40").action(async (opts) => {
+      cmd.command("audit").description("Print the audit trail").option("--limit <n>", "entries", "40").option("--json", "machine output", false).action(async (opts) => {
         const entries = await audit.read(Number(opts.limit) || 40);
+        if (opts.json) { console.log(JSON.stringify(entries, null, 2)); return; }
         for (const e of entries) {
           const label = e.code || e.type;
           console.log(`${e.ts}  ${label}  ${e.tool || ""}  ${e.verdict || ""}  ${truncate(e.reason || e.summary || e.goal || "", 90)}`);

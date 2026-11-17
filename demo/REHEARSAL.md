@@ -19,6 +19,51 @@ Outcomes:
 
 Machine-readable: `clawfence/proof/rehearsal.json`.
 
+## One-command dry run
+
+`scripts/run-demo.sh` (persistent runtime, pause mode, `?simple=1`):
+
+- gateway HTTP 200, arbiter health OK, stranger mode present
+- card 1: `DELETE_AMBIGUOUS` → approve → call continued
+- card 2: `EXTERNAL_MESSAGE` → deny → `pause-blocked cancelled`
+- pending after: 0
+
+Machine-readable: `clawfence/proof/dry-run.json`.
+
+## Travel-path portability
+
+Copied the repo to `/tmp/clawfence-travel` and ran with
+`CF_DEMO_HOME=/tmp/cf-travel CF_QUEUE_DIR=/tmp/cfq-travel ./scripts/run-demo.sh`:
+
+- preflight PASS (one expected warning: the shared `/tmp/cfhome` config still
+  pointed at the original path)
+- `run-demo.sh` rewrote `plugins.load.paths` to `/tmp/clawfence-travel`
+- provider baseUrl was rewritten to `http://127.0.0.1:18084/v1`
+- gateway, scripted model, and arbiter started; phone URL + QR printed
+
+## Phone layout check
+
+Rendered at a true 390 × 844 viewport (Puppeteer + system Chrome):
+`proof/shots/arbiter-phone.png`. Card, task text, three buttons, and STOP all fit;
+the earlier "clipped" screenshots were Chrome headless's 500 px minimum window,
+not the CSS.
+
+## Clean-state one-command run
+
+From a machine with no `/tmp/cfhome`:
+
+```
+CF_DEMO_HOME=/tmp/cfclean CF_QUEUE_DIR=/tmp/cfq-clean ./scripts/run-demo.sh
+```
+
+- setup auto-created the config from zero
+- gateway reached HTTP 200
+- arbiter started on `0.0.0.0:8791` (and warned that a LAN demo without
+  `--token` lets anyone on the network approve)
+- scripted model and gateway were stopped after the startup check
+
+Machine-readable: `clawfence/proof/clean-run.json`.
+
 Cold-start note: this run had the model and gateway warm. A cold model load adds
 seconds on this Mac, not minutes; warm the model once before the live demo
 (send a trivial request) and start the gateway during the previous talk.

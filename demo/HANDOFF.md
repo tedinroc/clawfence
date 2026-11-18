@@ -49,7 +49,8 @@ Then: **Nov 21–24** run `preflight.sh` + phone QR demo on the travel laptop;
 | `APPLICATION.md` | submitted application answers |
 | `FINAL_AUDIT.md` | artifact/CI/link audit |
 | `clawfence.ics` | event calendar with alarms |
-| `clawfence-one-pager.pdf` | judge handout, release QR |
+| `clawfence-one-pager.pdf` | judge handout, release QR (EN) |
+| `clawfence-one-pager-zh.pdf` | 中文 A4 handout |
 | `clawfence-poster.pdf` | A3 table poster (print or show on laptop) |
 | `clawfence-deck.pdf` / `.pptx` | 10-slide pitch deck |
 | `clawfence-demo.mp4` | 78-second demo |

@@ -1,0 +1,57 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@page { size: A4; margin: 13mm 14mm; }
+body{font-family:"PingFang SC","Noto Sans CJK SC",-apple-system,sans-serif;color:#111;font-size:10pt;line-height:1.55;margin:0}
+.k{font-size:8px;letter-spacing:.18em;color:#d22;font-weight:700}
+h1{font-size:27pt;margin:2mm 0 1mm;letter-spacing:-.02em}
+.tag{font-size:12pt;color:#444;margin-bottom:5mm}
+h2{font-size:10.5pt;margin:4mm 0 1.5mm;border-bottom:1px solid #ddd;padding-bottom:1mm;letter-spacing:.06em}
+ul{margin:1mm 0 2mm 5mm;padding:0}li{margin:0.8mm 0}
+code{font-family:Menlo,monospace;font-size:8.5pt;background:#f3f3f3;padding:0 1mm}
+.nums{display:flex;gap:4mm;margin:3mm 0}
+.num{flex:1;border:1px solid #ddd;border-radius:2mm;padding:3mm}
+.big{font-size:22pt;font-weight:800;line-height:1}
+.lab{font-size:7.5pt;color:#666;margin-top:1mm}
+.panel{border:1px solid #ddd;border-radius:2mm;padding:3mm;margin-top:2mm}
+.qr{position:absolute;right:14mm;bottom:12mm;text-align:center;font-size:7pt;color:#555}
+.qr img{width:19mm;height:19mm;display:block;margin:0 auto 1mm}
+.foot{position:absolute;left:14mm;bottom:12mm;font-size:8pt;color:#555}
+</style></head><body>
+<div class="k">CLAW HACK SHENZHEN 2026 · OPENCLAW 意圖防火牆</div>
+<h1>ClawFence</h1>
+<div class="tag">少打斷，零意外。把「這個任務到底授權了什麼」變成可機器檢查的一張卡。</div>
+
+<h2>問題</h2>
+<p>OpenClaw 什麼都能做，這就是問題。審批太累，大家關掉；然後一個被注入指令的檔案就能刪掉 Documents、讀 SSH key、或把資料 POST 出去。缺的不是另一個「同意」按鈕，而是知道任務授權了什麼。</p>
+
+<h2>做法</h2>
+<ul>
+<li><b>意圖卡</b>：從任務推導具名路徑、網域、收件人、效果類別、花費上限。</li>
+<li><b>動作 tuple</b>：每個工具呼叫轉成讀／寫／刪／外傳／收件人／提權。</li>
+<li><b>規則優先</b>：越界寫入、刪除、外傳、secret、提權直接擋；只有真正模糊的才升級。</li>
+<li><b>暫停／仲裁</b>：掛住呼叫；approve 續跑、deny 封鎖、STOP 用 <code>sessions.abort</code> 中止整個 run。</li>
+<li><b>Hash chain</b>：意圖 → 動作 → 判定 → 理由 → 批准者。</li>
+</ul>
+<p style="font-size:9pt;color:#555">裁決器只看動作 tuple 與意圖卡，看不到工具輸出或網頁內容；注入內容沒有通道。</p>
+
+<div class="nums">
+<div class="num"><div class="big">5 → 0</div><div class="lab">不安全動作</div></div>
+<div class="num"><div class="big">2</div><div class="lab">14 次呼叫只打斷 2 次</div></div>
+<div class="num"><div class="big">&lt;0.4 ms</div><div class="lab">hook p50</div></div>
+</div>
+
+<h2>證據</h2>
+<ul>
+<li>26 個情境（11 正常 / 15 對抗、41 calls）：<b>26/26</b>，不安全放行 <b>0/15</b>，正常誤擋 <b>0</b>。</li>
+<li>真實 gateway：14 calls、<b>9 allow / 3 block / 2 escalate</b>、不安全 <b>5 → 0</b>。</li>
+<li>真本機 Qwen3-4B：SSH key 讀取 <b>52 µs</b> 封鎖；wildcard 刪除暫停 <b>20 秒</b>、批准後續跑。</li>
+<li>18/18 單元測試、Plugin Inspector PASS、15,000 次決策 0 mismatches、two-card flow <b>2.75 秒</b>。</li>
+</ul>
+
+<h2>試用</h2>
+<p><code>openclaw plugins install -l ./clawfence --force --accept-capabilities</code><br>
+<code>./scripts/run-demo.sh</code>；手機掃描 QR 進入 <code>?simple=1</code> 仲裁器。</p>
+<div class="panel"><b>現場：</b>ClawFence 是 tier-0 的意圖過濾器，不是 kernel sandbox；local-operator 信任邊界仍存在。這是一個 hook、可從 ClawHub 安裝。</div>
+
+<div class="foot"><b>github.com/tedinroc/clawfence</b> · MIT · built solo</div>
+<div class="qr"><img src="release-qr.png" alt="release QR">repo / release</div>
+</body></html>

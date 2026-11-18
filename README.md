@@ -120,6 +120,8 @@ node arbiter/server.mjs --dir /tmp/clawfence --port 8790
 ```
 
 `run-demo.sh` prints a **phone URL** and a QR code (`scripts/show-qr.sh`).
+Between Claw Cafe visitors, restore the poisoned Downloads folder with
+`./scripts/reset-demo.sh` (the audit chain is kept).
 For a real local Qwen3-4B instead of the scripted model, use
 `scripts/run-real-demo.sh` (persistent config; measured 127 s to first card on
 this Mac, so keep the scripted demo for the timed slot).

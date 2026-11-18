@@ -42,6 +42,14 @@ Everything else is built, tested, packaged, and linked.
 
 ## Round-50 re-audit (2026-11-17T17:17Z)
 
+## Numeric consistency (2026-11-17T17:02Z)
+
+- README, HANDOFF, EN/ZH one-pagers, poster, release notes all state **20/20**
+  tests, **26/26** scenarios, **0/15** unsafe, **0/11** benign blocked,
+  **<0.4 ms** hook p50.
+- No `18/18`, `19/19`, `sub-0.3`, `0/13`, or `24/24` remains in the submission
+  or README files.
+
 - repo clean, CI **success**
 - release assets: 5 (deck PDF/PPTX, video, one-pager, runbook)
 - PDF pages: deck 10, one-pager 1, runbook 2

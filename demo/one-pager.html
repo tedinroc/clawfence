@@ -60,7 +60,7 @@ code{font-family:Menlo,monospace;font-size:8.5pt;background:#f3f3f3;padding:0 1m
 <li>Real Qwen3-4B: benign 5 calls / 0 interruptions; secret read blocked 52 µs; wildcard delete held 20 s then continued.</li>
 <li>Plugin Inspector: <b>PASS</b>, 0 warnings. Unit tests: <b>19/19</b>.</li>
 <li>15,000-decision micro-benchmark: p50 <b>82 µs</b>, p95 <b>219 µs</b>, ~8,000 decisions/s, 0 mismatches.</li>
-<li>Panic stop verified on active and paused runs via <code>sessions.abort</code>.</li>
+<li>Panic stop verified on active and paused runs via <code>sessions.abort</code>; recorded as a <code>stop</code> event in the hash chain.</li>
 <li>Local-first: rules + optional local model; the adjudicator sees only the tuple and card, so nothing leaves the box.</li>
 <li>Dress rehearsal on local Qwen3-4B: pause card <b>6.4 s</b>, approve→done <b>2.1 s</b>, secret block <b>1.55 s</b>.</li>
 <li>Scripted two-card flow: first card <b>2.24 s</b>, whole run <b>2.75 s</b>.</li>

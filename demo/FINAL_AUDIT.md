@@ -19,6 +19,7 @@
 | Fresh-profile install | clone → `plugins install -l --accept-capabilities` | **PASS**, `clawfence status` works |
 | Submission ZIP | unzip → fresh demo home → run-demo | **PASS**, phone URL + QR |
 | Portable runtime | pack script | **352 MB tarball**, tar list OK |
+| Runtime extraction | fresh `/tmp/travelhome` | **PASS**, Node 24.22.3 / OpenClaw 2026.11.4 |
 | Reset demo | reset → two-card run → verify | **PASS**, 102 entries, 0 errors |
 | Judge task | 5-step scenario → approve delete / deny message | **PASS**, pending 0 |
 | Phone UI tap | 390px touch → deny | **PASS**, request resolved `denied` |

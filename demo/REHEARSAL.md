@@ -30,6 +30,17 @@ Machine-readable: `clawfence/proof/rehearsal.json`.
 
 Machine-readable: `clawfence/proof/dry-run.json`.
 
+## Portable runtime extraction
+
+Packed `~/clawfence-runtime` to **352 MB**, extracted it into a fresh
+`/tmp/travelhome`, and ran preflight with `CLAWFENCE_RUNTIME` pointing there:
+
+- Node **v24.22.3**
+- OpenClaw **2026.11.4**
+- preflight **PASS** (one expected warning: fresh demo config)
+
+This is the exact path for a different travel Mac.
+
 ## Runtime pack test
 
 `./scripts/pack-runtime.sh /tmp/clawfence-runtime-test.tar.gz` produced a

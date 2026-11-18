@@ -1,0 +1,62 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@page { size: 297mm 420mm; margin: 0; }
+* { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { margin:0; background:#0b0b0e; color:#e8e6e3; font-family:-apple-system,Helvetica,Arial,sans-serif; }
+.page { width:297mm; height:420mm; padding:20mm 20mm; position:relative; overflow:hidden; }
+.kicker { font-size:11pt; letter-spacing:.2em; color:#ff4d5e; font-weight:700; }
+h1 { font-size:64pt; margin:8mm 0 4mm; letter-spacing:-.03em; line-height:.95; }
+.tag { font-size:20pt; color:#b9b5c2; line-height:1.25; }
+.nums { display:flex; gap:6mm; margin-top:16mm; }
+.num { flex:1; border:1px solid #2a2a33; background:#141419; border-radius:5mm; padding:8mm; }
+.big { font-size:44pt; font-weight:800; color:#39d98a; line-height:1; }
+.lab { font-size:10pt; color:#8a8794; margin-top:2mm; text-transform:uppercase; letter-spacing:.12em; }
+.mid { display:flex; gap:10mm; margin-top:14mm; align-items:flex-start; }
+.mid img { width:120mm; border-radius:4mm; border:1px solid #2a2a33; }
+.steps { display:flex; gap:5mm; margin-top:10mm; }
+.step { flex:1; border:1px solid #2a2a33; background:#141419; border-radius:3mm; padding:6mm; }
+.step b { color:#39d98a; font-size:11pt; }
+.step p { margin:2mm 0 0; font-size:9.5pt; color:#b9b5c2; line-height:1.4; }
+.arch { width:150mm; margin-top:10mm; border-radius:4mm; border:1px solid #2a2a33; }
+.copy { font-size:12pt; line-height:1.55; color:#cfcbd6; }
+.copy b { color:#fff; }
+.qr { position:absolute; right:20mm; bottom:20mm; text-align:center; }
+.qr img { width:44mm; height:44mm; display:block; margin:0 auto 2mm; }
+.qr span { font-size:9pt; color:#8a8794; }
+.foot { position:absolute; left:20mm; bottom:20mm; font-size:10pt; color:#55525e; line-height:1.6; }
+</style></head><body>
+<div class="page">
+  <div class="kicker">CLAW HACK SHENZHEN · INTENT FIREWALL FOR OPENCLAW</div>
+  <h1>ClawFence</h1>
+  <div class="tag">Fewer interruptions.<br>Zero surprises.</div>
+
+  <div class="nums">
+    <div class="num"><div class="big">5 → 0</div><div class="lab">unsafe actions</div></div>
+    <div class="num"><div class="big">2</div><div class="lab">human taps in 14 calls</div></div>
+    <div class="num"><div class="big">&lt;0.4 ms</div><div class="lab">p50 rules decision</div></div>
+  </div>
+
+  <div class="mid">
+    <img src="phone-card.png" alt="phone arbiter">
+    <div class="copy">
+      <b>Every tool call is checked against the task's intent.</b><br>
+      Expected actions run silently. Out-of-scope writes, deletes, egress and
+      secrets are blocked with a reason. Only genuine ambiguity is paused — one
+      tap on the phone resumes or blocks the exact call; <b>STOP</b> aborts the run.
+      <br><br>
+      <b>26/26 scenarios</b> · 0/15 unsafe allowed · 0/11 benign blocked ·
+      18/18 tests · Plugin Inspector PASS.<br><br>
+      Real local Qwen3-4B: secret read blocked in <b>52 µs</b>; wildcard delete
+      held <b>20 s</b>, approved, continued.
+    </div>
+  </div>
+
+  <div class="steps">
+    <div class="step"><b>1 · DERIVE</b><p>Task → intent card: named paths, domains, recipients, effects, spend cap.</p></div>
+    <div class="step"><b>2 · CHECK</b><p>Every tool call → action tuple. Rules allow, block with a reason, or pause.</p></div>
+    <div class="step"><b>3 · DECIDE</b><p>One tap resumes or blocks the exact call. STOP aborts the run. Hash-chained.</p></div>
+  </div>
+
+  <img class="arch" src="../clawfence/proof/shots/architecture.png" alt="architecture">
+  <div class="qr"><img src="release-qr.png" alt="release QR"><span>github.com/tedinroc/clawfence<br>repo / release · MIT</span></div>
+</div>
+</body></html>

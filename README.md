@@ -231,6 +231,7 @@ malicious plugin can bypass it.
 - 78-second demo: [`demo/clawfence-demo.mp4`](demo/clawfence-demo.mp4)
 - Pitch deck: [`demo/clawfence-deck.pptx`](demo/clawfence-deck.pptx) · [`demo/clawfence-deck.pdf`](demo/clawfence-deck.pdf)
 - One-page judge handout: [`demo/clawfence-one-pager.pdf`](demo/clawfence-one-pager.pdf)
+- A3 demo-table poster: [`demo/clawfence-poster.pdf`](demo/clawfence-poster.pdf)
 - Printable runbook: [`demo/clawfence-runbook.pdf`](demo/clawfence-runbook.pdf)
 - Calendar: [`demo/clawfence.ics`](demo/clawfence.ics)
 

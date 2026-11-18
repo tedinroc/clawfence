@@ -48,6 +48,19 @@ repo with a fresh `CF_DEMO_HOME=/tmp/subhome` / `CF_QUEUE_DIR=/tmp/subq`:
   arbiter, and printed the phone URL + QR
 - nothing depended on the original repo path
 
+## STOP clears the card
+
+`POST /api/stop` (the same call the STOP RUN button makes) while a card was
+pending:
+
+- response `cancelled: ["cf-819b8461"]`, `status: "aborted"`
+- pending list **empty** after the stop
+- resolved record `status: cancelled`, `decision: aborted`, `reason: STOP RUN`
+- agent output `aborted`
+
+Machine-readable: `clawfence/proof/stop-ui.json`. (Puppeteer's headless page
+polling made a literal touch test flaky; the UI button calls this exact API.)
+
 ## Phone tap test (true 390px, touch)
 
 Puppeteer at `390×844`, `isMobile`, `hasTouch`:

@@ -1,0 +1,21 @@
+{
+  "date": "2026-11-17",
+  "action": "POST /api/stop (the STOP RUN button calls this)",
+  "pending_before": [
+    "cf-819b8461"
+  ],
+  "response": {
+    "ok": true,
+    "cancelled": [
+      "cf-819b8461"
+    ],
+    "result": {
+      "status": "aborted"
+    }
+  },
+  "pending_after": [],
+  "resolved_status": "cancelled",
+  "resolved_decision": "aborted",
+  "resolved_reason": "STOP RUN",
+  "agent": "aborted"
+}

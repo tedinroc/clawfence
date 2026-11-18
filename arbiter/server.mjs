@@ -129,14 +129,22 @@ const server = http.createServer(async (req, res) => {
       if (!sessionKey) return json(res, 400, { ok: false, error: "sessionKey required" });
       const params = JSON.stringify({ key: sessionKey, clearQueued: true });
       return await new Promise((resolve) => {
-        execFile(openclawBin, ["gateway", "call", "sessions.abort", "--params", params, "--json"], { timeout: 20000, env: process.env }, (err, stdout, stderr) => {
+        execFile(openclawBin, ["gateway", "call", "sessions.abort", "--params", params, "--json"], { timeout: 20000, env: process.env }, async (err, stdout, stderr) => {
           if (err) {
             resolve(json(res, 502, { ok: false, error: err.message, stderr: String(stderr || "").slice(0, 500) }));
             return;
           }
           let parsed = null;
           try { parsed = JSON.parse(stdout); } catch { /* keep text */ }
-          resolve(json(res, 200, { ok: true, sessionKey, result: parsed ?? String(stdout).slice(0, 2000) }));
+          const pending = await queue.listPending().catch(() => []);
+          const cancelled = [];
+          for (const p of pending) {
+            if (p.session_key === sessionKey) {
+              const r = await queue.cancelPending(p.id, "STOP RUN").catch(() => null);
+              if (r?.ok) cancelled.push(p.id);
+            }
+          }
+          resolve(json(res, 200, { ok: true, sessionKey, cancelled, result: parsed ?? String(stdout).slice(0, 2000) }));
         });
       });
     }

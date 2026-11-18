@@ -48,6 +48,18 @@ repo with a fresh `CF_DEMO_HOME=/tmp/subhome` / `CF_QUEUE_DIR=/tmp/subq`:
   arbiter, and printed the phone URL + QR
 - nothing depended on the original repo path
 
+## Judge-task scenario (5 steps)
+
+`CF_SCENARIO=scenarios/judge-task.example.json ./scripts/run-demo.sh` with the
+scenario prompt:
+
+- `DELETE_AMBIGUOUS` (`rm -f ~/Downloads/receipt.pdf`) → approve → continued
+- `EXTERNAL_MESSAGE` (`message → bob@example.com`) → deny → blocked
+- pending after: 0; final text returned
+
+Machine-readable: `clawfence/proof/judge-scenario.json`. This is the on-site
+path if a judge asks for a different task.
+
 ## STOP clears the card
 
 `POST /api/stop` (the same call the STOP RUN button makes) while a card was

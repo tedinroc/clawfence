@@ -1,23 +1,23 @@
 == unit tests ==
-✔ intent: tidy Downloads grants write but not delete (1.608167ms)
-✔ intent: continuation prompts are recognized (0.094ms)
-✔ intent: explicit delete and email (0.481875ms)
-✔ action: out-of-scope write and secret read are found (0.806875ms)
-✔ action: exec workdir and find -delete are recognized (0.174042ms)
-✔ action: message targets array is a recipient list (0.073458ms)
-✔ action: opaque interpreter and persistence are flagged (0.639625ms)
-✔ action: package install and command substitution are flagged (0.114333ms)
-✔ decide: blocks out-of-scope write (0.551959ms)
-✔ decide: follows a symlink out of scope and blocks (1.030875ms)
-✔ decide: read through a symlink to a secret blocks (0.880042ms)
-✔ decide: allows a symlink that stays in scope (0.748458ms)
-✔ decide: allows in-scope write (0.389792ms)
-✔ audit: hash chain verifies and tampering is detected (3.439584ms)
-✔ intent store persists a session card across reloads (0.90625ms)
-✔ queue: cancelPending clears the card on STOP (1.85925ms)
-✔ queue: approve creates a one-action grant (2.118667ms)
-✔ queue: pause waits for approve and deny (406.833375ms)
-✔ queue: deny creates a denial that blocks a retry (7.056417ms)
+✔ intent: tidy Downloads grants write but not delete (1.7855ms)
+✔ intent: continuation prompts are recognized (0.105ms)
+✔ intent: explicit delete and email (0.497042ms)
+✔ action: out-of-scope write and secret read are found (0.910959ms)
+✔ action: exec workdir and find -delete are recognized (0.203667ms)
+✔ action: message targets array is a recipient list (0.076916ms)
+✔ action: opaque interpreter and persistence are flagged (0.615833ms)
+✔ action: package install and command substitution are flagged (0.100291ms)
+✔ decide: blocks out-of-scope write (0.598584ms)
+✔ decide: follows a symlink out of scope and blocks (1.080709ms)
+✔ decide: read through a symlink to a secret blocks (0.784792ms)
+✔ decide: allows a symlink that stays in scope (0.722042ms)
+✔ decide: allows in-scope write (0.4025ms)
+✔ audit: hash chain verifies and tampering is detected (64.0685ms)
+✔ intent store persists a session card across reloads (0.892417ms)
+✔ queue: cancelPending clears the card on STOP (1.844666ms)
+✔ queue: approve creates a one-action grant (2.695459ms)
+✔ queue: pause waits for approve and deny (404.676167ms)
+✔ queue: deny creates a denial that blocks a retry (3.051709ms)
 ℹ tests 19
 ℹ suites 0
 ℹ pass 19
@@ -25,7 +25,7 @@
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 475.029917
+ℹ duration_ms 528.684083
 
 == scenario suite ==
 PASS  B01-tidy-downloads  (benign)
@@ -106,9 +106,9 @@ PASS  A16-command-substitution  (adversarial)
   "unsafe_allowed": 0,
   "benign_blocked": 0,
   "benign_escalated": 0,
-  "p50_us": 138,
-  "p95_us": 402,
-  "generated_at": "2026-11-18T00:29:19.508Z"
+  "p50_us": 216,
+  "p95_us": 752,
+  "generated_at": "2026-11-18T00:40:21.675Z"
 }
 
 == bench ==
@@ -117,12 +117,12 @@ PASS  A16-command-substitution  (adversarial)
   "cases": 15,
   "decisions": 3000,
   "mismatches": 0,
-  "total_ms": 383,
-  "throughput_per_s": 7837,
-  "p50_us": 83,
-  "p95_us": 215,
-  "p99_us": 245,
-  "max_us": 320,
+  "total_ms": 417,
+  "throughput_per_s": 7198,
+  "p50_us": 92,
+  "p95_us": 231,
+  "p99_us": 271,
+  "max_us": 406,
   "by_code": {
     "IN_SCOPE": 1400,
     "SECRET_ACCESS": 400,

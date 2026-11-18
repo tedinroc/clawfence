@@ -29,7 +29,9 @@ Schema:
 ```
 
 Keep one benign step, one ambiguous step (delete/message/egress), and one blocked
-step (secret/out-of-scope) so the arbiter has something to show. Re-run
+step (secret/out-of-scope) so the arbiter has something to show. The shipped
+example does list → read → write summary → delete an old receipt (pause) →
+message a stranger (pause/deny). Re-run
 `node scripts/eval.mjs` after changing anything in `lib/`.
 
 Verified end-to-end on 2026-11-17: the example scenario ran 3 tools (2 `exec`, 1

@@ -48,6 +48,18 @@ repo with a fresh `CF_DEMO_HOME=/tmp/subhome` / `CF_QUEUE_DIR=/tmp/subq`:
   arbiter, and printed the phone URL + QR
 - nothing depended on the original repo path
 
+## Concurrent audit writers
+
+Two separate Node processes each appended 40 entries to the same audit file:
+
+```
+{"ok": true, "entries": 80, "errors": []}
+```
+
+The new cross-process lock (`audit.jsonl.lock`) serializes `lastHash()` +
+`appendFile()`, so the plugin and the arbiter cannot interleave a broken chain.
+Machine-readable: `clawfence/proof/audit-concurrent.json`.
+
 ## Judge-task scenario (5 steps)
 
 `CF_SCENARIO=scenarios/judge-task.example.json ./scripts/run-demo.sh` with the

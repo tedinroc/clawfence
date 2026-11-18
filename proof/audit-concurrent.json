@@ -1,0 +1,11 @@
+{
+  "date": "2026-11-17",
+  "writers": 2,
+  "entries_each": 40,
+  "entries_total": 80,
+  "verify": {
+    "ok": true,
+    "errors": []
+  },
+  "note": "Two separate Node processes appended to the same audit log; the file lock serializes the chain."
+}

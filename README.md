@@ -2,6 +2,8 @@
 
 **An intent firewall for OpenClaw — fewer interruptions, zero surprises.**
 
+![CI](https://github.com/tedinroc/clawfence/actions/workflows/ci.yml/badge.svg)
+
 > Hackathon handoff: [`demo/HANDOFF.md`](demo/HANDOFF.md) — status, three user actions, artifact index.
 
 Your agent should not need permission for every step. It also should not be able to

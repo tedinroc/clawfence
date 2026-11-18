@@ -20,6 +20,7 @@
 | Submission ZIP | unzip → fresh demo home → run-demo | **PASS**, phone URL + QR |
 | Portable runtime | pack script | **352 MB tarball**, tar list OK |
 | Reset demo | reset → two-card run → verify | **PASS**, 102 entries, 0 errors |
+| Judge task | 5-step scenario → approve delete / deny message | **PASS**, pending 0 |
 | Phone UI tap | 390px touch → deny | **PASS**, request resolved `denied` |
 | STOP | abort + pending card | **PASS**, cancelled, `status: aborted` |
 | Benchmark | 15,000 decisions | p50 82 µs, p95 219 µs, 0 mismatches |

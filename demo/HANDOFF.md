@@ -21,7 +21,7 @@ Then: **Nov 21–24** run `preflight.sh` + phone QR demo on the travel laptop;
 - OpenClaw plugin: intent card, `before_tool_call` adjudication, pause/approve/
   deny, STOP via `sessions.abort`, hash-chained audit, CLI.
 - **26/26** scenarios, **0/15** unsafe allowed, **0/11** benign blocked;
-  **18/18** unit tests; Plugin Inspector **PASS 0 warnings**; benchmark
+  **20/20** unit tests; Plugin Inspector **PASS 0 warnings**; benchmark
   **p50 82 µs / p95 219 µs**, 0 mismatches.
 - Real local Qwen3-4B: 5 calls / 0 interruptions; secret read block **52 µs**;
   wildcard delete held **20 s**, approved, continued.

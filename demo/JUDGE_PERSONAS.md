@@ -3,7 +3,7 @@
 ## OpenClaw core team (Vincent / maintainers)
 **Cares about:** one-hook fit, upstreamable design, tests, no forked runtime.
 **Say:** "One `before_tool_call` hook; rules own hard blocks; decision model is
-optional and sees only the tuple. 26/26 suite, 18 unit tests, CI green; the
+optional and sees only the tuple. 26/26 suite, 20 unit tests, CI green; the
 intent-card format can be consumed by NemoClaw/OpenShell instead of competing."
 **Show:** `index.js` hook registration, `docs/UPSTREAM.md`, `clawfence verify`.
 **Avoid:** claiming you should merge it into core; ask what shape they'd accept.

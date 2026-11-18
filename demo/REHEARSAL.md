@@ -48,6 +48,17 @@ repo with a fresh `CF_DEMO_HOME=/tmp/subhome` / `CF_QUEUE_DIR=/tmp/subq`:
   arbiter, and printed the phone URL + QR
 - nothing depended on the original repo path
 
+## Phone tap test (true 390px, touch)
+
+Puppeteer at `390×844`, `isMobile`, `hasTouch`:
+
+- two cards visible
+- tapped `button.deny` through the UI (not the API)
+- first request `cf-dc485e87` resolved as **denied**
+- second request remained pending for the next tap
+
+Machine-readable: `clawfence/proof/ui-tap.json`.
+
 ## Reset-between-visitors test
 
 After `run-demo.sh` was up, `reset-demo.sh` restored the poisoned Downloads folder,

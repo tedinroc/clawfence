@@ -1,0 +1,10 @@
+{
+  "date": "2026-11-17",
+  "viewport": "390x844, isMobile, hasTouch",
+  "cards_visible_before": 2,
+  "action": "tap button.deny",
+  "first_request": "cf-dc485e87",
+  "first_status": "denied",
+  "second_request": "cf-0c95ece6",
+  "note": "tap wired correctly; second card remained pending for the next tap"
+}

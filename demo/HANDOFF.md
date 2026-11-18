@@ -40,6 +40,7 @@ Then: **Nov 21–24** run `preflight.sh` + phone QR demo on the travel laptop;
 | `CHECKPOINTS.md` | Nov 20 / Nov 25 / Dec 1 / Dec 3 / Dec 4–5 gates |
 | `ATTENDEE_PLAN.md` | dated to-do list + contingencies |
 | `RUNBOOK.md` / `clawfence-runbook.pdf` | on-site A4 runbook |
+| `TROUBLESHOOTING.md` | gateway/model/phone/audit failure fast paths |
 | `DEMO_SCRIPT.md` | word-for-word 3-minute demo |
 | `JUDGE_QA.md` | 10 likely judge questions + numbers |
 | `JUDGE_PERSONAS.md` | what OpenClaw / M5Stack / Tencent / NVIDIA / media each cares about |

@@ -14,7 +14,7 @@
 | Attendance | Luma status | **approved**; attending Dec 4–5; flights/hotel **booked**; valid 5-year 台胞證; no board → phone-first |
 | Travel brief | hotel/flight/visa research | `TRAVEL_BRIEF.md` (no bookings made) |
 | Application | required fields drafted | Q1/Q2/Q9; user-specific `[city]` and Chinese handle remain |
-| Test suite | 19 unit / 26 scenarios | 19/19, 26/26, 0/15 unsafe, 0/11 benign blocked |
+| Test suite | 20 unit / 26 scenarios | 20/20, 26/26, 0/15 unsafe, 0/11 benign blocked |
 | Plugin Inspector | package | **PASS, 0 warnings** |
 | Fresh-profile install | clone → `plugins install -l --accept-capabilities` | **PASS**, `clawfence status` works |
 | Submission ZIP | unzip → fresh demo home → run-demo | **PASS**, phone URL + QR |

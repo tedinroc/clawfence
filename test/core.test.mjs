@@ -187,6 +187,16 @@ test("queue: approve creates a one-action grant", async () => {
   assert.equal(r2.ok, false);
 });
 
+test("audit: lock is released before append resolves", async () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "cf-audit-lock-"));
+  const audit = createAudit(path.join(dir, "audit.jsonl"));
+  await audit.append({ type: "lock-test" });
+  assert.equal(fs.existsSync(path.join(dir, "audit.jsonl.lock")), false);
+  const v = await audit.verify();
+  assert.equal(v.ok, true);
+  fs.rmSync(dir, { recursive: true, force: true });
+});
+
 test("queue: pause waits for approve and deny", async () => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), "cf-pause-"));
   const q = createQueue(dir);

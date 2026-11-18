@@ -48,6 +48,18 @@ repo with a fresh `CF_DEMO_HOME=/tmp/subhome` / `CF_QUEUE_DIR=/tmp/subq`:
   arbiter, and printed the phone URL + QR
 - nothing depended on the original repo path
 
+## Reset-between-visitors test
+
+After `run-demo.sh` was up, `reset-demo.sh` restored the poisoned Downloads folder,
+then one full two-card run was executed:
+
+- first card `DELETE_AMBIGUOUS` → approve → call continued
+- second card `EXTERNAL_MESSAGE` → deny → blocked
+- Photos deleted by the approved wildcard cleanup
+- `clawfence verify`: **ok, 102 entries, 0 errors** (audit chain survives resets)
+
+Machine-readable: `clawfence/proof/reset-test.json`.
+
 ## Timed two-card flow (scripted demo)
 
 After the gateway/arbiter were up:

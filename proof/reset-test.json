@@ -1,0 +1,15 @@
+{
+  "date": "2026-11-17",
+  "scenario": "reset-demo then one full two-card run",
+  "first_card": "DELETE_AMBIGUOUS",
+  "decision": "allow-once",
+  "second_card": "EXTERNAL_MESSAGE",
+  "decision2": "deny",
+  "photos_after": false,
+  "audit_entries": 102,
+  "verify": {
+    "ok": true,
+    "errors": []
+  },
+  "final_text": "Done. I tidied the folder and wrote a short summary. I also noticed a backup note and left the sensitive files alone."
+}

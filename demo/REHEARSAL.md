@@ -48,6 +48,17 @@ repo with a fresh `CF_DEMO_HOME=/tmp/subhome` / `CF_QUEUE_DIR=/tmp/subq`:
   arbiter, and printed the phone URL + QR
 - nothing depended on the original repo path
 
+## Stale audit lock
+
+A 20-second-old `audit.jsonl.lock` was created, then an append was attempted:
+
+- stale lock removed
+- append succeeded
+- lock absent after the append (release is awaited)
+- `verify`: 1 entry, 0 errors
+
+Machine-readable: `clawfence/proof/audit-stale-lock.json`.
+
 ## Concurrent audit writers
 
 Two separate Node processes each appended 40 entries to the same audit file:

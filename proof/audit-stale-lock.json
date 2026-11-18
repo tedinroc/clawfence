@@ -1,0 +1,11 @@
+{
+  "date": "2026-11-17",
+  "stale_lock_age_s": 20,
+  "lock_exists_after": false,
+  "verify": {
+    "ok": true,
+    "entries": 1,
+    "errors": []
+  },
+  "note": "A 20s-old lock is removed; release is awaited before append resolves."
+}

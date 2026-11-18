@@ -19,6 +19,7 @@
 | Fresh-profile install | clone → `plugins install -l --accept-capabilities` | **PASS**, `clawfence status` works |
 | Submission ZIP | unzip → fresh demo home → run-demo | **PASS**, phone URL + QR |
 | Portable runtime | pack script | **352 MB tarball**, tar list OK |
+| Reset demo | reset → two-card run → verify | **PASS**, 102 entries, 0 errors |
 | Benchmark | 15,000 decisions | p50 82 µs, p95 219 µs, 0 mismatches |
 | Dress rehearsal | real Qwen3-4B | gateway 2.93 s, card 6.42 s, approve→done 2.14 s, secret block 1.55 s |
 | Real demo caveat | full agent turn | **127 s** to first card; scripted demo is the timed slot |

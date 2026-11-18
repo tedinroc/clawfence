@@ -152,6 +152,25 @@ test("intent store persists a session card across reloads", async () => {
   fs.rmSync(dir, { recursive: true, force: true });
 });
 
+test("queue: cancelPending clears the card on STOP", async () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "cf-cancel-"));
+  const q = createQueue(dir);
+  const p = await q.createPending({
+    sessionKey: "s-stop", toolName: "exec", params: { command: "rm -rf ./dist" },
+    action: extractAction("exec", { command: "rm -rf ./dist" }, { baseDir: workspace }),
+    intent: deriveIntent("Clean the build output", { baseDir: workspace, workspace }),
+    verdict: { verdict: "escalate", reason: "test", code: "TEST" },
+  });
+  const r = await q.cancelPending(p.id, "STOP RUN");
+  assert.equal(r.ok, true);
+  assert.equal(await q.getPending(p.id), null);
+  const rec = JSON.parse(fs.readFileSync(path.join(dir, "resolved", p.id + ".json"), "utf8"));
+  assert.equal(rec.status, "cancelled");
+  assert.equal(rec.decision, "aborted");
+  assert.equal(rec.reason, "STOP RUN");
+  fs.rmSync(dir, { recursive: true, force: true });
+});
+
 test("queue: approve creates a one-action grant", async () => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), "cf-queue-"));
   const q = createQueue(dir);

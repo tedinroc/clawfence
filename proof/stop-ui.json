@@ -17,5 +17,11 @@
   "resolved_status": "cancelled",
   "resolved_decision": "aborted",
   "resolved_reason": "STOP RUN",
-  "agent": "aborted"
+  "agent": "aborted",
+  "audit_event": "stop",
+  "audit_entries": 259,
+  "verify": {
+    "ok": true,
+    "errors": []
+  }
 }

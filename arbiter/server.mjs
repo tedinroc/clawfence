@@ -144,6 +144,7 @@ const server = http.createServer(async (req, res) => {
               if (r?.ok) cancelled.push(p.id);
             }
           }
+          await audit.append({ type: "stop", session_key: sessionKey, cancelled, status: parsed?.result?.status || parsed?.status || "aborted" }).catch(() => {});
           resolve(json(res, 200, { ok: true, sessionKey, cancelled, result: parsed ?? String(stdout).slice(0, 2000) }));
         });
       });

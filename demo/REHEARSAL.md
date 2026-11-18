@@ -69,6 +69,7 @@ pending:
 - pending list **empty** after the stop
 - resolved record `status: cancelled`, `decision: aborted`, `reason: STOP RUN`
 - agent output `aborted`
+- audit gets a **`stop`** event; `clawfence verify` = **259 entries, 0 errors**
 
 Machine-readable: `clawfence/proof/stop-ui.json`. (Puppeteer's headless page
 polling made a literal touch test flaky; the UI button calls this exact API.)
